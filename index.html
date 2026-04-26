@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wallace Wagner Rodrigues Pantoja — Pesquisador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1C1A17; --ink-mid:#4A4540; --ink-light:#8A8178;
+  --paper:#F5F1EA; --paper-warm:#EDE8DF; --paper-dark:#E0D9CE;
+  --accent:#8B3A1A; --accent-light:#C4622D; --gold:#B8860B;
+  --border:#CFC8BC;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Source Serif 4',Georgia,serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --font-zh:'Noto Sans SC',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-weight:300;line-height:1.7;font-size:17px}
+[lang="zh"] body,[data-lang="zh"] .t{font-family:var(--font-zh)}
+
+/* LANG SWITCHER */
+.lang-bar{position:fixed;top:0;right:0;z-index:200;display:flex;gap:0;background:rgba(28,26,23,.92);backdrop-filter:blur(10px)}
+.lang-btn{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;padding:.55rem .9rem;border:none;background:transparent;color:rgba(245,241,234,.4);cursor:pointer;text-transform:uppercase;transition:color .2s,background .2s;border-left:1px solid rgba(245,241,234,.08)}
+.lang-btn:first-child{border-left:none}
+.lang-btn.active,.lang-btn:hover{color:var(--gold);background:rgba(184,134,11,.1)}
+
+/* HEADER */
+header{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:var(--ink);padding:4rem 6vw}
+.header-texture{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.03) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,.03) 60px);pointer-events:none}
+.header-accent{position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,var(--accent),var(--gold),transparent)}
+.header-content{position:relative;max-width:820px}
+.header-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;color:var(--accent-light);text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp .6s .2s forwards}
+header h1{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5rem);font-weight:600;color:var(--paper);line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem;opacity:0;animation:fadeUp .7s .35s forwards}
+header h1 em{font-style:italic;color:var(--gold)}
+.header-bio{font-size:1.05rem;color:rgba(245,241,234,.65);max-width:580px;line-height:1.8;margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s .5s forwards}
+.header-tags{display:flex;flex-wrap:wrap;gap:.6rem;opacity:0;animation:fadeUp .7s .65s forwards}
+.tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;border:1px solid rgba(245,241,234,.2);color:rgba(245,241,234,.6);border-radius:2px}
+.header-scroll{position:absolute;bottom:2.5rem;left:6vw;font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:rgba(245,241,234,.3);text-transform:uppercase;display:flex;align-items:center;gap:.8rem}
+.header-scroll::before{content:'';display:block;width:40px;height:1px;background:rgba(245,241,234,.2)}
+
+/* NAV */
+nav{position:sticky;top:0;background:rgba(245,241,234,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100;padding:.85rem 6vw;display:flex;gap:2rem;align-items:center}
+.nav-name{font-family:var(--font-display);font-size:.9rem;font-weight:600;color:var(--ink);margin-right:auto;letter-spacing:-.01em}
+nav a{font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--ink-mid);transition:color .2s}
+nav a:hover{color:var(--accent)}
+
+/* SECTIONS */
+section{padding:5rem 6vw;max-width:1100px;margin:0 auto}
+.section-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:1rem}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400;line-height:1.2;letter-spacing:-.02em;margin-bottom:2rem;color:var(--ink)}
+
+/* RESEARCH LINES */
+.lines-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:1rem}
+.line-card{border:1px solid var(--border);padding:2rem;position:relative;background:var(--paper-warm);transition:border-color .2s,transform .2s}
+.line-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.line-num{font-family:var(--font-mono);font-size:2.5rem;font-weight:500;color:var(--paper-dark);position:absolute;top:1.2rem;right:1.5rem;line-height:1;letter-spacing:-.05em}
+.line-title{font-family:var(--font-display);font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:.6rem;line-height:1.3}
+.line-desc{font-size:.92rem;color:var(--ink-mid);line-height:1.6}
+
+/* PUBLICATIONS */
+#publications{background:var(--paper-warm);padding:5rem 0;max-width:none}
+#publications>.inner{max-width:1100px;margin:0 auto;padding:0 6vw}
+.pub-filter{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.filter-btn{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:.4rem 1rem;border:1px solid var(--border);background:transparent;color:var(--ink-mid);cursor:pointer;border-radius:2px;transition:all .2s}
+.filter-btn.active,.filter-btn:hover{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.pub-list{display:flex;flex-direction:column;gap:0}
+.pub-item{padding:1.4rem 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:3rem 1fr auto;gap:1rem;align-items:start}
+.pub-item:first-child{border-top:1px solid var(--border)}
+.pub-year{font-family:var(--font-mono);font-size:.8rem;color:var(--ink-light);padding-top:.15rem}
+.pub-title{font-family:var(--font-display);font-size:1rem;font-weight:400;color:var(--ink);line-height:1.4;margin-bottom:.2rem}
+.pub-title-tr{font-size:.82rem;color:var(--ink-light);font-style:italic;margin-bottom:.3rem;display:none}
+.pub-venue{font-size:.82rem;color:var(--ink-light);font-style:italic}
+.pub-authors{font-size:.82rem;color:var(--ink-mid);margin-bottom:.2rem}
+.pub-cit{font-family:var(--font-mono);font-size:.75rem;color:var(--accent);white-space:nowrap;padding-top:.15rem}
+.pub-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.4rem}
+.pub-tag{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .5rem;background:var(--paper-dark);color:var(--ink-light);border-radius:1px}
+.pub-link{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);text-decoration:none;margin-top:.4rem;display:inline-block}
+.pub-link:hover{text-decoration:underline}
+
+/* CONCEPTS */
+.concepts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-top:1rem}
+.concept-cell{background:var(--paper);padding:1.8rem 1.5rem;transition:background .2s}
+.concept-cell:hover{background:var(--paper-warm)}
+.concept-word{font-family:var(--font-display);font-size:1.2rem;font-weight:400;font-style:italic;color:var(--accent);margin-bottom:.4rem}
+.concept-en{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;color:var(--ink-light);text-transform:uppercase;margin-bottom:.5rem}
+.concept-def{font-size:.85rem;color:var(--ink-mid);line-height:1.6}
+
+/* PROFILES */
+.profiles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem}
+.profile-card{border:1px solid var(--border);padding:1.4rem 1.5rem;text-decoration:none;color:inherit;display:block;transition:border-color .2s,transform .2s;background:var(--paper)}
+.profile-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.profile-name{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.profile-desc{font-size:.88rem;color:var(--ink-mid);line-height:1.5}
+
+/* CONTACT */
+#contact{background:var(--ink);color:var(--paper);padding:5rem 6vw;max-width:none}
+#contact .inner{max-width:700px;margin:0 auto}
+#contact .section-label{color:var(--gold)}
+#contact .section-label::after{background:rgba(245,241,234,.15)}
+#contact h2{color:var(--paper)}
+.contact-note{font-size:.95rem;color:rgba(245,241,234,.6);margin-bottom:2rem;line-height:1.7}
+.contact-links{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.contact-link{font-family:var(--font-mono);font-size:.82rem;color:rgba(245,241,234,.6);text-decoration:none;display:flex;align-items:center;gap:.5rem;border:1px solid rgba(245,241,234,.15);padding:.5rem 1rem;border-radius:2px;transition:border-color .2s}
+.contact-link:hover{border-color:rgba(245,241,234,.4)}
+.contact-link span{color:var(--accent-light)}
+.raseng-card{display:block;text-decoration:none;border:1px solid rgba(245,241,234,.15);padding:1.5rem;border-radius:2px;transition:border-color .2s;margin-top:2rem}
+.raseng-card:hover{border-color:rgba(184,134,11,.5)}
+.raseng-title{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--paper);margin-bottom:.4rem}
+.raseng-sub{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;color:var(--gold);margin-bottom:.6rem}
+.raseng-desc{font-size:.88rem;color:rgba(245,241,234,.5);line-height:1.6}
+.raseng-url{font-family:var(--font-mono);font-size:.75rem;color:rgba(245,241,234,.3);margin-top:.8rem}
+
+/* FOOTER */
+footer{background:var(--ink);border-top:1px solid rgba(245,241,234,.08);padding:1.5rem 6vw;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;color:rgba(245,241,234,.25);display:flex;justify-content:space-between;align-items:center}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:600px){nav{gap:1rem}.pub-item{grid-template-columns:2.5rem 1fr}.pub-cit{display:none}}
+</style>
+</head>
+<body>
+
+<!-- LANG SWITCHER -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" onclick="setLang('zh')">中文</button>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-texture"></div>
+  <div class="header-accent"></div>
+  <div class="header-content">
+    <div class="header-label t" data-pt="Professor · Pesquisador · IFPA" data-en="Professor · Researcher · IFPA" data-es="Profesor · Investigador · IFPA" data-zh="教授 · 研究员 · IFPA">Professor · Pesquisador · IFPA</div>
+    <h1>Wallace Wagner<br/><em>Rodrigues Pantoja</em></h1>
+    <p class="header-bio t"
+      data-pt="Professor e pesquisador no Instituto Federal do Pará (IFPA), atuando nos níveis técnico, de graduação e pós-graduação. Doutor em Geografia pela Universidade de Brasília (UnB). Editor da Revista Amazônica sobre Ensino de Geografia (RASENG). Líder do Grupo de Pesquisa Geograficidades Amazônicas e Coordenador do Núcleo de Gênero e Diversidade (NEGED-IFPA, Campus Belém-PA). Investiga as interfaces entre fenomenologia do lugar, educação geográfica e cartografia de corpos dissidentes."
+      data-en="Professor and researcher at the Federal Institute of Pará (IFPA), teaching at technical, undergraduate and postgraduate levels. PhD in Geography from the University of Brasília (UnB). Editor of the Amazonian Journal on Geography Education (RASENG). Leader of the Amazonian Geographicities Research Group and Coordinator of the Gender and Diversity Center (NEGED-IFPA, Belém Campus). His research investigates the interfaces between phenomenology of place, geographical education and cartography of dissent bodies."
+      data-es="Profesor e investigador en el Instituto Federal de Pará (IFPA), en los niveles técnico, de grado y posgrado. Doctor en Geografía por la Universidad de Brasilia (UnB). Editor de la Revista Amazónica sobre Enseñanza de la Geografía (RASENG). Líder del Grupo de Investigación Geograficidades Amazónicas y Coordinador del Núcleo de Género y Diversidad (NEGED-IFPA, Campus Belém). Investiga las interfaces entre fenomenología del lugar, educación geográfica y cartografía de cuerpos disidentes."
+      data-zh="巴拉联邦学院（IFPA）教授与研究员，从事技术、本科和研究生教学。巴西利亚大学（UnB）地理学博士。《亚马逊地理教育杂志》（RASENG）主编。亚马逊地理性研究小组负责人，性别与多样性中心（NEGED-IFPA，贝伦校区）协调员。研究方向：地方现象学、地理教育与异见身体制图学。">
+      Professor e pesquisador no Instituto Federal do Pará (IFPA), atuando nos níveis técnico, de graduação e pós-graduação. Doutor em Geografia pela Universidade de Brasília (UnB). Editor da Revista Amazônica sobre Ensino de Geografia (RASENG). Líder do Grupo de Pesquisa Geograficidades Amazônicas e Coordenador do Núcleo de Gênero e Diversidade (NEGED-IFPA, Campus Belém-PA). Investiga as interfaces entre fenomenologia do lugar, educação geográfica e cartografia de corpos dissidentes.
+    </p>
+    <div class="header-tags">
+      <span class="tag t" data-pt="Fenomenologia do lugar" data-en="Phenomenology of place" data-es="Fenomenología del lugar" data-zh="地方现象学">Fenomenologia do lugar</span>
+      <span class="tag t" data-pt="Educação geográfica amazônica" data-en="Amazonian geographical education" data-es="Educación geográfica amazónica" data-zh="亚马逊地理教育">Educação geográfica amazônica</span>
+      <span class="tag t" data-pt="Cartografia e corpos dissidentes" data-en="Cartography and dissent bodies" data-es="Cartografía y cuerpos disidentes" data-zh="制图学与异见身体">Cartografia e corpos dissidentes</span>
+      <span class="tag t" data-pt="Topolítica" data-en="Topopolitics" data-es="Topolítica" data-zh="拓扑政治">Topolítica</span>
+      <span class="tag t" data-pt="(In)existência" data-en="(In)existence" data-es="(In)existencia" data-zh="（非）存在">(In)existência</span>
+    </div>
+  </div>
+  <div class="header-scroll t" data-pt="Scroll para explorar" data-en="Scroll to explore" data-es="Desplazar para explorar" data-zh="向下滚动探索">Scroll para explorar</div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">W. W. R. Pantoja</span>
+  <a href="#research" class="t" data-pt="Pesquisa" data-en="Research" data-es="Investigación" data-zh="研究">Pesquisa</a>
+  <a href="#publications" class="t" data-pt="Publicações" data-en="Publications" data-es="Publicaciones" data-zh="出版物">Publicações</a>
+  <a href="#concepts" class="t" data-pt="Conceitos" data-en="Concepts" data-es="Conceptos" data-zh="概念">Conceitos</a>
+  <a href="#profiles" class="t" data-pt="Perfis" data-en="Profiles" data-es="Perfiles" data-zh="主页">Perfis</a>
+  <a href="#contact" class="t" data-pt="Contato" data-en="Contact" data-es="Contacto" data-zh="联系">Contato</a>
+</nav>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-label t" data-pt="Linhas de pesquisa" data-en="Research lines" data-es="Líneas de investigación" data-zh="研究方向">Linhas de pesquisa</div>
+  <h2 class="t" data-pt="Três dimensões<br/>de investigação" data-en="Three dimensions<br/>of inquiry" data-es="Tres dimensiones<br/>de investigación" data-zh="三个研究<br/>维度">Três dimensões<br/>de investigação</h2>
+  <div class="lines-grid">
+    <div class="line-card reveal">
+      <span class="line-num">01</span>
+      <div class="line-title t" data-pt="Fenomenologia do Lugar" data-en="Phenomenology of Place" data-es="Fenomenología del Lugar" data-zh="地方现象学">Fenomenologia do Lugar</div>
+      <p class="line-desc t"
+        data-pt="Investigação filosófica sobre a relação entre sujeito, existência e lugar a partir de uma perspectiva fenomenológica em diálogo com o existencialismo do sul global. Conceitos centrais: lugaridade, (in)existência, fratura existencial, entrelugares."
+        data-en="Philosophical inquiry into the relationship between subject, existence and place from a phenomenological perspective in dialogue with Global South existentialism. Core concepts: placeness, (in)existence, existential fracture, between-places."
+        data-es="Investigación filosófica sobre la relación entre sujeto, existencia y lugar desde una perspectiva fenomenológica en diálogo con el existencialismo del sur global. Conceptos centrales: lugaridad, (in)existencia, fractura existencial, entrelugares."
+        data-zh="从现象学视角探讨主体、存在与地方之间的关系，与全球南方存在主义对话。核心概念：地方性、（非）存在、存在性断裂、间地。">
+        Investigação filosófica sobre a relação entre sujeito, existência e lugar a partir de uma perspectiva fenomenológica em diálogo com o existencialismo do sul global. Conceitos centrais: lugaridade, (in)existência, fratura existencial, entrelugares.
+      </p>
+    </div>
+    <div class="line-card reveal">
+      <span class="line-num">02</span>
+      <div class="line-title t" data-pt="Educação Geográfica Amazônica" data-en="Amazonian Geographical Education" data-es="Educación Geográfica Amazónica" data-zh="亚马逊地理教育">Educação Geográfica Amazônica</div>
+      <p class="line-desc t"
+        data-pt="Articulação entre saberes geográficos, educação do/no/em campo e territorialidades amazônicas — com foco nas comunidades à beira da Transamazônica (BR-230), nos municípios de Pacajá e Anapu (PA) e populações das ilhas metropolitanas de Belém (PA). Interface entre política educativa e espacialidade."
+        data-en="Articulation between geographical knowledge, rural education and Amazonian territorialities — focusing on communities along the Transamazon Highway (BR-230), in the municipalities of Pacajá and Anapu (PA), and island populations of metropolitan Belém (PA). Interface between educational policy and spatiality."
+        data-es="Articulación entre saberes geográficos, educación del/en campo y territorialidades amazónicas — con foco en comunidades a lo largo de la Carretera Transamazónica (BR-230), en los municipios de Pacajá y Anapu (PA) y poblaciones de las islas metropolitanas de Belém (PA). Interfaz entre política educativa y espacialidad."
+        data-zh="地理知识、田野教育与亚马逊地域性之间的融合——聚焦于跨亚马逊公路（BR-230）沿线社区（帕卡亚和阿纳普市，PA）以及贝伦大都市岛屿居民。教育政策与空间性的接口。">
+        Articulação entre saberes geográficos, educação do/no/em campo e territorialidades amazônicas — com foco nas comunidades à beira da Transamazônica (BR-230), nos municípios de Pacajá e Anapu (PA) e populações das ilhas metropolitanas de Belém (PA). Interface entre política educativa e espacialidade.
+      </p>
+    </div>
+    <div class="line-card reveal">
+      <span class="line-num">03</span>
+      <div class="line-title t" data-pt="Cartografia e Corpos Dissidentes" data-en="Cartography and Dissent Bodies" data-es="Cartografía y Cuerpos Disidentes" data-zh="制图学与异见身体">Cartografia e Corpos Dissidentes</div>
+      <p class="line-desc t"
+        data-pt="Desenvolvimento de metodologias cartográficas que incorporam o corpo como instrumento epistemológico. Inclui cartografias da reXistência, (des)orientação espacial, diferença sexual, corporificação e registro imagético e ético como pesquisa geográfica."
+        data-en="Development of cartographic methodologies that incorporate the body as an epistemological instrument. Includes cartographies of reXistence, spatial (dis)orientation, sexual difference, embodiment, and ethical image-based research in geography."
+        data-es="Desarrollo de metodologías cartográficas que incorporan el cuerpo como instrumento epistemológico. Incluye cartografías de la reXistencia, (des)orientación espacial, diferencia sexual, corporificación y registro imagético y ético como investigación geográfica."
+        data-zh="发展将身体作为认识论工具的制图方法。包括reXistence制图学、空间（去）定向、性别差异、具身化以及作为地理研究的伦理影像记录。">
+        Desenvolvimento de metodologias cartográficas que incorporam o corpo como instrumento epistemológico. Inclui cartografias da reXistência, (des)orientação espacial, diferença sexual, corporificação e registro imagético e ético como pesquisa geográfica.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<div id="publications">
+<div class="inner">
+  <div class="section-label t" data-pt="Produção científica" data-en="Scientific output" data-es="Producción científica" data-zh="学术成果">Produção científica</div>
+  <h2 class="t" data-pt="Publicações" data-en="Publications" data-es="Publicaciones" data-zh="出版物">Publicações</h2>
+  <div class="pub-filter">
+    <button class="filter-btn active t" data-pt="Todas" data-en="All" data-es="Todas" data-zh="全部" onclick="filterPubs('all',this)">Todas</button>
+    <button class="filter-btn t" data-pt="Fenomenologia" data-en="Phenomenology" data-es="Fenomenología" data-zh="现象学" onclick="filterPubs('fenomenologia',this)">Fenomenologia</button>
+    <button class="filter-btn t" data-pt="Amazônia" data-en="Amazon" data-es="Amazonia" data-zh="亚马逊" onclick="filterPubs('amazonia',this)">Amazônia</button>
+    <button class="filter-btn t" data-pt="Educação" data-en="Education" data-es="Educación" data-zh="教育" onclick="filterPubs('educacao',this)">Educação</button>
+    <button class="filter-btn t" data-pt="Cartografia" data-en="Cartography" data-es="Cartografía" data-zh="制图学" onclick="filterPubs('cartografia',this)">Cartografia</button>
+    <button class="filter-btn t" data-pt="Filosofia" data-en="Philosophy" data-es="Filosofía" data-zh="哲学" onclick="filterPubs('filosofia',this)">Filosofia</button>
+  </div>
+  <div class="pub-list" id="pubList">
+
+    <div class="pub-item reveal" data-tags="fenomenologia filosofia heidegger">
+      <span class="pub-year">2025</span>
+      <div>
+        <div class="pub-title">Os erros do "Erro de Heidegger": salvar o ser-si-mesmo através do não-outro</div>
+        <div class="pub-title-tr t" data-en="The Errors of the "Heidegger's Mistake": Saving Self-Being Through the Non-Other" data-es='Los errores del "Error de Heidegger": salvar el ser-sí-mismo a través del no-otro' data-zh='"海德格尔之误"的谬误：通过非他者拯救自我存在'></div>
+        <div class="pub-authors">PANTOJA, W. W. R.</div>
+        <div class="pub-venue">GeoTextos (UFBA), v. 21, p. 125–156</div>
+        <div class="pub-tags"><span class="pub-tag">Fenomenologia</span><span class="pub-tag">Heidegger</span><span class="pub-tag">Topolítica</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="amazonia cartografia corpo">
+      <span class="pub-year">2025</span>
+      <div>
+        <div class="pub-title">Dobras entre corpo e mapa na Transamazônica paraense</div>
+        <div class="pub-title-tr t" data-en="Folds between body and map in the Pará Transamazon" data-es="Pliegues entre cuerpo y mapa en la Transamazónica paraense" data-zh="巴拉跨亚马逊公路中身体与地图的折叠"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.; SANTOS, A. H. F.</div>
+        <div class="pub-venue">Revista Amazônica sobre Ensino de Geografia, v. 5, p. 116–131</div>
+        <div class="pub-tags"><span class="pub-tag">Cartografia</span><span class="pub-tag">Corpo</span><span class="pub-tag">Amazônia</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="amazonia">
+      <span class="pub-year">2025</span>
+      <div>
+        <div class="pub-title">A importância da propriedade intelectual para a economia criativa no contexto da Amazônia Marajoara</div>
+        <div class="pub-title-tr t" data-en="Intellectual property and creative economy in the Marajó Amazon context" data-es="Propiedad intelectual y economía creativa en el contexto de la Amazonia Marajoara" data-zh="知识产权在马拉若亚马逊创意经济中的重要性"></div>
+        <div class="pub-authors">CARVALHO, D. R. C.; PANTOJA, W. W. R.</div>
+        <div class="pub-venue">Contribuciones a las Ciencias Sociales, v. 18, p. e21440</div>
+        <div class="pub-tags"><span class="pub-tag">Amazônia</span><span class="pub-tag">Economia Criativa</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="cartografia corpo fenomenologia">
+      <span class="pub-year">2024</span>
+      <div>
+        <div class="pub-title">AQUELAS DA ESQUINA — diferença sexual e cartografia da reXistência</div>
+        <div class="pub-title-tr t" data-en="THOSE AT THE CORNER — sexual difference and cartography of reXistence" data-es="AQUELLAS DE LA ESQUINA — diferencia sexual y cartografía de la reXistencia" data-zh="街角那些人——性别差异与reXistence制图学"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.</div>
+        <div class="pub-venue">Revista Latino-americana de Geografia e Gênero, v. 15, p. 96–112</div>
+        <div class="pub-tags"><span class="pub-tag">Cartografia</span><span class="pub-tag">Corpo</span><span class="pub-tag">reXistência</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="educacao cartografia corpo">
+      <span class="pub-year">2024</span>
+      <div>
+        <div class="pub-title">Importa o corpo para a Geografia? Uma análise do debate corporificado na formação docente em Geografia no Pará</div>
+        <div class="pub-title-tr t" data-en="Does the body matter for Geography? An analysis of the embodied debate in teacher education in Pará" data-es="¿Importa el cuerpo para la Geografía? Un análisis del debate corporificado en la formación docente en Pará" data-zh="身体对地理学重要吗？巴拉州地理教师培训中的具身化辩论分析"></div>
+        <div class="pub-authors">PINTO, P. I. M.; SILVA, C. C. L.; PANTOJA, W. W. R.</div>
+        <div class="pub-venue">Revista GeoAmazônia, v. 12, p. 149–173</div>
+        <div class="pub-tags"><span class="pub-tag">Corpo</span><span class="pub-tag">Educação</span><span class="pub-tag">Amazônia</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="fenomenologia filosofia">
+      <span class="pub-year">2021</span>
+      <div>
+        <div class="pub-title">Geografizando a pandemia: entrelugares do adoecimento existencial</div>
+        <div class="pub-title-tr t" data-en="Geographizing the pandemic: between-places of existential illness" data-es="Geografizando la pandemia: entrelugares del padecimiento existencial" data-zh="地理化大流行：存在性病痛的间地"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.</div>
+        <div class="pub-venue">Geografares (UFES), v. 1, p. 117–121</div>
+        <div class="pub-tags"><span class="pub-tag">Fenomenologia</span><span class="pub-tag">Existencialismo</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="educacao cartografia amazonia">
+      <span class="pub-year">2020</span>
+      <div>
+        <div class="pub-title">Educação geocartográfica e tensibilidade narrativa: criando projeções vicinais</div>
+        <div class="pub-title-tr t" data-en="Geocartographic education and narrative tensibility: creating side-road projections" data-es="Educación geocartográfica y tensibilidad narrativa: creando proyecciones vicinales" data-zh="地理制图教育与叙事张力：创造乡村投影"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.</div>
+        <div class="pub-venue">Boletim de Geografia (Online), v. 38, p. 154–174</div>
+        <div class="pub-tags"><span class="pub-tag">Cartografia</span><span class="pub-tag">Educação</span><span class="pub-tag">Amazônia</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="amazonia fenomenologia">
+      <span class="pub-year">2019</span>
+      <div>
+        <div class="pub-title">Descritividade como princípio da Geografia Amazônica: o chamado de Eidorfe Moreira</div>
+        <div class="pub-title-tr t" data-en="Descriptivity as a principle of Amazonian Geography: the call of Eidorfe Moreira" data-es="Descriptividad como principio de la Geografía Amazónica: el llamado de Eidorfe Moreira" data-zh="描述性作为亚马逊地理学原则：埃多尔夫·莫雷拉的呼唤"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.</div>
+        <div class="pub-venue">Revista GeoAmazônia, v. 7, p. 53–65</div>
+        <div class="pub-tags"><span class="pub-tag">Amazônia</span><span class="pub-tag">Fenomenologia</span><span class="pub-tag">Epistemologia</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="fenomenologia cartografia">
+      <span class="pub-year">2019</span>
+      <div>
+        <div class="pub-title">Desenhando o lugar: subjetividade, violência e fratura existencial na Ilha do Outeiro — Belém/PA</div>
+        <div class="pub-title-tr t" data-en="Drawing the place: subjectivity, violence and existential fracture on Ilha do Outeiro — Belém/PA" data-es="Dibujando el lugar: subjetividad, violencia y fractura existencial en la Isla del Outeiro — Belém/PA" data-zh="描绘地方：贝伦乌特罗岛的主体性、暴力与存在性断裂"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.</div>
+        <div class="pub-venue">Revista Querubim (Online), v. 15, p. 132–140</div>
+        <div class="pub-tags"><span class="pub-tag">Fenomenologia</span><span class="pub-tag">Lugar</span><span class="pub-tag">Violência</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="amazonia fenomenologia">
+      <span class="pub-year">2018</span>
+      <div>
+        <div class="pub-title">Lugares de vida no Cerrado e na Amazônia: memória como patrimônio vivido em Crixás (GO) e Anapu (PA)</div>
+        <div class="pub-title-tr t" data-en="Places of life in the Cerrado and the Amazon: memory as lived heritage in Crixás (GO) and Anapu (PA)" data-es="Lugares de vida en el Cerrado y la Amazonia: memoria como patrimonio vivido en Crixás (GO) y Anapu (PA)" data-zh="塞拉多与亚马逊的生活地方：克里萨斯和阿纳普的记忆作为活态遗产"></div>
+        <div class="pub-authors">LIMA, L. N. M.; PANTOJA, W. W. R.; BRINGEL, F. O.</div>
+        <div class="pub-venue">Revista Nós: Cultura, Estética e Linguagem, v. 3, p. 106–123</div>
+        <div class="pub-tags"><span class="pub-tag">Amazônia</span><span class="pub-tag">Memória</span><span class="pub-tag">Lugar</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="amazonia fenomenologia educacao">
+      <span class="pub-year">2017</span>
+      <div>
+        <div class="pub-title">Os Filhos de Adão — vicinais transamazônicas como entrelugares</div>
+        <div class="pub-title-tr t" data-en="The Sons of Adam — Transamazonian side roads as between-places" data-es="Los Hijos de Adán — vicinales transamazónicas como entrelugares" data-zh="亚当之子——跨亚马逊乡村道路作为间地"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.; OLIVEIRA, A. N.; SILVA, M. I.</div>
+        <div class="pub-venue">Revista da ANPEGE, v. 13, p. 157–176</div>
+        <div class="pub-tags"><span class="pub-tag">Amazônia</span><span class="pub-tag">Fenomenologia</span><span class="pub-tag">Lugar</span></div>
+      </div>
+      <span class="pub-cit">4 cit.</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="educacao amazonia">
+      <span class="pub-year">2017</span>
+      <div>
+        <div class="pub-title">Conteúdos educativos e ficções geográficas: ensaio vicinal</div>
+        <div class="pub-title-tr t" data-en="Educational contents and geographical fictions: a vicinal essay" data-es="Contenidos educativos y ficciones geográficas: ensayo vicinal" data-zh="教育内容与地理虚构：乡村道路随笔"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.</div>
+        <div class="pub-venue">Revista do IHGP, v. 3, p. 134–147</div>
+        <div class="pub-tags"><span class="pub-tag">Educação</span><span class="pub-tag">Amazônia</span></div>
+      </div>
+      <span class="pub-cit">2 cit.</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="amazonia educacao">
+      <span class="pub-year">2016</span>
+      <div>
+        <div class="pub-title">Transamazônica: vamos ao campo? Senso comum douto e morte do viver</div>
+        <div class="pub-title-tr t" data-en="Transamazon: let's go to the field? Learned common sense and the death of living" data-es="Transamazónica: ¿vamos al campo? Sentido común docto y muerte del vivir" data-zh="跨亚马逊：去田野吧？博学常识与生活之死"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.; REIS, H. H. S.</div>
+        <div class="pub-venue">Geo UERJ, v. 1, p. 196–218</div>
+        <div class="pub-tags"><span class="pub-tag">Amazônia</span><span class="pub-tag">Educação</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="filosofia fenomenologia">
+      <span class="pub-year">2015</span>
+      <div>
+        <div class="pub-title">O Mundo Moderno em Hegel, Marx e Nietzsche à luz de Henri Lefebvre: crítica espacial</div>
+        <div class="pub-title-tr t" data-en="The Modern World in Hegel, Marx and Nietzsche through Henri Lefebvre: a spatial critique" data-es="El Mundo Moderno en Hegel, Marx y Nietzsche a la luz de Henri Lefebvre: crítica espacial" data-zh="通过亨利·列斐伏尔看黑格尔、马克思和尼采的现代世界：空间批判"></div>
+        <div class="pub-authors">COSTA, E. B.; LIMA, L. N. M.; OLIVEIRA, R. F.; RUBIO, R. P.; PANTOJA, W. W. R.</div>
+        <div class="pub-venue">Revista Cenário, v. 3, p. 213–235</div>
+        <div class="pub-tags"><span class="pub-tag">Filosofia</span><span class="pub-tag">Lefebvre</span><span class="pub-tag">Crítica Espacial</span></div>
+      </div>
+      <span class="pub-cit">2 cit.</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="educacao amazonia fenomenologia">
+      <span class="pub-year">2015</span>
+      <div>
+        <div class="pub-title">Educação do Campo à beira da "Faixa": A (in)existência do lugar como espacialização do fenômeno</div>
+        <div class="pub-title-tr t" data-en='Rural Education alongside the "Faixa": the (in)existence of place as spatialization of the phenomenon' data-es='Educación del Campo a orillas de la "Faixa": la (in)existencia del lugar como espacialización del fenómeno' data-zh='"地带"旁的田野教育：地方（非）存在作为现象的空间化"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.</div>
+        <div class="pub-venue">GeoTextos (UFBA), v. 11, p. 221–248</div>
+        <div class="pub-tags"><span class="pub-tag">Educação</span><span class="pub-tag">Fenomenologia</span><span class="pub-tag">(In)existência</span><span class="pub-tag">Amazônia</span></div>
+      </div>
+      <span class="pub-cit">5 cit.</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="educacao amazonia">
+      <span class="pub-year">2015</span>
+      <div>
+        <div class="pub-title">O princípio geográfico de conexão frente à universalização do ensino básico no Brasil — o caso transamazônico</div>
+        <div class="pub-title-tr t" data-en="The geographical principle of connection facing the universalization of basic education in Brazil — the Transamazonian case" data-es="El principio geográfico de conexión frente a la universalización de la enseñanza básica en Brasil — el caso transamazónico" data-zh="面对巴西基础教育普及化的地理连接原则——跨亚马逊案例"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.</div>
+        <div class="pub-venue">Geosul (UFSC), v. 30, p. 165–189</div>
+        <div class="pub-tags"><span class="pub-tag">Educação</span><span class="pub-tag">Amazônia</span><span class="pub-tag">Território</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+    <div class="pub-item reveal" data-tags="educacao amazonia fenomenologia">
+      <span class="pub-year">2012</span>
+      <div>
+        <div class="pub-title">Transamazônica ou "A Faixa": repensando a educação do campo a partir das vozes do lugar</div>
+        <div class="pub-title-tr t" data-en='Transamazon or "The Strip": rethinking rural education from the voices of place' data-es='Transamazónica o "La Franja": repensando la educación del campo desde las voces del lugar' data-zh="跨亚马逊或'地带'：从地方之声重新思考田野教育"></div>
+        <div class="pub-authors">PANTOJA, W. W. R.</div>
+        <div class="pub-venue">Revista Trilhas (UNAMA), v. 14, p. 75–85</div>
+        <div class="pub-tags"><span class="pub-tag">Educação</span><span class="pub-tag">Amazônia</span><span class="pub-tag">Lugar</span></div>
+      </div>
+      <span class="pub-cit">—</span>
+    </div>
+
+  </div><!-- /pub-list -->
+
+  <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+    <p style="font-family:var(--font-mono);font-size:.75rem;color:var(--ink-light);margin-bottom:1rem;" class="t" data-pt="Livros organizados:" data-en="Edited books:" data-es="Libros organizados:" data-zh="主编著作：">Livros organizados:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+      <a href="https://www.academia.edu/49994214/Religi%C3%A3o_e_Conex%C3%B5es_Geopol%C3%ADticas_no_terceiro_mil%C3%AAnio" target="_blank" style="text-decoration:none;border:1px solid var(--border);padding:1rem 1.2rem;border-radius:2px;background:var(--paper);transition:border-color .2s;flex:1;min-width:240px;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-family:var(--font-display);font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.3rem;">Religião e conexões geopolíticas no Terceiro Milênio</div>
+        <div style="font-family:var(--font-mono);font-size:.72rem;color:var(--ink-light);">Org. ARTEAGA · PELUSO · PANTOJA · 2020 · academia.edu ↗</div>
+      </a>
+      <a href="https://www.academia.edu/34171579/Retratos_da_cultura_popular_do_DF" target="_blank" style="text-decoration:none;border:1px solid var(--border);padding:1rem 1.2rem;border-radius:2px;background:var(--paper);transition:border-color .2s;flex:1;min-width:240px;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-family:var(--font-display);font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.3rem;">Retratos da Cultura Popular do DF</div>
+        <div style="font-family:var(--font-mono);font-size:.72rem;color:var(--ink-light);">Org. ARTEAGA · PANTOJA · 2017 · academia.edu ↗</div>
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CONCEPTS -->
+<section id="concepts">
+  <div class="section-label t" data-pt="Vocabulário conceitual" data-en="Conceptual vocabulary" data-es="Vocabulario conceptual" data-zh="概念词汇">Vocabulário conceitual</div>
+  <h2 class="t" data-pt="Desdobramentos Conceituais" data-en="Conceptual Developments" data-es="Desarrollos Conceptuales" data-zh="概念发展">Desdobramentos Conceituais</h2>
+  <div class="concepts-grid reveal">
+
+    <div class="concept-cell">
+      <div class="concept-word">(in)existência</div>
+      <div class="concept-en t" data-pt="(in)existence" data-en="(in)existence" data-es="(in)existencia" data-zh="（非）存在">(in)existence</div>
+      <div class="concept-def t"
+        data-pt="Condição de sujeitos cuja presença espacial não é reconhecida — nem como dado residual negado — por políticas públicas ou discursos territoriais oficiais e contra oficiais, levando à própria autonegação."
+        data-en="Condition of subjects whose spatial presence is not recognized — not even as a denied residual datum — by public policies or official and counter-official territorial discourses, leading to self-negation."
+        data-es="Condición de sujetos cuya presencia espacial no es reconocida — ni siquiera como dato residual negado — por políticas públicas o discursos territoriales oficiales y contraofi ciales, llevando a la propia autonegación."
+        data-zh="主体空间存在未被承认的条件——甚至不作为被否认的残余数据——被官方和反官方的公共政策或地域话语所忽视，导致自我否定。">
+        Condição de sujeitos cuja presença espacial não é reconhecida — nem como dado residual negado — por políticas públicas ou discursos territoriais oficiais e contra oficiais, levando à própria autonegação.
+      </div>
+    </div>
+
+    <div class="concept-cell">
+      <div class="concept-word">lugaridade</div>
+      <div class="concept-en t" data-pt="placeness" data-en="placeness" data-es="lugaridad" data-zh="地方性">placeness</div>
+      <div class="concept-def t"
+        data-pt="A dimensão existencial do lugar — não como coordenada geográfica ou sentido de pertencer, mas como linhas (des)orientadoras dos corpos numa teia subjetiva (emocional + simbólica)."
+        data-en="The existential dimension of place — not as a geographical coordinate or sense of belonging, but as (dis)orienting lines of bodies within a subjective web (emotional + symbolic)."
+        data-es="La dimensión existencial del lugar — no como coordenada geográfica o sentido de pertenencia, sino como líneas (des)orientadoras de los cuerpos en una trama subjetiva (emocional + simbólica)."
+        data-zh="地方的存在维度——不作为地理坐标或归属感，而是身体在主观网络（情感+象征）中的（去）定向线。">
+        A dimensão existencial do lugar — não como coordenada geográfica ou sentido de pertencer, mas como linhas (des)orientadoras dos corpos numa teia subjetiva (emocional + simbólica).
+      </div>
+    </div>
+
+    <div class="concept-cell">
+      <div class="concept-word">reXistência</div>
+      <div class="concept-en t" data-pt="reXistence" data-en="reXistence" data-es="reXistencia" data-zh="reXistence">reXistence</div>
+      <div class="concept-def t"
+        data-pt="Condição ontológica de corpos que afirmam sua existência contra o apagamento espacial — resistência como existência."
+        data-en="Ontological condition of bodies that affirm their existence against spatial erasure — resistance as existence."
+        data-es="Condición ontológica de cuerpos que afirman su existencia contra el borramiento espacial — resistencia como existencia."
+        data-zh="身体对抗空间抹除、肯定自身存在的本体论条件——抵抗即存在。">
+        Condição ontológica de corpos que afirmam sua existência contra o apagamento espacial — resistência como existência.
+      </div>
+    </div>
+
+    <div class="concept-cell">
+      <div class="concept-word">entrelugares</div>
+      <div class="concept-en t" data-pt="between-places" data-en="between-places" data-es="entrelugares" data-zh="间地">between-places</div>
+      <div class="concept-def t"
+        data-pt="Formações espaciais liminares que escapam tanto à lógica da rodovia quanto à lógica do território consolidado."
+        data-en="Liminal spatial formations that escape both the logic of the highway and the logic of consolidated territory."
+        data-es="Formaciones espaciales liminares que escapan tanto a la lógica de la carretera como a la del territorio consolidado."
+        data-zh="逃脱公路逻辑和巩固领土逻辑的边界性空间形成。">
+        Formações espaciais liminares que escapam tanto à lógica da rodovia quanto à lógica do território consolidado.
+      </div>
+    </div>
+
+    <div class="concept-cell">
+      <div class="concept-word">fratura existencial</div>
+      <div class="concept-en t" data-pt="existential fracture" data-en="existential fracture" data-es="fractura existencial" data-zh="存在性断裂">existential fracture</div>
+      <div class="concept-def t"
+        data-pt="Ruptura na relação do sujeito com o lugar produzida por violência estrutural — desraizamento existencial forçado."
+        data-en="Rupture in the subject's relationship with place produced by structural violence — forced existential uprooting."
+        data-es="Ruptura en la relación del sujeto con el lugar producida por violencia estructural — desarraigo existencial forzado."
+        data-zh="由结构性暴力造成的主体与地方关系的断裂——强制性的存在性拔根。">
+        Ruptura na relação do sujeito com o lugar produzida por violência estrutural — desraizamento existencial forçado.
+      </div>
+    </div>
+
+    <div class="concept-cell">
+      <div class="concept-word">topolítica</div>
+      <div class="concept-en t" data-pt="topopolitics" data-en="topopolitics" data-es="topolítica" data-zh="拓扑政治">topopolitics</div>
+      <div class="concept-def t"
+        data-pt="Implicações políticas das configurações espaciais do pensamento — a política do lugar do conhecimento e sua corporificação em coletivos de ação."
+        data-en="Political implications of the spatial configurations of thought — the politics of the place of knowledge and its embodiment in collectives of action."
+        data-es="Implicaciones políticas de las configuraciones espaciales del pensamiento — la política del lugar del conocimiento y su corporificación en colectivos de acción."
+        data-zh="思想空间配置的政治含义——知识地方的政治及其在行动集体中的具身化。">
+        Implicações políticas das configurações espaciais do pensamento — a política do lugar do conhecimento e sua corporificação em coletivos de ação.
+      </div>
+    </div>
+
+    <div class="concept-cell">
+      <div class="concept-word">desobediência fenomenológica</div>
+      <div class="concept-en t" data-pt="phenomenological disobedience" data-en="phenomenological disobedience" data-es="desobediencia fenomenológica" data-zh="现象学不服从">phenomenological disobedience</div>
+      <div class="concept-def t"
+        data-pt="Postura crítica de recusa à aplicação irrefletida de categorias fenomenológicas hegemônicas, especialmente heideggerianas."
+        data-en="Critical stance of refusal towards the unreflective application of hegemonic phenomenological categories, especially Heideggerian ones."
+        data-es="Postura crítica de rechazo a la aplicación irreflexiva de categorías fenomenológicas hegemónicas, especialmente heideggerianas."
+        data-zh="拒绝对霸权现象学范畴（尤其是海德格尔式的）进行无反思应用的批判立场。">
+        Postura crítica de recusa à aplicação irrefletida de categorias fenomenológicas hegemônicas, especialmente heideggerianas.
+      </div>
+    </div>
+
+    <div class="concept-cell">
+      <div class="concept-word">lugarizar-se</div>
+      <div class="concept-en t" data-pt="to place oneself" data-en="to place oneself" data-es="lugarizarse" data-zh="自我置地">to place oneself</div>
+      <div class="concept-def t"
+        data-pt="Processo de construção dos afetos como &quot;carne&quot; — tornar-se vertical com o mundo desde o lugar."
+        data-en="Process of constructing affects as &quot;flesh&quot; — becoming vertical with the world from the place."
+        data-es="Proceso de construcción de los afectos como &quot;carne&quot; — volverse vertical con el mundo desde el lugar."
+        data-zh="将情感构建为"肉身"的过程——从地方与世界垂直相遇。">
+        Processo de construção dos afetos como "carne" — tornar-se vertical com o mundo desde o lugar.
+      </div>
+    </div>
+
+    <div class="concept-cell">
+      <div class="concept-word">projeção geocartográfica</div>
+      <div class="concept-en t" data-pt="geocartographic projection" data-en="geocartographic projection" data-es="proyección geocartográfica" data-zh="地理制图投影">geocartographic projection</div>
+      <div class="concept-def t"
+        data-pt="Relação entre o que vivemos e o que narramos, criando sempre um mapa de-formado em situação."
+        data-en="Relation between what we live and what we narrate, always creating a de-formed map in situation."
+        data-es="Relación entre lo que vivimos y lo que narramos, creando siempre un mapa de-formado en situación."
+        data-zh="我们所经历的与我们所叙述的之间的关系，总是在情境中创造一幅变形的地图。">
+        Relação entre o que vivemos e o que narramos, criando sempre um mapa de-formado em situação.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROFILES -->
+<section id="profiles">
+  <div class="section-label t" data-pt="Presença acadêmica" data-en="Academic presence" data-es="Presencia académica" data-zh="学术主页">Presença acadêmica</div>
+  <h2 class="t" data-pt="Perfis e repositórios" data-en="Profiles and repositories" data-es="Perfiles y repositorios" data-zh="学术主页与资料库">Perfis e repositórios</h2>
+  <div class="profiles-grid reveal">
+    <a class="profile-card" href="https://scholar.google.com.br/citations?user=dAIiXGQAAAAJ" target="_blank">
+      <div class="profile-name">Google Scholar</div>
+      <div class="profile-desc t" data-pt="Métricas de citação, h-index e índice i10." data-en="Citation metrics, h-index and i10 index." data-es="Métricas de citación, h-index e índice i10." data-zh="引用指标、h指数和i10指数。">Métricas de citação, h-index e índice i10.</div>
+    </a>
+    <a class="profile-card" href="https://orcid.org/0000-0002-5605-2171" target="_blank">
+      <div class="profile-name">ORCID</div>
+      <div class="profile-desc t" data-pt="Identificador único de pesquisador, vinculado a todos os periódicos." data-en="Unique researcher identifier, linked to all journals." data-es="Identificador único de investigador, vinculado a todas las revistas." data-zh="唯一研究员标识符，链接至所有期刊。">Identificador único de pesquisador, vinculado a todos os periódicos.</div>
+    </a>
+    <a class="profile-card" href="https://www.researchgate.net/profile/Wallace-Pantoja" target="_blank">
+      <div class="profile-name">ResearchGate</div>
+      <div class="profile-desc t" data-pt="Rede acadêmica com PDFs disponíveis para download." data-en="Academic network with PDFs available for download." data-es="Red académica con PDFs disponibles para descarga." data-zh="提供PDF下载的学术网络。">Rede acadêmica com PDFs disponíveis para download.</div>
+    </a>
+    <a class="profile-card" href="https://ifpa.academia.edu/WallacePantoja" target="_blank">
+      <div class="profile-name">Academia.edu</div>
+      <div class="profile-desc t" data-pt="Repositório com alta visibilidade em Ciências Humanas e Sociais." data-en="Repository with high visibility in Humanities and Social Sciences." data-es="Repositorio con alta visibilidad en Ciencias Humanas y Sociales." data-zh="在人文社会科学领域具有高知名度的资料库。">Repositório com alta visibilidade em Ciências Humanas e Sociais.</div>
+    </a>
+    <a class="profile-card" href="http://lattes.cnpq.br/9594115281094031" target="_blank">
+      <div class="profile-name">Lattes (CNPq)</div>
+      <div class="profile-desc t" data-pt="Currículo acadêmico oficial brasileiro." data-en="Official Brazilian academic curriculum." data-es="Currículo académico oficial brasileño." data-zh="巴西官方学术简历平台。">Currículo acadêmico oficial brasileiro.</div>
+    </a>
+    <a class="profile-card" href="https://osf.io/user/g96ym" target="_blank">
+      <div class="profile-name">SocArXiv / OSF</div>
+      <div class="profile-desc t" data-pt="Repositório internacional de preprints em Ciências Sociais e Humanas." data-en="International preprint repository in Social Sciences and Humanities." data-es="Repositorio internacional de preprints en Ciencias Sociales y Humanas." data-zh="社会科学与人文学科国际预印本资料库。">Repositório internacional de preprints em Ciências Sociais e Humanas.</div>
+    </a>
+    <a class="profile-card" href="https://philpeople.org/profiles/wallace-pantoja" target="_blank">
+      <div class="profile-name">PhilPeople</div>
+      <div class="profile-desc t" data-pt="Índice filosófico internacional. Fenomenologia, Heidegger e teoria crítica do espaço." data-en="International philosophical index. Phenomenology, Heidegger and critical spatial theory." data-es="Índice filosófico internacional. Fenomenología, Heidegger y teoría crítica del espacio." data-zh="国际哲学索引。现象学、海德格尔与批判空间理论。">Índice filosófico internacional. Fenomenologia, Heidegger e teoria crítica do espaço.</div>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+<div class="inner">
+  <div class="section-label t" data-pt="Contato" data-en="Contact" data-es="Contacto" data-zh="联系">Contato</div>
+  <h2 class="t" data-pt="Colaborações &amp; diálogos acadêmicos" data-en="Collaborations &amp; academic dialogues" data-es="Colaboraciones &amp; diálogos académicos" data-zh="合作与学术对话">Colaborações &amp;<br/>diálogos acadêmicos</h2>
+  <p class="contact-note t"
+    data-pt="Aberto a colaborações em pesquisa e diálogos acadêmicos nas áreas de fenomenologia do lugar, educação geográfica amazônica e cartografias críticas."
+    data-en="Open to research collaborations and academic dialogues in the areas of phenomenology of place, Amazonian geographical education and critical cartographies."
+    data-es="Abierto a colaboraciones en investigación y diálogos académicos en las áreas de fenomenología del lugar, educación geográfica amazónica y cartografías críticas."
+    data-zh="欢迎在地方现象学、亚马逊地理教育和批判制图学领域开展研究合作与学术对话。">
+    Aberto a colaborações em pesquisa e diálogos acadêmicos nas áreas de fenomenologia do lugar, educação geográfica amazônica e cartografias críticas.
+  </p>
+  <div class="contact-links">
+    <a class="contact-link" href="mailto:wallace.pantoja@ifpa.edu.br"><span>✉</span> wallace.pantoja@ifpa.edu.br</a>
+    <a class="contact-link" href="https://www.instagram.com/wallace2111" target="_blank"><span>◈</span> @wallace2111</a>
+  </div>
+  <p style="font-family:var(--font-mono);font-size:.85rem;color:rgba(245,241,234,.35);">Instituto Federal do Pará (IFPA) · Belém, Pará, Brasil</p>
+
+  <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(245,241,234,.1);">
+    <div class="section-label t" style="margin-bottom:1rem;" data-pt="Revista editada" data-en="Edited journal" data-es="Revista editada" data-zh="主编期刊">Revista editada</div>
+    <a href="https://www.raseng.com/index.php/raseng" target="_blank" class="raseng-card">
+      <div class="raseng-title t" data-pt="Revista Amazônica sobre Ensino de Geografia" data-en="Amazonian Journal on Geography Education" data-es="Revista Amazónica sobre Enseñanza de la Geografía" data-zh="《亚马逊地理教育杂志》">Revista Amazônica sobre Ensino de Geografia</div>
+      <div class="raseng-sub">RASENG</div>
+      <div class="raseng-desc t"
+        data-pt="Periódico científico dedicado à pesquisa em ensino de geografia na Amazônia e suas interfaces com a educação do campo, cartografia escolar e formação docente. Editor: Wallace Wagner Rodrigues Pantoja."
+        data-en="Scientific journal dedicated to research on geography education in the Amazon and its interfaces with rural education, school cartography and teacher training. Editor: Wallace Wagner Rodrigues Pantoja."
+        data-es="Revista científica dedicada a la investigación en enseñanza de la geografía en la Amazonia y sus interfaces con la educación del campo, cartografía escolar y formación docente. Editor: Wallace Wagner Rodrigues Pantoja."
+        data-zh="致力于亚马逊地理教育研究及其与田野教育、学校制图学和教师培训接口的学术期刊。主编：Wallace Wagner Rodrigues Pantoja。">
+        Periódico científico dedicado à pesquisa em ensino de geografia na Amazônia e suas interfaces com a educação do campo, cartografia escolar e formação docente. Editor: Wallace Wagner Rodrigues Pantoja.
+      </div>
+      <div class="raseng-url">raseng.com ↗</div>
+    </a>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Wallace Wagner Rodrigues Pantoja</span>
+  <span>IFPA · Belém, Pará</span>
+</footer>
+
+<script>
+// ── REVEAL ON SCROLL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── LANGUAGE SWITCHER
+let currentLang = 'pt';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+
+  // Update all translatable elements
+  document.querySelectorAll('.t').forEach(el => {
+    const val = el.dataset[lang];
+    if (val !== undefined) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = val;
+      } else {
+        el.innerHTML = val;
+      }
+    }
+  });
+
+  // Show/hide pub title translations
+  document.querySelectorAll('.pub-title-tr').forEach(el => {
+    el.style.display = (lang !== 'pt') ? 'block' : 'none';
+  });
+
+  // Update font for Chinese
+  if (lang === 'zh') {
+    document.body.style.fontFamily = "'Noto Sans SC', sans-serif";
+  } else {
+    document.body.style.fontFamily = "";
+  }
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    if (btn.textContent.toLowerCase().includes(lang) ||
+        (lang === 'zh' && btn.textContent.includes('中'))) {
+      btn.classList.add('active');
+    }
+  });
+}
+
+// ── PUB FILTER
+function filterPubs(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pub-item').forEach(item => {
+    item.style.display = (tag === 'all' || item.dataset.tags.includes(tag)) ? 'grid' : 'none';
+  });
+}
+</script>
+</body>
+</html>
