@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIBID — Subprojeto Geografia | IFPA Campus Belém</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green:  #1a6e3c;
+    --green2: #2d9e5f;
+    --green3: #a8e6c1;
+    --yellow: #f5c518;
+    --yellow2:#fde68a;
+    --blue:   #1a3a6e;
+    --blue2:  #2d6ea8;
+    --blue3:  #bfdbfe;
+    --orange: #c2410c;
+    --orange2:#ea580c;
+    --orange3:#fed7aa;
+    --text:   #1a1a1a;
+    --muted:  #4b5563;
+    --surface:#f8f7f2;
+    --white:  #ffffff;
+    --border: #e5e7eb;
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .zh { font-family: 'Noto Sans SC', sans-serif; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    background: var(--green);
+    color: #fff;
+    padding: 0;
+    overflow: hidden;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-stripe {
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    background: var(--yellow);
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 0;
+  }
+
+  .hero-stripe2 {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--yellow);
+    z-index: 1;
+  }
+
+  .hero-nav {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-nav .site-link {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+  .hero-nav .site-link:hover { opacity: 1; }
+
+  .lang-switcher {
+    display: flex;
+    gap: 6px;
+  }
+  .lang-btn {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .lang-btn:hover, .lang-btn.active {
+    background: var(--yellow);
+    color: var(--green);
+    border-color: var(--yellow);
+    font-weight: 600;
+  }
+
+  .hero-body {
+    position: relative;
+    z-index: 2;
+    padding: 48px 40px 60px;
+    max-width: 620px;
+    flex: 1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--green);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 span { color: var(--yellow); }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 500px;
+    margin-bottom: 28px;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.83rem;
+  }
+
+  .hero-chip .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--yellow);
+    flex-shrink: 0;
+  }
+
+  /* ── STATS ── */
+  .stats-bar {
+    background: var(--yellow);
+    padding: 24px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 8px 16px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--green);
+    display: block;
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #1a4c2d;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+    display: block;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  .section-header {
+    margin-bottom: 36px;
+  }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green2);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .section-title span { color: var(--green2); }
+
+  /* ── NÚCLEOS ── */
+  .nucleos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .nucleo-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .nucleo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  }
+
+  .nucleo-header {
+    padding: 20px 24px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nucleo-header::before {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    opacity: 0.12;
+  }
+
+  .nucleo-card.green .nucleo-header { background: var(--green); }
+  .nucleo-card.blue .nucleo-header  { background: var(--blue); }
+  .nucleo-card.orange .nucleo-header { background: var(--orange); }
+
+  .nucleo-card.green .nucleo-header::before { background: var(--yellow); }
+  .nucleo-card.blue .nucleo-header::before  { background: #60a5fa; }
+  .nucleo-card.orange .nucleo-header::before { background: #fbbf24; }
+
+  .nucleo-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.2);
+    position: absolute;
+    top: 10px; right: 20px;
+    line-height: 1;
+  }
+
+  .nucleo-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+  }
+
+  .nucleo-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .nucleo-body {
+    padding: 20px 24px;
+  }
+
+  .supervisor-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .supervisor-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    color: #fff;
+  }
+
+  .nucleo-card.green .supervisor-avatar  { background: var(--green2); }
+  .nucleo-card.blue .supervisor-avatar   { background: var(--blue2); }
+  .nucleo-card.orange .supervisor-avatar { background: var(--orange2); }
+
+  .supervisor-info .sup-role {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .supervisor-info .sup-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-top: 2px;
+  }
+
+  .nucleo-details {
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nucleo-detail-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.83rem;
+  }
+
+  .nucleo-detail-row .key { color: var(--muted); }
+  .nucleo-detail-row .val {
+    font-weight: 600;
+    color: var(--text);
+    text-align: right;
+    max-width: 55%;
+  }
+
+  /* ── ATIVIDADES ── */
+  .atividades-section { margin-bottom: 64px; }
+
+  .atividades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+
+  .ativ-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 22px 20px;
+    transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ativ-card::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 4px; height: 100%;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .ativ-card.g::after  { background: var(--green2); }
+  .ativ-card.b::after  { background: var(--blue2); }
+  .ativ-card.o::after  { background: var(--orange2); }
+  .ativ-card.y::after  { background: var(--yellow); }
+
+  .ativ-card:hover { transform: translateY(-2px); }
+
+  .ativ-icon {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .ativ-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .ativ-desc {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ── BOLSISTAS ── */
+  .bolsistas-section { margin-bottom: 64px; }
+
+  .bolsistas-intro {
+    background: var(--green);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .bolsistas-intro .big-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--yellow);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .bolsistas-intro .intro-text p:first-child {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  .bolsistas-intro .intro-text p:last-child {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .bolsistas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+
+  .bolsista-chip {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .bolsista-chip:hover {
+    border-color: var(--green3);
+    box-shadow: 0 2px 12px rgba(45,158,95,0.12);
+  }
+
+  .bolsista-initials {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--green3);
+    color: var(--green);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .bolsista-name {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  /* ── ESCOLAS ── */
+  .escolas-section { margin-bottom: 64px; }
+
+  .escolas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .escola-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+
+  .escola-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .escola-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .escola-icon.g { background: #dcfce7; }
+  .escola-icon.b { background: #dbeafe; }
+  .escola-icon.o { background: #ffedd5; }
+
+  .escola-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .escola-type {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .escola-stats {
+    display: flex;
+    gap: 16px;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+
+  .escola-stat { text-align: center; flex: 1; }
+
+  .escola-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--green);
+    display: block;
+  }
+
+  .escola-stat-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── EDITAL / COORDENAÇÃO ── */
+  .info-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  @media (max-width: 640px) {
+    .info-section { grid-template-columns: 1fr; }
+    .hero-nav { padding: 16px 20px; }
+    .hero-body { padding: 32px 20px 48px; }
+    .stats-bar { padding: 16px 20px; }
+    .main { padding: 32px 16px 60px; }
+    .nucleo-num { font-size: 2rem; }
+    .bolsistas-intro .big-num { font-size: 3rem; }
+  }
+
+  .info-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+
+  .info-card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green2);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+    gap: 12px;
+  }
+
+  .info-row:last-child { border-bottom: none; }
+  .info-row .k { color: var(--muted); flex-shrink: 0; }
+  .info-row .v { font-weight: 500; color: var(--text); text-align: right; }
+
+  /* ── GALERIA ── */
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .galeria-item {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    cursor: pointer;
+    background: #e5e7eb;
+  }
+
+  .galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+
+  .galeria-item:hover img { transform: scale(1.05); }
+
+  .galeria-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 12px 14px;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .galeria-item:hover .galeria-overlay { opacity: 1; }
+
+  .galeria-overlay span {
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+  }
+
+
+  .page-footer {
+    background: var(--green);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 28px 20px;
+    font-size: 0.82rem;
+  }
+
+  .page-footer a {
+    color: var(--yellow);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .page-footer strong {
+    color: #fff;
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  /* ── I18N ── */
+  [data-lang] { display: none; }
+  .lang-pt [data-lang="pt"] { display: block; }
+  .lang-pt [data-lang="pt"].inline-block { display: inline-block; }
+  .lang-en [data-lang="en"] { display: block; }
+  .lang-en [data-lang="en"].inline-block { display: inline-block; }
+  .lang-es [data-lang="es"] { display: block; }
+  .lang-es [data-lang="es"].inline-block { display: inline-block; }
+  .lang-zh [data-lang="zh"] { display: block; }
+  .lang-zh [data-lang="zh"].inline-block { display: inline-block; }
+
+  [data-lang-text] { }
+
+  /* ── LOGO PIBID NO HERO ── */
+  .hero-logo-area {
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 40px 24px 60px;
+    gap: 14px;
+  }
+
+  .hero-logo-area img {
+    width: min(180px, 55%);
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.18));
+    display: block;
+  }
+
+  .hero-logo-tagline {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    text-align: center;
+    line-height: 1.5;
+    max-width: 200px;
+  }
+
+  .hero-logo-motivos {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .hero-logo-motivo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--green);
+    line-height: 1.3;
+  }
+
+  .hero-logo-motivo .motivo-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .motivo-dot.azul  { background: #2979c4; }
+  .motivo-dot.verde { background: #1a6e3c; }
+
+  @media (max-width: 768px) {
+    .hero-logo-area {
+      display: none;
+    }
+  }
+
+  /* ── BOTÃO GOOGLE DRIVE ── */
+  .drive-link-bar {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .drive-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green);
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 10px 20px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .drive-btn:hover {
+    background: var(--green2);
+    transform: translateY(-1px);
+  }
+
+  .drive-btn svg {
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+  }
+
+  .drive-note {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+</style>
+</head>
+<body class="lang-pt">
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero">
+  <div class="hero-stripe" aria-hidden="true"></div>
+  <div class="hero-logo-area" aria-label="Logo PIBID">
+    <img src="data:image/png;base64,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" alt="PIBID – Programa Institucional de Bolsa de Iniciação à Docência">
+    <div class="hero-logo-motivos">
+      <div class="hero-logo-motivo">
+        <span class="motivo-dot azul"></span>
+        <span data-lang="pt">Formação docente inicial</span>
+        <span data-lang="en">Initial teacher training</span>
+        <span data-lang="es">Formación docente inicial</span>
+        <span data-lang="zh" class="zh">职前教师培训</span>
+      </div>
+      <div class="hero-logo-motivo">
+        <span class="motivo-dot verde"></span>
+        <span data-lang="pt">Prática e teoria integradas</span>
+        <span data-lang="en">Practice and theory integrated</span>
+        <span data-lang="es">Práctica y teoría integradas</span>
+        <span data-lang="zh" class="zh">理论与实践融合</span>
+      </div>
+      <div class="hero-logo-motivo">
+        <span class="motivo-dot azul"></span>
+        <span data-lang="pt">Parceria escola–universidade</span>
+        <span data-lang="en">School–university partnership</span>
+        <span data-lang="es">Alianza escuela–universidad</span>
+        <span data-lang="zh" class="zh">学校与高校合作</span>
+      </div>
+      <div class="hero-logo-motivo">
+        <span class="motivo-dot verde"></span>
+        <span data-lang="pt">Valorização do magistério</span>
+        <span data-lang="en">Valuing the teaching profession</span>
+        <span data-lang="es">Valoración del magisterio</span>
+        <span data-lang="zh" class="zh">尊重教师职业</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stripe2" aria-hidden="true"></div>
+
+  <nav class="hero-nav">
+    <a href="https://wallapantoja.com" class="site-link">← wallapantoja.com</a>
+    <div class="lang-switcher" role="group" aria-label="Idioma / Language">
+      <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('zh')">中文</button>
+    </div>
+  </nav>
+
+  <div class="hero-body">
+    <span class="hero-badge">CAPES · Edital Nº 10/2024</span>
+
+    <h1>
+      <span data-lang="pt">Iniciação<br>à <span>Docência</span></span>
+      <span data-lang="en">Teaching<br><span>Initiation</span></span>
+      <span data-lang="es">Iniciación<br>a la <span>Docencia</span></span>
+      <span data-lang="zh" class="zh"><span>教学</span><br>启蒙计划</span>
+    </h1>
+
+    <p class="hero-sub">
+      <span data-lang="pt">Subprojeto Geografia · IFPA Campus Belém · Programa Institucional de Bolsas de Iniciação à Docência</span>
+      <span data-lang="en">Geography Subproject · IFPA Campus Belém · Institutional Teaching Initiation Scholarship Program</span>
+      <span data-lang="es">Subproyecto Geografía · IFPA Campus Belém · Programa Institucional de Becas de Iniciación a la Docencia</span>
+      <span data-lang="zh" class="zh">地理子项目 · IFPA贝伦校区 · 教学启蒙奖学金计划</span>
+    </p>
+
+    <div class="hero-meta">
+      <div class="hero-chip"><div class="dot"></div> 2024–2026</div>
+      <div class="hero-chip"><div class="dot"></div> IFPA · Belém, Pará</div>
+      <div class="hero-chip"><div class="dot"></div>
+        <span data-lang="pt">3 Escolas Parceiras</span>
+        <span data-lang="en">3 Partner Schools</span>
+        <span data-lang="es">3 Escuelas Asociadas</span>
+        <span data-lang="zh" class="zh">3所合作学校</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════ STATS ══════════════ -->
+<div class="stats-bar" role="region" aria-label="Estatísticas do subprojeto">
+  <div class="stat-item">
+    <span class="stat-num">24</span>
+    <span class="stat-label">
+      <span data-lang="pt">Bolsistas</span>
+      <span data-lang="en">Scholars</span>
+      <span data-lang="es">Becarios</span>
+      <span data-lang="zh" class="zh">奖学金生</span>
+    </span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3</span>
+    <span class="stat-label">
+      <span data-lang="pt">Núcleos</span>
+      <span data-lang="en">Hubs</span>
+      <span data-lang="es">Núcleos</span>
+      <span data-lang="zh" class="zh">实践基地</span>
+    </span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">300+</span>
+    <span class="stat-label">
+      <span data-lang="pt">Alunos Impactados</span>
+      <span data-lang="en">Students Impacted</span>
+      <span data-lang="es">Alumnos Impactados</span>
+      <span data-lang="zh" class="zh">受益学生</span>
+    </span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3</span>
+    <span class="stat-label">
+      <span data-lang="pt">Supervisores</span>
+      <span data-lang="en">Supervisors</span>
+      <span data-lang="es">Supervisores</span>
+      <span data-lang="zh" class="zh">指导教师</span>
+    </span>
+  </div>
+</div>
+
+<!-- ══════════════ MAIN ══════════════ -->
+<main class="main">
+
+  <!-- NÚCLEOS -->
+  <section class="section" aria-labelledby="nucleos-title">
+    <div class="section-header">
+      <p class="section-label">
+        <span data-lang="pt">Estrutura do Subprojeto</span>
+        <span data-lang="en">Subproject Structure</span>
+        <span data-lang="es">Estructura del Subproyecto</span>
+        <span data-lang="zh" class="zh">子项目结构</span>
+      </p>
+      <h2 class="section-title" id="nucleos-title">
+        <span data-lang="pt">Núcleos de <span>Ação</span></span>
+        <span data-lang="en">Action <span>Hubs</span></span>
+        <span data-lang="es">Núcleos de <span>Acción</span></span>
+        <span data-lang="zh" class="zh"><span>行动</span>基地</span>
+      </h2>
+    </div>
+
+    <div class="nucleos-grid">
+
+      <!-- Núcleo 1 -->
+      <article class="nucleo-card green">
+        <div class="nucleo-header">
+          <span class="nucleo-num">01</span>
+          <span class="nucleo-badge">
+            <span data-lang="pt">Núcleo 1</span>
+            <span data-lang="en">Hub 1</span>
+            <span data-lang="es">Núcleo 1</span>
+            <span data-lang="zh" class="zh">基地 1</span>
+          </span>
+          <h3 class="nucleo-name">IFPA – Campus Belém</h3>
+        </div>
+        <div class="nucleo-body">
+          <div class="supervisor-row">
+            <div class="supervisor-avatar">ÁK</div>
+            <div class="supervisor-info">
+              <p class="sup-role">
+                <span data-lang="pt">Supervisor</span>
+                <span data-lang="en">Supervisor</span>
+                <span data-lang="es">Supervisor</span>
+                <span data-lang="zh" class="zh">指导</span>
+              </p>
+              <p class="sup-name">Prof. Dr. Áthila Lima Kzam</p>
+            </div>
+          </div>
+          <div class="nucleo-details">
+            <div class="nucleo-detail-row">
+              <span class="key">
+                <span data-lang="pt">Turmas</span>
+                <span data-lang="en">Classes</span>
+                <span data-lang="es">Clases</span>
+                <span data-lang="zh" class="zh">班级</span>
+              </span>
+              <span class="val">
+                <span data-lang="pt">Ens. Médio Técnico Integrado (Agrimensura, Eletrônica)</span>
+                <span data-lang="en">Technical High School (Surveying, Electronics)</span>
+                <span data-lang="es">Bachillerato Técnico Integrado (Agrimensura, Electrónica)</span>
+                <span data-lang="zh" class="zh">综合技术高中（测量与电子）</span>
+              </span>
+            </div>
+            <div class="nucleo-detail-row">
+              <span class="key">IDEB</span>
+              <span class="val">
+                <span data-lang="pt">Não publicado (2023)</span>
+                <span data-lang="en">Not published (2023)</span>
+                <span data-lang="es">No publicado (2023)</span>
+                <span data-lang="zh" class="zh">未公布 (2023)</span>
+              </span>
+            </div>
+            <div class="nucleo-detail-row">
+              <span class="key">
+                <span data-lang="pt">Alunos no projeto</span>
+                <span data-lang="en">Students in project</span>
+                <span data-lang="es">Alumnos en proyecto</span>
+                <span data-lang="zh" class="zh">参与学生</span>
+              </span>
+              <span class="val">110</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Núcleo 2 -->
+      <article class="nucleo-card blue">
+        <div class="nucleo-header">
+          <span class="nucleo-num">02</span>
+          <span class="nucleo-badge">
+            <span data-lang="pt">Núcleo 2</span>
+            <span data-lang="en">Hub 2</span>
+            <span data-lang="es">Núcleo 2</span>
+            <span data-lang="zh" class="zh">基地 2</span>
+          </span>
+          <h3 class="nucleo-name">EEEFM Profª Palmira Gabriel</h3>
+        </div>
+        <div class="nucleo-body">
+          <div class="supervisor-row">
+            <div class="supervisor-avatar">AR</div>
+            <div class="supervisor-info">
+              <p class="sup-role">
+                <span data-lang="pt">Supervisor</span>
+                <span data-lang="en">Supervisor</span>
+                <span data-lang="es">Supervisor</span>
+                <span data-lang="zh" class="zh">指导</span>
+              </p>
+              <p class="sup-name">Prof. Dr. Agnaldo Rabelo</p>
+            </div>
+          </div>
+          <div class="nucleo-details">
+            <div class="nucleo-detail-row">
+              <span class="key">
+                <span data-lang="pt">Turmas</span>
+                <span data-lang="en">Classes</span>
+                <span data-lang="es">Clases</span>
+                <span data-lang="zh" class="zh">班级</span>
+              </span>
+              <span class="val">
+                <span data-lang="pt">2º e 3º anos do Ens. Médio</span>
+                <span data-lang="en">2nd and 3rd year High School</span>
+                <span data-lang="es">2.º y 3.er año de Bachillerato</span>
+                <span data-lang="zh" class="zh">高中二、三年级</span>
+              </span>
+            </div>
+            <div class="nucleo-detail-row">
+              <span class="key">IDEB</span>
+              <span class="val">4,5</span>
+            </div>
+            <div class="nucleo-detail-row">
+              <span class="key">
+                <span data-lang="pt">Alunos no projeto</span>
+                <span data-lang="en">Students in project</span>
+                <span data-lang="es">Alumnos en proyecto</span>
+                <span data-lang="zh" class="zh">参与学生</span>
+              </span>
+              <span class="val">130</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Núcleo 3 -->
+      <article class="nucleo-card orange">
+        <div class="nucleo-header">
+          <span class="nucleo-num">03</span>
+          <span class="nucleo-badge">
+            <span data-lang="pt">Núcleo 3</span>
+            <span data-lang="en">Hub 3</span>
+            <span data-lang="es">Núcleo 3</span>
+            <span data-lang="zh" class="zh">基地 3</span>
+          </span>
+          <h3 class="nucleo-name">EEEFM Profª Maria Encarnação de Araújo</h3>
+        </div>
+        <div class="nucleo-body">
+          <div class="supervisor-row">
+            <div class="supervisor-avatar">AK</div>
+            <div class="supervisor-info">
+              <p class="sup-role">
+                <span data-lang="pt">Supervisor</span>
+                <span data-lang="en">Supervisor</span>
+                <span data-lang="es">Supervisor</span>
+                <span data-lang="zh" class="zh">指导</span>
+              </p>
+              <p class="sup-name">Prof. Alex Bentes Kosmiskys</p>
+            </div>
+          </div>
+          <div class="nucleo-details">
+            <div class="nucleo-detail-row">
+              <span class="key">
+                <span data-lang="pt">Turmas</span>
+                <span data-lang="en">Classes</span>
+                <span data-lang="es">Clases</span>
+                <span data-lang="zh" class="zh">班级</span>
+              </span>
+              <span class="val">
+                <span data-lang="pt">6º ao 9º ano (Ens. Fundamental)</span>
+                <span data-lang="en">6th to 9th grade (Elementary)</span>
+                <span data-lang="es">6.º al 9.º año (Ens. Fundamental)</span>
+                <span data-lang="zh" class="zh">初中六至九年级</span>
+              </span>
+            </div>
+            <div class="nucleo-detail-row">
+              <span class="key">IDEB</span>
+              <span class="val">4,6</span>
+            </div>
+            <div class="nucleo-detail-row">
+              <span class="key">
+                <span data-lang="pt">Alunos no projeto</span>
+                <span data-lang="en">Students in project</span>
+                <span data-lang="es">Alumnos en proyecto</span>
+                <span data-lang="zh" class="zh">参与学生</span>
+              </span>
+              <span class="val">60</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ATIVIDADES -->
+  <section class="atividades-section" aria-labelledby="atividades-title">
+    <div class="section-header">
+      <p class="section-label">
+        <span data-lang="pt">O que fazemos</span>
+        <span data-lang="en">What we do</span>
+        <span data-lang="es">Qué hacemos</span>
+        <span data-lang="zh" class="zh">我们的工作</span>
+      </p>
+      <h2 class="section-title" id="atividades-title">
+        <span data-lang="pt">Projetos de <span>Ação</span></span>
+        <span data-lang="en">Action <span>Projects</span></span>
+        <span data-lang="es">Proyectos de <span>Acción</span></span>
+        <span data-lang="zh" class="zh">行动<span>项目</span></span>
+      </h2>
+    </div>
+
+    <div class="atividades-grid">
+
+      <div class="ativ-card g">
+        <span class="ativ-icon">🤝</span>
+        <h3 class="ativ-title">
+          <span data-lang="pt">Reuniões de Formação</span>
+          <span data-lang="en">Training Meetings</span>
+          <span data-lang="es">Reuniones de Formación</span>
+          <span data-lang="zh" class="zh">培训会议</span>
+        </h3>
+        <p class="ativ-desc">
+          <span data-lang="pt">Leitura e discussão da Portaria CAPES Nº 90/2024, elaboração dos Projetos Geográficos de Ação e definição dos eixos temáticos de cada núcleo.</span>
+          <span data-lang="en">Reading and discussion of CAPES Ordinance Nº 90/2024, elaboration of Geographic Action Projects and definition of thematic axes for each hub.</span>
+          <span data-lang="es">Lectura y discusión de la Ordenanza CAPES Nº 90/2024, elaboración de los Proyectos Geográficos de Acción y definición de los ejes temáticos de cada núcleo.</span>
+          <span data-lang="zh" class="zh">阅读讨论CAPES第90/2024号令，制定地理行动项目并明确各基地主题轴。</span>
+        </p>
+      </div>
+
+      <div class="ativ-card b">
+        <span class="ativ-icon">🏫</span>
+        <h3 class="ativ-title">
+          <span data-lang="pt">Imersão Escolar</span>
+          <span data-lang="en">School Immersion</span>
+          <span data-lang="es">Inmersión Escolar</span>
+          <span data-lang="zh" class="zh">学校浸入式实践</span>
+        </h3>
+        <p class="ativ-desc">
+          <span data-lang="pt">Observação participante nas escolas parceiras, diagnóstico das turmas e identificação de situações-problema para as intervenções pedagógicas.</span>
+          <span data-lang="en">Participatory observation in partner schools, class diagnosis and identification of problem situations for pedagogical interventions.</span>
+          <span data-lang="es">Observación participante en escuelas asociadas, diagnóstico de grupos e identificación de situaciones-problema para las intervenciones pedagógicas.</span>
+          <span data-lang="zh" class="zh">在合作学校进行参与式观察，诊断班级状况，识别教学干预的问题情境。</span>
+        </p>
+      </div>
+
+      <div class="ativ-card o">
+        <span class="ativ-icon">📋</span>
+        <h3 class="ativ-title">
+          <span data-lang="pt">Estudo do PPP</span>
+          <span data-lang="en">PPP Study</span>
+          <span data-lang="es">Estudio del PEI</span>
+          <span data-lang="zh" class="zh">学校发展项目研究</span>
+        </h3>
+        <p class="ativ-desc">
+          <span data-lang="pt">Análise e apresentação do Projeto Político Pedagógico do IFPA e das escolas parceiras, aproximando teoria geográfica e prática docente cotidiana.</span>
+          <span data-lang="en">Analysis and presentation of the Political-Pedagogical Project of IFPA and partner schools, connecting geographic theory and daily teaching practice.</span>
+          <span data-lang="es">Análisis y presentación del Proyecto Político Pedagógico del IFPA y las escuelas asociadas, articulando teoría geográfica y práctica docente cotidiana.</span>
+          <span data-lang="zh" class="zh">分析和呈现IFPA及合作学校的教育政治项目，连接地理理论与日常教学实践。</span>
+        </p>
+      </div>
+
+      <div class="ativ-card y">
+        <span class="ativ-icon">🗺️</span>
+        <h3 class="ativ-title">
+          <span data-lang="pt">Projetos Geográficos de Ação</span>
+          <span data-lang="en">Geographic Action Projects</span>
+          <span data-lang="es">Proyectos Geográficos de Acción</span>
+          <span data-lang="zh" class="zh">地理行动项目</span>
+        </h3>
+        <p class="ativ-desc">
+          <span data-lang="pt">Elaboração e implementação de projetos de intervenção pedagógica baseados em temas e referenciais teóricos da Geografia, em diálogo com as realidades escolares amazônicas.</span>
+          <span data-lang="en">Elaboration and implementation of pedagogical intervention projects based on geographic theories, in dialogue with Amazonian school realities.</span>
+          <span data-lang="es">Elaboración e implementación de proyectos de intervención pedagógica basados en la Geografía, en diálogo con las realidades escolares amazónicas.</span>
+          <span data-lang="zh" class="zh">制定并实施基于地理学理论框架的教学干预项目，与亚马逊学校实际相结合。</span>
+        </p>
+      </div>
+
+      <div class="ativ-card g">
+        <span class="ativ-icon">✍️</span>
+        <h3 class="ativ-title">
+          <span data-lang="pt">Relatórios de Iniciação</span>
+          <span data-lang="en">Teaching Initiation Reports</span>
+          <span data-lang="es">Informes de Iniciación</span>
+          <span data-lang="zh" class="zh">教学启蒙报告</span>
+        </h3>
+        <p class="ativ-desc">
+          <span data-lang="pt">Redação de portfólios individuais com registro cronológico das atividades, reflexão crítica sobre a prática e apresentação de produções educacionais.</span>
+          <span data-lang="en">Writing individual portfolios with chronological records of activities, critical reflection on practice and presentation of educational productions.</span>
+          <span data-lang="es">Redacción de portfolios individuales con registro cronológico de actividades, reflexión crítica sobre la práctica y presentación de producciones educativas.</span>
+          <span data-lang="zh" class="zh">撰写个人档案袋，按时间顺序记录活动，对实践进行批判性反思，并呈现教育成果。</span>
+        </p>
+      </div>
+
+      <div class="ativ-card b">
+        <span class="ativ-icon">🎓</span>
+        <h3 class="ativ-title">
+          <span data-lang="pt">Formação Continuada</span>
+          <span data-lang="en">Continuing Education</span>
+          <span data-lang="es">Formación Continua</span>
+          <span data-lang="zh" class="zh">持续教师培养</span>
+        </h3>
+        <p class="ativ-desc">
+          <span data-lang="pt">Participação em eventos científicos, seminários e outras ações formativas que articulam a pesquisa em ensino de Geografia com a experiência docente.</span>
+          <span data-lang="en">Participation in scientific events, seminars and other training activities linking Geography teaching research with teaching experience.</span>
+          <span data-lang="es">Participación en eventos científicos, seminarios y otras actividades de formación que articulan la investigación en enseñanza de Geografía con la experiencia docente.</span>
+          <span data-lang="zh" class="zh">参加学术会议、研讨会及其他培训活动，将地理教学研究与教学经验相结合。</span>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOLSISTAS -->
+  <section class="bolsistas-section" aria-labelledby="bolsistas-title">
+    <div class="section-header">
+      <p class="section-label">
+        <span data-lang="pt">Equipe de Bolsistas</span>
+        <span data-lang="en">Scholar Team</span>
+        <span data-lang="es">Equipo de Becarios</span>
+        <span data-lang="zh" class="zh">奖学金生团队</span>
+      </p>
+      <h2 class="section-title" id="bolsistas-title">
+        <span data-lang="pt">Bolsistas de <span>Iniciação à Docência</span></span>
+        <span data-lang="en">Teaching Initiation <span>Scholars</span></span>
+        <span data-lang="es">Becarios de <span>Iniciación a la Docencia</span></span>
+        <span data-lang="zh" class="zh">教学启蒙<span>奖学金生</span></span>
+      </h2>
+    </div>
+
+    <div class="bolsistas-intro">
+      <span class="big-num">24</span>
+      <div class="intro-text">
+        <p>
+          <span data-lang="pt">Licenciandos em formação docente</span>
+          <span data-lang="en">Undergraduate students in teacher training</span>
+          <span data-lang="es">Licenciandos en formación docente</span>
+          <span data-lang="zh" class="zh">正在接受教师培训的本科生</span>
+        </p>
+        <p>
+          <span data-lang="pt">Atuando nos 3 núcleos escolares do subprojeto Geografia – IFPA Campus Belém (2024–2027)</span>
+          <span data-lang="en">Working across 3 school hubs in the Geography Subproject – IFPA Campus Belém (2024–2027)</span>
+          <span data-lang="es">Actuando en los 3 núcleos escolares del subproyecto Geografía – IFPA Campus Belém (2024–2027)</span>
+          <span data-lang="zh" class="zh">在地理子项目（IFPA贝伦校区，2024–2027）的3个学校基地开展实践活动</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="bolsistas-grid">
+      <div class="bolsista-chip"><div class="bolsista-initials">AC</div><span class="bolsista-name">Aila Cardoso Leite</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">AP</div><span class="bolsista-name">Antônio Pedro P. da Silva Lopes</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">BJ</div><span class="bolsista-name">Bruno Jorge F. do Nascimento</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">CA</div><span class="bolsista-name">Catiane Rocha</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">EG</div><span class="bolsista-name">Eliane Gama da Silva</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">FC</div><span class="bolsista-name">Flávia Cristiane da Silva Andrade</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">FB</div><span class="bolsista-name">Flávia Beatriz Souza Batista</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">GK</div><span class="bolsista-name">Giselle Kailane Melo França</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">HM</div><span class="bolsista-name">Heitor Melo dos Santos Lima</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">HC</div><span class="bolsista-name">Heloise Corrêa de Almeida</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">JM</div><span class="bolsista-name">João Manoel Santos Nunes</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">JP</div><span class="bolsista-name">Jobson Pereira Vieira</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">JV</div><span class="bolsista-name">Juliana Vitória Corrêa Pinheiro</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">LL</div><span class="bolsista-name">Letícia Louise da Luz Almeida</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">LI</div><span class="bolsista-name">Linda Inês Pérola da Silva Martins</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">LG</div><span class="bolsista-name">Luís Gabriel da Costa Ferreira</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">LU</div><span class="bolsista-name">Lucas Ubaldo Gomes de Souza</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">LN</div><span class="bolsista-name">Luenny Gabrielly Monteiro Soares</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">MF</div><span class="bolsista-name">Marcilene Furtado Dias Rodrigues</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">NP</div><span class="bolsista-name">Nayara Paula Abreu Lobato</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">RC</div><span class="bolsista-name">Rafael da Cruz Aranha</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">RG</div><span class="bolsista-name">Rayssa Geovana da Silva Gomes</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">RM</div><span class="bolsista-name">Romário Paixão Pena</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">RS</div><span class="bolsista-name">Rosiane Soares da Penha</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">SN</div><span class="bolsista-name">Samia Santa Brigida Nogueira</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">SM</div><span class="bolsista-name">Sílvia Letícia de C. C. Michiles</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">UF</div><span class="bolsista-name">Ualace Ferreira de Oliveira</span></div>
+      <div class="bolsista-chip"><div class="bolsista-initials">WL</div><span class="bolsista-name">Wesley Lobato Araújo</span></div>
+    </div>
+  </section>
+
+  <!-- ESCOLAS -->
+  <section class="escolas-section" aria-labelledby="escolas-title">
+    <div class="section-header">
+      <p class="section-label">
+        <span data-lang="pt">Escolas Parceiras</span>
+        <span data-lang="en">Partner Schools</span>
+        <span data-lang="es">Escuelas Asociadas</span>
+        <span data-lang="zh" class="zh">合作学校</span>
+      </p>
+      <h2 class="section-title" id="escolas-title">
+        <span data-lang="pt">Comunidades <span>Escolares</span></span>
+        <span data-lang="en">School <span>Communities</span></span>
+        <span data-lang="es">Comunidades <span>Escolares</span></span>
+        <span data-lang="zh" class="zh"><span>学校</span>社区</span>
+      </h2>
+    </div>
+
+    <div class="escolas-grid">
+
+      <div class="escola-card">
+        <div class="escola-header">
+          <div class="escola-icon g">🏛️</div>
+          <div>
+            <h3 class="escola-title">IFPA – Campus Belém</h3>
+            <p class="escola-type">
+              <span data-lang="pt">Instituto Federal do Pará</span>
+              <span data-lang="en">Federal Institute of Pará</span>
+              <span data-lang="es">Instituto Federal de Pará</span>
+              <span data-lang="zh" class="zh">帕拉联邦学院</span>
+            </p>
+          </div>
+        </div>
+        <div class="escola-stats">
+          <div class="escola-stat">
+            <span class="escola-stat-num">1.320</span>
+            <span class="escola-stat-label">
+              <span data-lang="pt">Alunos</span>
+              <span data-lang="en">Students</span>
+              <span data-lang="es">Alumnos</span>
+              <span data-lang="zh" class="zh">学生</span>
+            </span>
+          </div>
+          <div class="escola-stat">
+            <span class="escola-stat-num">110</span>
+            <span class="escola-stat-label">
+              <span data-lang="pt">No PIBID</span>
+              <span data-lang="en">In PIBID</span>
+              <span data-lang="es">En PIBID</span>
+              <span data-lang="zh" class="zh">参与项目</span>
+            </span>
+          </div>
+          <div class="escola-stat">
+            <span class="escola-stat-num">—</span>
+            <span class="escola-stat-label">IDEB</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="escola-card">
+        <div class="escola-header">
+          <div class="escola-icon b">📚</div>
+          <div>
+            <h3 class="escola-title">EEEFM Profª Palmira Gabriel</h3>
+            <p class="escola-type">
+              <span data-lang="pt">Escola Estadual · Ens. Fundamental e Médio</span>
+              <span data-lang="en">State School · Elementary and High School</span>
+              <span data-lang="es">Escuela Estadual · Enseñanza Fundamental y Media</span>
+              <span data-lang="zh" class="zh">州立学校 · 中小学</span>
+            </p>
+          </div>
+        </div>
+        <div class="escola-stats">
+          <div class="escola-stat">
+            <span class="escola-stat-num">1.247</span>
+            <span class="escola-stat-label">
+              <span data-lang="pt">Alunos</span>
+              <span data-lang="en">Students</span>
+              <span data-lang="es">Alumnos</span>
+              <span data-lang="zh" class="zh">学生</span>
+            </span>
+          </div>
+          <div class="escola-stat">
+            <span class="escola-stat-num">130</span>
+            <span class="escola-stat-label">
+              <span data-lang="pt">No PIBID</span>
+              <span data-lang="en">In PIBID</span>
+              <span data-lang="es">En PIBID</span>
+              <span data-lang="zh" class="zh">参与项目</span>
+            </span>
+          </div>
+          <div class="escola-stat">
+            <span class="escola-stat-num">4,5</span>
+            <span class="escola-stat-label">IDEB</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="escola-card">
+        <div class="escola-header">
+          <div class="escola-icon o">🌱</div>
+          <div>
+            <h3 class="escola-title">EEEFM Profª Maria Encarnação de Araújo</h3>
+            <p class="escola-type">
+              <span data-lang="pt">Escola Estadual · Ens. Fundamental e Médio</span>
+              <span data-lang="en">State School · Elementary and High School</span>
+              <span data-lang="es">Escuela Estadual · Enseñanza Fundamental y Media</span>
+              <span data-lang="zh" class="zh">州立学校 · 中小学</span>
+            </p>
+          </div>
+        </div>
+        <div class="escola-stats">
+          <div class="escola-stat">
+            <span class="escola-stat-num">87</span>
+            <span class="escola-stat-label">
+              <span data-lang="pt">Alunos</span>
+              <span data-lang="en">Students</span>
+              <span data-lang="es">Alumnos</span>
+              <span data-lang="zh" class="zh">学生</span>
+            </span>
+          </div>
+          <div class="escola-stat">
+            <span class="escola-stat-num">60</span>
+            <span class="escola-stat-label">
+              <span data-lang="pt">No PIBID</span>
+              <span data-lang="en">In PIBID</span>
+              <span data-lang="es">En PIBID</span>
+              <span data-lang="zh" class="zh">参与项目</span>
+            </span>
+          </div>
+          <div class="escola-stat">
+            <span class="escola-stat-num">4,6</span>
+            <span class="escola-stat-label">IDEB</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="galeria-section" aria-labelledby="galeria-title" style="margin-bottom:64px">
+    <div class="section-header">
+      <p class="section-label">
+        <span data-lang="pt">Registro Fotográfico</span>
+        <span data-lang="en">Photo Gallery</span>
+        <span data-lang="es">Registro Fotográfico</span>
+        <span data-lang="zh" class="zh">活动照片</span>
+      </p>
+      <h2 class="section-title" id="galeria-title">
+        <span data-lang="pt">Fotos das <span>Reuniões</span></span>
+        <span data-lang="en">Meeting <span>Photos</span></span>
+        <span data-lang="es">Fotos de las <span>Reuniones</span></span>
+        <span data-lang="zh" class="zh">会议<span>照片</span></span>
+      </h2>
+    </div>
+
+    <div class="galeria-grid" id="galeriaGrid">
+      <div class="galeria-item" onclick="abrirLightbox(0)">
+        <img src="img/reuniao_01_dez2024.jpg" alt="Reunião PIBID dez/2024" loading="lazy">
+        <div class="galeria-overlay"><span>Dez. 2024</span></div>
+      </div>
+      <div class="galeria-item" onclick="abrirLightbox(1)">
+        <img src="img/reuniao_08_jan2025.jpg" alt="Reunião PIBID jan/2025" loading="lazy">
+        <div class="galeria-overlay"><span>Jan. 2025</span></div>
+      </div>
+      <div class="galeria-item" onclick="abrirLightbox(2)">
+        <img src="img/reuniao_07_fev2025.jpg" alt="Reunião PIBID fev/2025" loading="lazy">
+        <div class="galeria-overlay"><span>Fev. 2025</span></div>
+      </div>
+      <div class="galeria-item" onclick="abrirLightbox(3)">
+        <img src="img/reuniao_02_mar2025a.jpg" alt="Reunião PIBID mar/2025 (I)" loading="lazy">
+        <div class="galeria-overlay"><span>Mar. 2025 (I)</span></div>
+      </div>
+      <div class="galeria-item" onclick="abrirLightbox(4)">
+        <img src="img/reuniao_03_mar2025b.jpg" alt="Reunião PIBID mar/2025 (II)" loading="lazy">
+        <div class="galeria-overlay"><span>Mar. 2025 (II)</span></div>
+      </div>
+      <div class="galeria-item" onclick="abrirLightbox(5)">
+        <img src="img/reuniao_06_mar2025c.jpg" alt="Reunião PIBID mar/2025 (III)" loading="lazy">
+        <div class="galeria-overlay"><span>Mar. 2025 (III)</span></div>
+      </div>
+      <div class="galeria-item" onclick="abrirLightbox(6)">
+        <img src="img/reuniao_04_abr2025a.jpg" alt="Reunião PIBID abr/2025" loading="lazy">
+        <div class="galeria-overlay"><span>Abr. 2025</span></div>
+      </div>
+      <div class="galeria-item" onclick="abrirLightbox(7)">
+        <img src="img/reuniao_05_mai2025.jpg" alt="Reunião PIBID mai/2025" loading="lazy">
+        <div class="galeria-overlay"><span>Mai. 2025</span></div>
+      </div>
+    </div>
+
+    <div class="drive-link-bar">
+      <a href="https://drive.google.com/drive/folders/1vrOQ1ALPHAfzdQ7biGki1KhY2ZHL6V9H"
+         target="_blank" rel="noopener noreferrer" class="drive-btn">
+        <svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+          <path d="M6.6 66.85l3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3L27.5 53H0c0 1.55.4 3.1 1.2 4.5z" fill="#fff" opacity=".9"/>
+          <path d="M43.65 25L29.9 1.2C28.55.4 27 0 25.45 0c-1.55 0-3.1.4-4.5 1.2L6.6 11.45 21.9 37.5z" fill="#fff" opacity=".9"/>
+          <path d="M73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5H59.8L73.55 76.8z" fill="#fff" opacity=".9"/>
+          <path d="M43.65 25L57.4 1.2C56 .4 54.45 0 52.9 0H34.4c-1.55 0-3.1.4-4.5 1.2z" fill="#fff" opacity=".85"/>
+          <path d="M59.8 53H27.5L13.75 76.8c1.4.8 2.95 1.2 4.5 1.2h50.8c1.55 0 3.1-.4 4.5-1.2z" fill="#fff" opacity=".9"/>
+          <path d="M59.8 53l13.75 23.8 14.3-24.75L65.6 11.45 43.65 25z" fill="#fff" opacity=".85"/>
+          <path d="M21.9 37.5L6.6 11.45.85 21.55C.05 22.95 0 24.5 0 26.05c0 1.55.4 3.1 1.2 4.5l13.75 23.8z" fill="#fff" opacity=".85"/>
+        </svg>
+        <span data-lang="pt">Ver todas as fotos no Drive</span>
+        <span data-lang="en">View all photos on Drive</span>
+        <span data-lang="es">Ver todas las fotos en Drive</span>
+        <span data-lang="zh" class="zh">在Drive查看所有照片</span>
+      </a>
+      <span class="drive-note">
+        <span data-lang="pt">Álbum completo de registros do subprojeto</span>
+        <span data-lang="en">Complete photo album of the subproject</span>
+        <span data-lang="es">Álbum completo de registros del subproyecto</span>
+        <span data-lang="zh" class="zh">子项目完整照片专辑</span>
+      </span>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:1000;align-items:center;justify-content:center;flex-direction:column;gap:16px" onclick="fecharLightbox(event)">
+    <button onclick="fecharLightbox({target:document.getElementById('lightbox')})" aria-label="Fechar" style="position:fixed;top:20px;right:24px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;z-index:1001">×</button>
+    <button onclick="navLightbox(-1)" aria-label="Anterior" style="position:fixed;left:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:1.6rem;cursor:pointer;padding:12px 16px;border-radius:8px;z-index:1001">‹</button>
+    <img id="lightboxImg" src="" alt="" style="max-width:90vw;max-height:85vh;border-radius:8px;object-fit:contain">
+    <p id="lightboxCaption" style="color:rgba(255,255,255,.75);font-size:.85rem;font-family:'DM Sans',sans-serif;margin:0"></p>
+    <button onclick="navLightbox(1)" aria-label="Próxima" style="position:fixed;right:16px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:1.6rem;cursor:pointer;padding:12px 16px;border-radius:8px;z-index:1001">›</button>
+  </div>
+
+  <!-- INFO / COORDENAÇÃO -->
+  <section aria-labelledby="coordenacao-title">
+    <div class="section-header">
+      <p class="section-label">
+        <span data-lang="pt">Coordenação e Edital</span>
+        <span data-lang="en">Coordination &amp; Call</span>
+        <span data-lang="es">Coordinación y Convocatoria</span>
+        <span data-lang="zh" class="zh">协调与项目信息</span>
+      </p>
+      <h2 class="section-title" id="coordenacao-title">
+        <span data-lang="pt">Informações <span>Institucionais</span></span>
+        <span data-lang="en">Institutional <span>Information</span></span>
+        <span data-lang="es">Información <span>Institucional</span></span>
+        <span data-lang="zh" class="zh">机构<span>信息</span></span>
+      </h2>
+    </div>
+
+    <div class="info-section">
+      <div class="info-card">
+        <h3 class="info-card-title">
+          <span>👨‍🏫</span>
+          <span data-lang="pt">Coordenação de Área</span>
+          <span data-lang="en">Area Coordination</span>
+          <span data-lang="es">Coordinación de Área</span>
+          <span data-lang="zh" class="zh">区域协调</span>
+        </h3>
+        <div class="info-row">
+          <span class="k">
+            <span data-lang="pt">Coordenador</span>
+            <span data-lang="en">Coordinator</span>
+            <span data-lang="es">Coordinador</span>
+            <span data-lang="zh" class="zh">协调员</span>
+          </span>
+          <span class="v">Prof. Dr. Wallace Wagner Rodrigues Pantoja</span>
+        </div>
+        <div class="info-row">
+          <span class="k">
+            <span data-lang="pt">Instituição</span>
+            <span data-lang="en">Institution</span>
+            <span data-lang="es">Institución</span>
+            <span data-lang="zh" class="zh">所在机构</span>
+          </span>
+          <span class="v">IFPA – Campus Belém</span>
+        </div>
+        <div class="info-row">
+          <span class="k">E-mail</span>
+          <span class="v">wallace.pantoja@ifpa.edu.br</span>
+        </div>
+        <div class="info-row">
+          <span class="k">
+            <span data-lang="pt">Subprojeto</span>
+            <span data-lang="en">Subproject</span>
+            <span data-lang="es">Subproyecto</span>
+            <span data-lang="zh" class="zh">子项目</span>
+          </span>
+          <span class="v">
+            <span data-lang="pt">Geografia</span>
+            <span data-lang="en">Geography</span>
+            <span data-lang="es">Geografía</span>
+            <span data-lang="zh" class="zh">地理学</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3 class="info-card-title">
+          <span>📄</span>
+          <span data-lang="pt">Dados do Edital</span>
+          <span data-lang="en">Program Details</span>
+          <span data-lang="es">Datos de la Convocatoria</span>
+          <span data-lang="zh" class="zh">项目数据</span>
+        </h3>
+        <div class="info-row">
+          <span class="k">
+            <span data-lang="pt">Programa</span>
+            <span data-lang="en">Program</span>
+            <span data-lang="es">Programa</span>
+            <span data-lang="zh" class="zh">项目名称</span>
+          </span>
+          <span class="v">PIBID</span>
+        </div>
+        <div class="info-row">
+          <span class="k">
+            <span data-lang="pt">Edital</span>
+            <span data-lang="en">Call</span>
+            <span data-lang="es">Convocatoria</span>
+            <span data-lang="zh" class="zh">招募令</span>
+          </span>
+          <span class="v">CAPES Nº 10/2024</span>
+        </div>
+        <div class="info-row">
+          <span class="k">
+            <span data-lang="pt">Portaria</span>
+            <span data-lang="en">Ordinance</span>
+            <span data-lang="es">Ordenanza</span>
+            <span data-lang="zh" class="zh">规章</span>
+          </span>
+          <span class="v">CAPES Nº 90/2024</span>
+        </div>
+        <div class="info-row">
+          <span class="k">
+            <span data-lang="pt">Vigência</span>
+            <span data-lang="en">Period</span>
+            <span data-lang="es">Vigencia</span>
+            <span data-lang="zh" class="zh">执行期</span>
+          </span>
+          <span class="v">2024 – 2027</span>
+        </div>
+        <div class="info-row">
+          <span class="k">
+            <span data-lang="pt">Agência de fomento</span>
+            <span data-lang="en">Funding agency</span>
+            <span data-lang="es">Agencia financiadora</span>
+            <span data-lang="zh" class="zh">资助机构</span>
+          </span>
+          <span class="v">MEC / CAPES</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="page-footer">
+  <strong>PIBID – Subprojeto Geografia · IFPA Campus Belém</strong>
+  <span data-lang="pt">Página vinculada ao site acadêmico de <a href="https://wallapantoja.com">Wallace Pantoja</a></span>
+  <span data-lang="en">Page linked to the academic website of <a href="https://wallapantoja.com">Wallace Pantoja</a></span>
+  <span data-lang="es">Página vinculada al sitio académico de <a href="https://wallapantoja.com">Wallace Pantoja</a></span>
+  <span data-lang="zh" class="zh">本页面链接自 <a href="https://wallapantoja.com">Wallace Pantoja</a> 的学术网站</span>
+</footer>
+
+<script>
+  const galeriaFotos = [
+    { src: 'img/reuniao_01_dez2024.jpg', caption: 'Reunião inaugural — Dez. 2024' },
+    { src: 'img/reuniao_08_jan2025.jpg', caption: 'Reunião de formação — Jan. 2025' },
+    { src: 'img/reuniao_07_fev2025.jpg', caption: 'Reunião de formação — Fev. 2025' },
+    { src: 'img/reuniao_02_mar2025a.jpg', caption: 'Reunião de acompanhamento — Mar. 2025 (I)' },
+    { src: 'img/reuniao_03_mar2025b.jpg', caption: 'Reunião de acompanhamento — Mar. 2025 (II)' },
+    { src: 'img/reuniao_06_mar2025c.jpg', caption: 'Reunião de acompanhamento — Mar. 2025 (III)' },
+    { src: 'img/reuniao_04_abr2025a.jpg', caption: 'Reunião de acompanhamento — Abr. 2025' },
+    { src: 'img/reuniao_05_mai2025.jpg', caption: 'Reunião de acompanhamento — Mai. 2025' },
+  ];
+  let lbIdx = 0;
+
+  function abrirLightbox(idx) {
+    lbIdx = idx;
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightboxImg').src = galeriaFotos[idx].src;
+    document.getElementById('lightboxCaption').textContent = galeriaFotos[idx].caption;
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function fecharLightbox(e) {
+    if (e.target === document.getElementById('lightbox') || e.target.tagName === 'BUTTON') {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+
+  function navLightbox(dir) {
+    lbIdx = (lbIdx + dir + galeriaFotos.length) % galeriaFotos.length;
+    document.getElementById('lightboxImg').src = galeriaFotos[lbIdx].src;
+    document.getElementById('lightboxCaption').textContent = galeriaFotos[lbIdx].caption;
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (document.getElementById('lightbox').style.display !== 'flex') return;
+    if (e.key === 'ArrowRight') navLightbox(1);
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'Escape') { document.getElementById('lightbox').style.display='none'; document.body.style.overflow=''; }
+  });
+
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang || (lang === 'zh' && btn.textContent.trim() === '中文'));
+    });
+    try { localStorage.setItem('pibid-lang', lang); } catch(e) {}
+  }
+
+  (function() {
+    try {
+      var saved = localStorage.getItem('pibid-lang');
+      if (saved) setLang(saved);
+    } catch(e) {}
+  })();
+</script>
+
+</body>
+</html>
