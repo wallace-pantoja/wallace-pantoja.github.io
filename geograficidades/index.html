@@ -489,6 +489,2317 @@
     font-style: italic;
   }
 
+  /* ── ABAS DE PESQUISADORES ── */
+  .pesq-tabs-wrapper {
+    margin-top: 3rem;
+    border: 1px solid #e0d8cc;
+  }
+
+  .pesq-tabs-scroll {
+    overflow-x: auto;
+    background: var(--verde-escuro);
+    display: flex;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ouro) transparent;
+  }
+
+  .pesq-tab-btn {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    padding: 1rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s, border-color 0.2s;
+    min-width: 110px;
+  }
+
+  .pesq-tab-btn:hover { background: rgba(200,168,75,0.08); }
+
+  .pesq-tab-btn.active {
+    border-bottom-color: var(--ouro);
+    background: rgba(200,168,75,0.1);
+  }
+
+  .pesq-tab-foto {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(200,168,75,0.3);
+    background: #2d5a3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .pesq-tab-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pesq-tab-foto-placeholder {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid rgba(200,168,75,0.3);
+    background: var(--verde-medio);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--ouro-claro);
+    flex-shrink: 0;
+  }
+
+  .pesq-tab-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.48rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.65);
+    text-align: center;
+    line-height: 1.3;
+    max-width: 90px;
+  }
+
+  .pesq-tab-btn.active .pesq-tab-label { color: var(--ouro-claro); }
+
+  /* Painel de conteúdo da aba */
+  .pesq-panel {
+    display: none;
+    padding: 0;
+  }
+  .pesq-panel.active { display: grid; grid-template-columns: 280px 1fr; }
+
+  @media (max-width: 768px) {
+    .pesq-panel.active { grid-template-columns: 1fr; }
+  }
+
+  .pesq-panel-sidebar {
+    background: var(--verde-escuro);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .pesq-panel-foto-grande {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(200,168,75,0.4);
+    background: var(--verde-medio);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  .pesq-panel-foto-grande img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pesq-panel-foto-placeholder {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid rgba(200,168,75,0.4);
+    background: var(--verde-medio);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--ouro-claro);
+    margin-bottom: 0.5rem;
+  }
+
+  .pesq-panel-nome {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--creme);
+    line-height: 1.3;
+  }
+
+  .pesq-panel-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    line-height: 1.4;
+  }
+
+  .pesq-panel-inst {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.55);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .pesq-panel-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .pesq-panel-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.08em;
+    color: var(--ouro-claro);
+    text-decoration: none;
+    border: 1px solid rgba(200,168,75,0.25);
+    padding: 0.4rem 0.8rem;
+    text-align: center;
+    transition: background 0.2s, border-color 0.2s;
+    text-transform: uppercase;
+  }
+  .pesq-panel-link:hover { background: rgba(200,168,75,0.12); border-color: rgba(200,168,75,0.5); }
+
+  /* Conteúdo principal do painel */
+  .pesq-panel-main {
+    padding: 0;
+  }
+
+  .pesq-subtabs {
+    display: flex;
+    border-bottom: 1px solid #e0d8cc;
+    background: var(--creme);
+  }
+
+  .pesq-subtab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--texto-leve);
+    padding: 1rem 1.5rem;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .pesq-subtab-btn:hover { color: var(--verde-escuro); }
+  .pesq-subtab-btn.active {
+    color: var(--verde-escuro);
+    border-bottom-color: var(--ouro);
+    font-weight: 700;
+  }
+
+  .pesq-subcontent {
+    display: none;
+    padding: 2rem 2.5rem;
+    min-height: 260px;
+  }
+  .pesq-subcontent.active { display: block; }
+
+  .pesq-subcontent p, .pesq-subcontent li {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--texto-leve);
+    margin-bottom: 0.8rem;
+  }
+
+  .pesq-subcontent ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .pesq-subcontent ul li::before {
+    content: '·  ';
+    color: var(--ouro);
+    font-weight: 700;
+  }
+
+  .pesq-pub-item {
+    border-left: 2px solid #e0d8cc;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--texto-leve);
+    transition: border-color 0.2s;
+  }
+  .pesq-pub-item:hover { border-left-color: var(--ouro); }
+
+  .pesq-pub-item a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--verde-agua);
+    text-decoration: none;
+    margin-left: 0.5rem;
+  }
+  .pesq-pub-item a:hover { color: var(--ouro); }
+
+  .pesq-arte-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .pesq-arte-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    width: 2.2rem;
+    text-align: center;
+    margin-top: 0.1rem;
+  }
+
+  .pesq-arte-texto {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--texto-leve);
+  }
+
+  .pesq-arte-texto strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--verde-escuro);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .pesq-foto-aviso {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  /* estudantes */
+  .estudantes-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .estudante-tag {
+    border: 1px solid #d4c8b0;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: var(--texto-leve);
+    position: relative;
+  }
+
+  .estudante-nivel {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--verde-agua);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ── IMPACTO ── */
+  #impacto { background: var(--creme); max-width: 100%; padding: 5rem 2rem; }
+
+  #impacto > .inner { max-width: 1100px; margin: 0 auto; }
+
+  .impacto-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: #d4c8b0;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 768px) { .impacto-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .impacto-card {
+    background: var(--creme);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .impacto-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--verde-escuro);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .impacto-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--verde-agua);
+    line-height: 1.4;
+  }
+
+  .lider-impacto {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: center;
+    border-top: 1px solid #d4c8b0;
+    padding-top: 2.5rem;
+  }
+
+  @media (max-width: 600px) { .lider-impacto { grid-template-columns: 1fr; } }
+
+  .producoes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  @media (max-width: 768px) { .producoes-grid { grid-template-columns: 1fr; } }
+
+  /* galeria responsiva */
+  @media (max-width: 768px) {
+    #galeria > div {
+      grid-template-columns: 1fr 1fr !important;
+      grid-template-rows: 200px 200px 200px !important;
+    }
+    #galeria > div > div:first-child {
+      grid-row: 1 / 2 !important;
+      grid-column: 1 / 3;
+    }
+  }
+  @media (max-width: 480px) {
+    #galeria > div {
+      grid-template-columns: 1fr !important;
+      grid-template-rows: repeat(5, 200px) !important;
+    }
+    #galeria > div > div:first-child {
+      grid-column: 1 !important;
+    }
+  }
+
+  .lider-scholar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--verde-escuro);
+    line-height: 1;
+  }
+
+  .lider-scholar-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--verde-agua);
+    margin-top: 0.3rem;
+  }
+
+  .lider-scholar-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--texto-leve);
+  }
+
+  /* ── RASENG ── */
+  #raseng { padding-top: 5rem; padding-bottom: 5rem; }
+
+  .raseng-box {
+    border: 1px solid var(--verde-agua);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    overflow: hidden;
+  }
+
+  @media (max-width: 600px) { .raseng-box { grid-template-columns: 1fr; } }
+
+  .raseng-lado {
+    background: var(--verde-medio);
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .raseng-sigla {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5rem;
+    font-weight: 300;
+    color: var(--ouro-claro);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .raseng-nome-completo {
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.7);
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  .raseng-conteudo {
+    padding: 3rem;
+    background: var(--branco);
+  }
+
+  .raseng-conteudo p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--texto-leve);
+    margin-bottom: 1rem;
+  }
+
+  .raseng-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .raseng-pill {
+    background: rgba(74,140,110,0.1);
+    border: 1px solid rgba(74,140,110,0.3);
+    color: var(--verde-medio);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 2px;
+  }
+
+  .raseng-qualis {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--verde-agua);
+    margin-top: 0.5rem;
+  }
+
+  .raseng-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--verde-escuro);
+    text-decoration: none;
+    border-bottom: 1px solid var(--verde-escuro);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .raseng-link:hover { color: var(--verde-agua); border-color: var(--verde-agua); }
+
+  /* ── PARCEIROS ── */
+  #parceiros { background: var(--verde-escuro); max-width: 100%; padding: 4rem 2rem; }
+
+  #parceiros > .inner { max-width: 1100px; margin: 0 auto; }
+
+  #parceiros .section-label { color: var(--ouro); }
+  #parceiros .section-title { color: var(--creme); font-size: 1.5rem; }
+
+  .parceiros-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    background: rgba(200,168,75,0.15);
+    margin-top: 1.5rem;
+  }
+
+  .parceiro {
+    background: var(--verde-escuro);
+    padding: 1.5rem 2rem;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .parceiro-sigla {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--ouro);
+    margin-bottom: 0.3rem;
+  }
+
+  .parceiro-nome {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.3;
+    font-style: italic;
+  }
+
+  /* ── CONTATO ── */
+  #contato { padding: 5rem 2rem; text-align: center; max-width: 700px; }
+
+  .contato-lider {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--verde-escuro);
+    margin-bottom: 0.3rem;
+  }
+
+  .contato-cargo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--verde-agua);
+    margin-bottom: 1.5rem;
+  }
+
+  .contato-email {
+    font-size: 1.1rem;
+    color: var(--texto-leve);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--verde-agua);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+
+  .contato-email:hover { color: var(--verde-escuro); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111;
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ── ANIMAÇÕES DE ENTRADA ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ── BARRA DE RETORNO ── -->
+<div style="background:var(--verde-escuro); border-bottom:1px solid rgba(200,168,75,0.2); padding:0.55rem 2rem; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:999;">
+  <a href="../" style="font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(200,168,75,0.7); text-decoration:none; display:flex; align-items:center; gap:0.6rem; transition:color 0.2s;"
+     onmouseover="this.style.color='var(--ouro)'" onmouseout="this.style.color='rgba(200,168,75,0.7)'">
+    ← Wallace Wagner Rodrigues Pantoja
+  </a>
+  <span style="font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(200,168,75,0.35);">Grupo de Pesquisa · CNPq</span>
+</div>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <!-- Mapa SVG da Amazônia como fundo animado -->
+  <svg class="hero-mapa" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- Contorno simplificado da bacia amazônica / região Norte do Brasil -->
+    <g opacity="0.18" fill="none" stroke="var(--ouro)" stroke-width="0.8">
+      <!-- rios principais estilizados -->
+      <path class="rio" d="M50,250 Q150,220 250,240 Q350,255 450,235 Q550,215 650,230 Q750,245 850,220" stroke-width="2.5"/>
+      <path class="rio" d="M120,180 Q180,210 240,200 Q300,190 360,210 Q420,225 480,210" stroke-width="1.5"/>
+      <path class="rio" d="M200,320 Q270,300 340,315 Q410,330 480,310 Q550,290 620,305" stroke-width="1.5"/>
+      <path class="rio" d="M300,150 Q340,190 370,230 Q390,265 400,310 Q408,345 415,380" stroke-width="1.2"/>
+      <path class="rio" d="M500,120 Q520,160 525,200 Q528,240 520,280" stroke-width="1.2"/>
+      <path class="rio" d="M650,170 Q660,210 655,250 Q648,285 640,320" stroke-width="1.2"/>
+      <!-- grade de meridianos/paralelos -->
+      <line x1="0" y1="125" x2="900" y2="125" stroke-dasharray="4 8" opacity="0.4"/>
+      <line x1="0" y1="250" x2="900" y2="250" stroke-dasharray="4 8" opacity="0.4"/>
+      <line x1="0" y1="375" x2="900" y2="375" stroke-dasharray="4 8" opacity="0.4"/>
+      <line x1="225" y1="0" x2="225" y2="500" stroke-dasharray="4 8" opacity="0.4"/>
+      <line x1="450" y1="0" x2="450" y2="500" stroke-dasharray="4 8" opacity="0.4"/>
+      <line x1="675" y1="0" x2="675" y2="500" stroke-dasharray="4 8" opacity="0.4"/>
+    </g>
+    <!-- Pontos de cidades / lugares -->
+    <g fill="var(--ouro)" opacity="0.55">
+      <circle class="ponto-pulsa" cx="480" cy="270" r="4"/><!-- Belém (aprox) -->
+      <circle cx="480" cy="270" r="10" fill="none" stroke="var(--ouro)" stroke-width="0.8" opacity="0.4"/>
+      <circle cx="280" cy="210" r="2.5"/><!-- Manaus -->
+      <circle cx="350" cy="310" r="2"/>
+      <circle cx="600" cy="240" r="2"/>
+      <circle cx="180" cy="290" r="2"/>
+      <circle cx="700" cy="180" r="2"/>
+    </g>
+    <!-- Label Belém -->
+    <text x="492" y="268" font-family="'Space Mono',monospace" font-size="7" fill="var(--ouro)" opacity="0.7" letter-spacing="0.1em">BELÉM</text>
+    <text x="284" y="207" font-family="'Space Mono',monospace" font-size="6" fill="var(--ouro)" opacity="0.5" letter-spacing="0.08em">MANAUS</text>
+  </svg>
+
+  <p class="hero-eyebrow">Grupo de Pesquisa · CNPq · IFPA · Campus Belém</p>
+  <h1 class="hero-title"><em>Geograficidades</em><br>Amazônicas</h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">Uma ciência geográfica desde a Amazônia — partindo das experiências vividas, subjetividades e ecologias de saberes dos corpos e lugares amazônicos.</p>
+  <div class="hero-badges">
+    <span class="badge">Certificado CNPq</span>
+    <span class="badge">Fundado em 2022</span>
+    <span class="badge">Ciências Humanas · Geografia</span>
+    <span class="badge">4 Linhas de Pesquisa</span>
+  </div>
+  <div class="scroll-hint"><span>↓</span>explorar</div>
+</div>
+
+<!-- ── NAV INTERNA ── -->
+<nav class="inner-nav">
+  <a href="#apresentacao">Apresentação</a>
+  <a href="#linhas">Linhas de Pesquisa</a>
+  <a href="#pesquisadores">Pessoas</a>
+  <a href="#impacto">Impacto</a>
+  <a href="#raseng">RASENG</a>
+  <a href="#parceiros">Parceiros</a>
+  <a href="#contato">Contato</a>
+</nav>
+
+<!-- ── APRESENTAÇÃO ── -->
+<section id="apresentacao" class="fade-in">
+  <div class="apresentacao-texto">
+    <p class="section-label">Sobre o grupo</p>
+    <h2 class="section-title">Geograficidades como<br><em>condição de existência</em></h2>
+    <div class="rule"></div>
+    <p>A proposta do Grupo de Pesquisa é partir de experiências híbridas amazônicas — não essencialistas, mas essenciais — para vivenciar além de Geografias, as Geograficidades: condições de existência concretas que não separam o simbólico do emocional, o pessoal do político, o corpo da mente, o toque da palavra.</p>
+    <p>Buscamos abrir varadouros, conexões insuspeitas e mesmo não pensáveis, entre saberes ancestrais, valores originários e redes lançadas ao futuro sem receio de enfrentar as situações-limite em que nos colocamos como sujeitos amazônicos.</p>
+    <p>O caráter indisciplinar e transdisciplinar do Grupo implica não só a pesquisa como princípio de afirmação político-educativa, mas a acolhida da diferencialidade do Outro como parte fundante do sentido de compreender e atuar nas transformações da educação e da ciência geográfica desde a Amazônia.</p>
+  </div>
+  <div class="apresentacao-meta">
+    <div class="meta-item">
+      <p class="meta-label">Líder</p>
+      <p class="meta-value">Wallace Wagner Rodrigues Pantoja</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Instituição</p>
+      <p class="meta-value">Instituto Federal de Educação, Ciência e Tecnologia do Pará — IFPA Campus Belém</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Área predominante</p>
+      <p class="meta-value">Ciências Humanas · Geografia</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Certificação</p>
+      <p class="meta-value">Certificado pela instituição<br>Fundado em 2022</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Diretório CNPq</p>
+      <a class="cnpq-link" href="https://dgp.cnpq.br/dgp/espelhogrupo/1318639226808539" target="_blank">↗ Ver espelho do grupo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALERIA VISUAL ── -->
+<div id="galeria" style="background:var(--verde-escuro); max-width:100%; padding:0; overflow:hidden;">
+  <div style="display:grid; grid-template-columns:2fr 1fr 1fr; grid-template-rows:280px 280px; gap:2px;">
+
+    <!-- Imagem 1 — grande, substituir por: imagens/amazonia.jpg no GitHub -->
+    <div style="grid-row:1/3; position:relative; overflow:hidden; background:#0d1f15;">
+      <img src="imagens/amazonia.jpg"
+           alt="Amazônia"
+           onerror="this.style.display='none'"
+           style="width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.7) brightness(0.75); transition:transform 0.6s ease;"
+           onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <!-- Placeholder SVG se imagem não carregar -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 600 560" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="600" height="560" fill="#0d1f15"/>
+        <g opacity="0.25" fill="none" stroke="#c8a84b" stroke-width="0.8">
+          <path d="M0,280 Q100,250 200,270 Q300,285 400,265 Q500,245 600,260" stroke-width="3"/>
+          <path d="M0,200 Q80,220 160,210 Q240,200 320,215"/>
+          <path d="M100,350 Q200,330 300,345 Q400,360 500,340"/>
+          <line x1="0" y1="140" x2="600" y2="140" stroke-dasharray="4 8" opacity="0.4"/>
+          <line x1="0" y1="280" x2="600" y2="280" stroke-dasharray="4 8" opacity="0.4"/>
+          <line x1="0" y1="420" x2="600" y2="420" stroke-dasharray="4 8" opacity="0.4"/>
+          <line x1="200" y1="0" x2="200" y2="560" stroke-dasharray="4 8" opacity="0.4"/>
+          <line x1="400" y1="0" x2="400" y2="560" stroke-dasharray="4 8" opacity="0.4"/>
+        </g>
+        <circle cx="420" cy="300" r="6" fill="#c8a84b" opacity="0.7"/>
+        <circle cx="420" cy="300" r="14" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.3"/>
+        <text x="435" y="298" font-family="monospace" font-size="9" fill="#c8a84b" opacity="0.6" letter-spacing="1">BELÉM</text>
+        <text x="20" y="520" font-family="monospace" font-size="8" fill="rgba(200,168,75,0.4)" letter-spacing="2">AMAZÔNIA · BACIA HIDROGRÁFICA</text>
+      </svg>
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,58,42,0.85) 0%, transparent 50%); pointer-events:none;"></div>
+      <p style="position:absolute; bottom:1.5rem; left:1.5rem; font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.15em; color:rgba(232,208,138,0.85); text-transform:uppercase; z-index:2;">Amazônia · Bacia Hidrográfica</p>
+    </div>
+
+    <!-- Imagem 2 — floresta · imagens/floresta.jpg -->
+    <div style="position:relative; overflow:hidden; background:#0a1a0f;">
+      <img src="imagens/floresta.jpg"
+           alt="Floresta Amazônica"
+           onerror="this.style.display='none'"
+           style="width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.65) brightness(0.7); transition:transform 0.6s ease;"
+           onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+      <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="280" fill="#0a1a0f"/>
+        <g fill="rgba(74,140,110,0.3)">
+          <ellipse cx="50" cy="280" rx="40" ry="120"/>
+          <ellipse cx="150" cy="280" rx="50" ry="140"/>
+          <ellipse cx="250" cy="280" rx="35" ry="100"/>
+          <ellipse cx="100" cy="280" rx="30" ry="80"/>
+          <ellipse cx="200" cy="280" rx="45" ry="110"/>
+        </g>
+        <rect x="0" y="220" width="300" height="60" fill="rgba(26,58,42,0.6)"/>
+        <text x="15" y="268" font-family="monospace" font-size="7" fill="rgba(200,168,75,0.5)" letter-spacing="1.5">FLORESTA · PARÁ</text>
+      </svg>
+      <div style="position:absolute; inset:0; background:rgba(26,58,42,0.35); pointer-events:none;"></div>
+      <p style="position:absolute; bottom:0.8rem; left:1rem; font-family:'Space Mono',monospace; font-size:0.5rem; letter-spacing:0.12em; color:rgba(232,208,138,0.8); text-transform:uppercase; z-index:2;">Floresta · Pará</p>
+    </div>
+
+    <!-- Card de citação teórica -->
+    <div style="background:var(--ouro); display:flex; flex-direction:column; justify-content:center; padding:2rem; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:-1rem; right:-1rem; font-family:'Cormorant Garamond',serif; font-size:8rem; font-weight:300; color:rgba(26,58,42,0.15); line-height:1; pointer-events:none;">"</div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:1.15rem; line-height:1.6; color:var(--verde-escuro); font-style:italic; position:relative; z-index:1;">O lugar é condição de existência — não um fundo, mas uma abertura ao mundo.</p>
+      <p style="font-family:'Space Mono',monospace; font-size:0.5rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-medio); margin-top:1rem; opacity:0.8;">Geograficidades Amazônicas</p>
+    </div>
+
+    <!-- Imagem 3 — Belém · imagens/belem.jpg -->
+    <div style="position:relative; overflow:hidden; background:#111a12;">
+      <img src="imagens/belem.jpg"
+           alt="Belém do Pará"
+           onerror="this.style.display='none'"
+           style="width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.6) brightness(0.72); transition:transform 0.6s ease;"
+           onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+      <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="280" fill="#111a12"/>
+        <g fill="rgba(74,140,110,0.2)" stroke="rgba(200,168,75,0.3)" stroke-width="0.5">
+          <rect x="30" y="120" width="40" height="160"/>
+          <rect x="80" y="80" width="50" height="200"/>
+          <rect x="140" y="100" width="35" height="180"/>
+          <rect x="185" y="140" width="45" height="140"/>
+          <rect x="240" y="110" width="30" height="170"/>
+        </g>
+        <rect x="0" y="230" width="300" height="50" fill="rgba(17,26,18,0.8)"/>
+        <text x="15" y="260" font-family="monospace" font-size="7" fill="rgba(200,168,75,0.5)" letter-spacing="1.5">BELÉM · PARÁ</text>
+      </svg>
+      <div style="position:absolute; inset:0; background:rgba(26,58,42,0.4); pointer-events:none;"></div>
+      <p style="position:absolute; bottom:0.8rem; left:1rem; font-family:'Space Mono',monospace; font-size:0.5rem; letter-spacing:0.12em; color:rgba(232,208,138,0.8); text-transform:uppercase; z-index:2;">Belém · Pará</p>
+    </div>
+
+    <!-- Card mapa mini + coordenadas -->
+    <div style="background:#111d15; display:flex; flex-direction:column; justify-content:space-between; padding:2rem; position:relative; overflow:hidden;">
+      <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" style="width:100%; opacity:0.6;">
+        <rect width="200" height="160" fill="none"/>
+        <path d="M10,80 Q30,40 60,30 Q90,20 120,35 Q150,50 170,45 Q190,40 195,60 Q198,80 185,100 Q170,120 150,130 Q120,140 90,135 Q60,130 40,115 Q20,100 10,80Z"
+              fill="rgba(74,140,110,0.2)" stroke="rgba(200,168,75,0.5)" stroke-width="1"/>
+        <path d="M20,82 Q60,75 100,80 Q140,85 180,78" fill="none" stroke="rgba(200,168,75,0.7)" stroke-width="1.5"/>
+        <circle cx="168" cy="95" r="4" fill="var(--ouro)" opacity="0.9"/>
+        <text x="140" y="110" font-family="'Space Mono',monospace" font-size="7" fill="rgba(232,208,138,0.8)" letter-spacing="0.05em">BELÉM</text>
+        <circle cx="75" cy="72" r="3" fill="var(--ouro)" opacity="0.7"/>
+        <text x="50" y="65" font-family="'Space Mono',monospace" font-size="6" fill="rgba(232,208,138,0.6)" letter-spacing="0.05em">MANAUS</text>
+      </svg>
+      <div>
+        <p style="font-family:'Space Mono',monospace; font-size:0.5rem; letter-spacing:0.2em; color:var(--ouro); text-transform:uppercase; opacity:0.7;">Sede</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--creme); opacity:0.85; margin-top:0.3rem;">1°27'S · 48°29'O<br>Belém, Pará</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── VÍDEO ── -->
+<div style="background:#0d1f15; max-width:100%; padding:4rem 2rem; text-align:center;">
+  <p style="font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--ouro); margin-bottom:0.8rem;">Amazônia em movimento</p>
+  <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,3vw,2.5rem); font-weight:300; color:var(--creme); margin-bottom:2.5rem; font-style:italic;">A floresta como <em style="color:var(--ouro-claro);">lugar</em></h2>
+  <div style="max-width:800px; margin:0 auto; border:1px solid rgba(200,168,75,0.25); overflow:hidden;">
+    <div style="position:relative; padding-bottom:56.25%; height:0; background:#0a1a0f;">
+      <iframe
+        style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+        src="https://www.youtube.com/embed/1OdJsN68OO0?rel=0&color=white&modestbranding=1"
+        title="Amazônia — floresta como lugar"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+    <!-- Link de fallback caso iframe seja bloqueado -->
+    <div style="padding:0.8rem; background:rgba(200,168,75,0.05); text-align:center;">
+      <a href="https://www.youtube.com/watch?v=1OdJsN68OO0" target="_blank"
+         style="font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.15em; color:rgba(200,168,75,0.5); text-decoration:none; text-transform:uppercase;">
+        ↗ Abrir no YouTube
+      </a>
+    </div>
+  </div>
+</div>
+
+    <!-- Imagem 1 — grande, Amazônia aérea -->
+    <div style="grid-row:1/3; position:relative; overflow:hidden;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Madeira_River_from_space.jpg/1200px-Madeira_River_from_space.jpg"
+           alt="Rio Madeira visto do espaço — NASA"
+           style="width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.7) brightness(0.75); transition:transform 0.6s ease;"
+           onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,58,42,0.85) 0%, transparent 50%); pointer-events:none;"></div>
+      <p style="position:absolute; bottom:1.5rem; left:1.5rem; font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.15em; color:rgba(232,208,138,0.85); text-transform:uppercase;">Amazônia · Vista orbital · NASA</p>
+    </div>
+
+<!-- ── LINHAS DE PESQUISA ── -->
+<div id="linhas">
+  <div class="inner fade-in">
+    <p class="section-label">Frentes de atuação</p>
+    <h2 class="section-title">Linhas de <em>pesquisa</em></h2>
+    <div class="rule"></div>
+    <div class="linhas-grid">
+
+      <div class="linha-card" data-num="1">
+        <p class="linha-nome">(Des)orientações Espaciais, (Per)formas (Urbano)amazônicas</p>
+        <p class="linha-desc">Experiências de borda e margem, corpos LGBTQIA+, mulheres, quilombolas e indígenas na cidade — investigando a forma urbana amazônica para além de paisagens tipológicas padronizantes, a partir da desorientação da vida.</p>
+        <div class="linha-stats">
+          <div class="linha-stat"><strong>4</strong>pesquisadores</div>
+          <div class="linha-stat"><strong>3</strong>estudantes</div>
+        </div>
+      </div>
+
+      <div class="linha-card" data-num="2">
+        <p class="linha-nome">Fenomenologias da Vida Entre-Lugares</p>
+        <p class="linha-desc">Radicalização do "Mundo da Vida do Sul" — um exercício de novos marcos teórico-metodológicos que compreendam o trabalho do conhecimento como recomeço desde o "onde amazônico". Intencionalidade, lugar e ser-junto-com.</p>
+        <div class="linha-stats">
+          <div class="linha-stat"><strong>3</strong>pesquisadores</div>
+          <div class="linha-stat"><strong>3</strong>estudantes</div>
+        </div>
+      </div>
+
+      <div class="linha-card" data-num="3">
+        <p class="linha-nome">Em Campo Amazônico: Corpo, Subjetividade, Geocartografias</p>
+        <p class="linha-desc">Repensar modos de projetar, escalonar e simbolizar as diferentes existências. Uma cartografia que restitua o que é o corpo e as subjetividades não domáveis — contra a redutibilidade monossêmica do mapa convencional.</p>
+        <div class="linha-stats">
+          <div class="linha-stat"><strong>5</strong>pesquisadores</div>
+          <div class="linha-stat"><strong>4</strong>estudantes</div>
+        </div>
+      </div>
+
+      <div class="linha-card" data-num="4">
+        <p class="linha-nome">Educação Territorial: Arte, Ancestralidade e Originalidade Regional</p>
+        <p class="linha-desc">A educação que emerge nos conflitos e no aprendizado territorial amazônico. Arte em sua multiplicidade como viabilizadora de aprendizados que respeitam o lugar, os territórios e as matrizes ancestrais dos povos originários.</p>
+        <div class="linha-stats">
+          <div class="linha-stat"><strong>4</strong>pesquisadores</div>
+          <div class="linha-stat"><strong>1</strong>estudante</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── PESQUISADORES ── -->
+<section id="pesquisadores" class="fade-in">
+  <p class="section-label">Recursos humanos</p>
+  <h2 class="section-title">As <em>pessoas</em> do grupo</h2>
+  <div class="rule"></div>
+  <p class="pesquisadores-intro">O grupo reúne pesquisadores de diferentes instituições, formações e posicionamentos, comprometidos com a produção de saberes geográficos desde a experiência amazônica. Selecione um pesquisador para ver seu perfil completo.</p>
+
+  <!-- ── SISTEMA DE ABAS ── -->
+  <div class="pesq-tabs-wrapper">
+
+    <!-- Barra de abas (rolável horizontalmente) -->
+    <div class="pesq-tabs-scroll" role="tablist" aria-label="Pesquisadores do grupo">
+
+      <button class="pesq-tab-btn active" onclick="abrirAba(event,'wallace')" role="tab" aria-selected="true">
+        <div class="pesq-tab-foto-placeholder">W</div>
+        <span class="pesq-tab-label">Wallace<br>Pantoja</span>
+      </button>
+
+      <button class="pesq-tab-btn" onclick="abrirAba(event,'amelia')" role="tab" aria-selected="false">
+        <div class="pesq-tab-foto-placeholder">A</div>
+        <span class="pesq-tab-label">Amélia<br>Nogueira</span>
+      </button>
+
+      <button class="pesq-tab-btn" onclick="abrirAba(event,'arthur')" role="tab" aria-selected="false">
+        <div class="pesq-tab-foto-placeholder">A</div>
+        <span class="pesq-tab-label">Arthur<br>de Brito</span>
+      </button>
+
+      <button class="pesq-tab-btn" onclick="abrirAba(event,'debora')" role="tab" aria-selected="false">
+        <div class="pesq-tab-foto-placeholder">D</div>
+        <span class="pesq-tab-label">Débora<br>Nunes</span>
+      </button>
+
+      <button class="pesq-tab-btn" onclick="abrirAba(event,'marcia')" role="tab" aria-selected="false">
+        <div class="pesq-tab-foto-placeholder">M</div>
+        <span class="pesq-tab-label">Márcia<br>Kambeba</span>
+      </button>
+
+      <button class="pesq-tab-btn" onclick="abrirAba(event,'mateus')" role="tab" aria-selected="false">
+        <div class="pesq-tab-foto-placeholder">M</div>
+        <span class="pesq-tab-label">Mateus<br>Moura</span>
+      </button>
+
+      <button class="pesq-tab-btn" onclick="abrirAba(event,'pamela')" role="tab" aria-selected="false">
+        <div class="pesq-tab-foto-placeholder">P</div>
+        <span class="pesq-tab-label">Pamela<br>Arteaga</span>
+      </button>
+
+      <button class="pesq-tab-btn" onclick="abrirAba(event,'pedro')" role="tab" aria-selected="false">
+        <div class="pesq-tab-foto-placeholder">P</div>
+        <span class="pesq-tab-label">Pedro<br>Israel</span>
+      </button>
+
+      <button class="pesq-tab-btn" onclick="abrirAba(event,'rafael')" role="tab" aria-selected="false">
+        <div class="pesq-tab-foto-placeholder">R</div>
+        <span class="pesq-tab-label">Rafael<br>Bastos</span>
+      </button>
+
+      <button class="pesq-tab-btn" onclick="abrirAba(event,'rosilene')" role="tab" aria-selected="false">
+        <div class="pesq-tab-foto-placeholder">R</div>
+        <span class="pesq-tab-label">Rosilene<br>Cordeiro</span>
+      </button>
+
+    </div><!-- /pesq-tabs-scroll -->
+
+    <!-- ══ PAINÉIS ══ -->
+
+    <!-- WALLACE -->
+    <div id="panel-wallace" class="pesq-panel active" role="tabpanel">
+      <div class="pesq-panel-sidebar">
+        <div class="pesq-panel-foto-grande">
+          <img src="imagens/wallace.jpg" alt="Wallace Pantoja" onerror="this.style.display='none'">
+        </div>
+        <div class="pesq-panel-foto-placeholder" id="ph-wallace" style="display:none;">W</div>
+        <p class="pesq-panel-nome">Wallace Wagner Rodrigues Pantoja</p>
+        <p class="pesq-panel-role">Doutor em Geografia · Líder ✦</p>
+        <p class="pesq-panel-inst">IFPA Campus Belém<br>PROFNIT · NEGED</p>
+        <div class="pesq-panel-links">
+          <a class="pesq-panel-link" href="https://orcid.org/0000-0002-5605-2171" target="_blank">↗ ORCID</a>
+          <a class="pesq-panel-link" href="https://wallacepantoja.com" target="_blank">↗ Site pessoal</a>
+        </div>
+        <p class="pesq-foto-aviso">Substituir: imagens/wallace.jpg</p>
+      </div>
+      <div class="pesq-panel-main">
+        <div class="pesq-subtabs">
+          <button class="pesq-subtab-btn active" onclick="abrirSubtab(event,'wallace','info')">Perfil</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'wallace','pub')">Publicações</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'wallace','arte')">Atividades</button>
+        </div>
+        <div id="sub-wallace-info" class="pesq-subcontent active">
+          <p>Doutor em Geografia pela Universidade de Brasília (UnB, 2018). Mestre em Geografia pela UFPA (2011). Bacharel e Licenciado em Geografia pela UFPA (2005). Professor do IFPA Campus Belém, onde coordena o Curso de Especialização em Ensino de Geografia (desde 2024), o NEGED-IFPA (Núcleo de Gênero e Diversidade Sexual) e integra o corpo docente do PROFNIT — Mestrado Profissional em Propriedade Intelectual e Transferência Tecnológica para Inovação. Líder do Grupo de Pesquisa Geograficidades Amazônicas (CNPq).</p>
+          <p>Pesquisa Geografia Cultural, Geografia da Religião, Teoria e Método Fenomenológico-existencial, Metodologia do Ensino de Geografia, Geocartografia, Educação do/em Campo, Lugar/Lugaridade e Geografias LGBTQIA+. Conceitos originais: <em>espaço fraturado</em>, <em>tensibilidade cartográfica</em>, <em>geocartografia vicinal</em>, <em>entrelugar</em> e <em>topolítica</em>.</p>
+          <p>Editor da RASENG — Revista Amazônica sobre Ensino de Geografia (Qualis B1, ISSN 2675-3987). Pesquisa empírica centrada na Transamazônica Paraense (Pacajá e Anapu) e no projeto <em>Beco da Luz</em> sobre corpos travestis no Belém noturno.</p>
+        </div>
+        <div id="sub-wallace-pub" class="pesq-subcontent">
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Artigos</p>
+          <div class="pesq-pub-item">Pantoja, W. W. R.; Santos, A. H. F. <em>Dobras entre corpo e mapa na Transamazônica Paraense</em>. <strong>RASENG</strong>, v. 5, p. 116–131, 2025.</div>
+          <div class="pesq-pub-item">Pantoja, W. W. R. <em>Os erros do "Erro de Heidegger": salvar o ser-si-mesmo através do não-outro</em>. <strong>GeoTextos (Online)</strong>, v. 21, p. 125–156, 2025.</div>
+          <div class="pesq-pub-item">Carvalho, D. R. C.; Pantoja, W. W. R. <em>A importância da propriedade intelectual para a economia criativa no contexto da Amazônia Marajoara: o caso de Oeiras do Pará</em>. <strong>Contribuciones a las Ciencias Sociales</strong>, v. 18, e21440, 2025.</div>
+          <div class="pesq-pub-item">Pantoja, W. W. R. <em>Aquelas da Esquina: diferença sexual e cartografia da reXistência</em>. <strong>Revista Latino-americana de Geografia e Gênero</strong>, v. 15, p. 96–112, 2024.</div>
+          <div class="pesq-pub-item">Pinto, P. I. M.; Silva, C. C. L.; Pantoja, W. W. R. <em>Importa o corpo para a Geografia? Uma análise do debate corporificado na formação docente em Geografia no Pará</em>. <strong>Revista Geoamazônia</strong>, v. 12, p. 149–173, 2024.</div>
+          <div class="pesq-pub-item">Pantoja, W. W. R.; Veloso, T. S. <em>Valorização da pesquisa em educação Geográfica — Editorial de Retomada</em>. <strong>RASENG</strong>, v. 4, p. 1, 2024.</div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Livros organizados</p>
+          <div class="pesq-pub-item">Pantoja, W. W. R.; Brito, A. E. M. C.; Nogueira, A. R. B.; Silva, A. B. <strong>Ajuricaba: III Encontro de Geografia Cultural e Humanista da Amazônia — Caderno de Resumos</strong>. Belém: Publicação Independente, 2026, v. 1.</div>
+          <div class="pesq-pub-item">Pantoja, W. W. R.; Arteaga, P. E. M. (Org.). <strong>O Lugar das Mulheres Pretas nos Anos 70, 80 e 90 na Construção de Brasília: uma jornada histórica através do arquivo público do DF</strong>. Brasília: io5, 2026, v. 1, 36 p.</div>
+          <div class="pesq-pub-item">Arteaga, P. E. M. (Org.); Peluso, M. L. (Org.); Pantoja, W. W. R. (Org.). <strong>Religião e Conexões Geopolíticas no Terceiro Milênio</strong>. Belém: Produção Independente, 2020. 110 p.</div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Capítulos de livros</p>
+          <div class="pesq-pub-item">Pantoja, W. W. R. <em>Mormonismo em Belém do Pará (Brasil): dimensão transterritorial da identidade dos santos</em>. In: Morales; Peluso; Pantoja (Org.). <strong>Religião e Conexões Geopolíticas no Terceiro Milênio</strong>. Brasília: Produção Independente/UnB, 2020, v. 1, p. 5–.</div>
+          <div class="pesq-pub-item">Couto, A. C. O. et al.; Pantoja, W. W. R. <em>"Te Situa" — desorientações geográficas em lugares pandêmicos</em>. In: Couto; Mendes (Org.). <strong>Reflexões Geográficas em Tempos de Pandemia</strong>. Ananindeua: Itacaiúnas, 2020, v. 1, p. 5–105.</div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Tese</p>
+          <div class="pesq-pub-item">Pantoja, W. W. R. <em>Transamazônica: Geocartografia da (in)existência entrelugares</em>. Tese de Doutorado, UnB, 2018.</div>
+        </div>
+        <div id="sub-wallace-arte" class="pesq-subcontent">
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🗺️</div>
+            <div class="pesq-arte-texto"><strong>Projeto Beco da Luz</strong>Pesquisa de campo sobre corpos travestis e experiências espaciais no Belém noturno. Articulação entre geocartografia, fenomenologia queer e etnografia urbana.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🧵</div>
+            <div class="pesq-arte-texto"><strong>Bainhas: costurando reXistências no Marajó</strong>Projeto de propriedade intelectual coletiva em parceria com artistas LGBTQIAPN+ de Oeiras do Pará e costureiras ribeirinhas. Coordenado via PROFNIT-IFPA.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">📖</div>
+            <div class="pesq-arte-texto"><strong>Encontro Paraense de Geografia — Cametá (2026)</strong>Apresentação em mesa-redonda sobre geografias amazônicas, gênero e cultura, construída em torno do <em>espaço fraturado</em>, desorientação queer (Sara Ahmed) e o Beco da Luz.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">📚</div>
+            <div class="pesq-arte-texto"><strong>Coordenação Editorial · RASENG</strong>Editor da Revista Amazônica sobre Ensino de Geografia (Qualis B1). Coordena política editorial, internacionalização e indexação DOAJ da revista.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎓</div>
+            <div class="pesq-arte-texto"><strong>Ajuricaba — III Encontro de Geografia Cultural e Humanista da Amazônia (2024)</strong>Co-organizador do encontro realizado na UFAM/IFCHS, Manaus (30 out.–2 nov. 2024), com caderno de resumos publicado em 2026.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AMÉLIA -->
+    <div id="panel-amelia" class="pesq-panel" role="tabpanel">
+      <div class="pesq-panel-sidebar">
+        <div class="pesq-panel-foto-grande">
+          <img src="imagens/amelia.jpg" alt="Amélia Nogueira" onerror="this.style.display='none'">
+        </div>
+        <div class="pesq-panel-foto-placeholder">A</div>
+        <p class="pesq-panel-nome">Amélia Regina Batista Nogueira</p>
+        <p class="pesq-panel-role">Professora Titular · Doutora</p>
+        <p class="pesq-panel-inst">UFAM — Universidade Federal do Amazonas<br>PPGG · Lab. Ensino de Geografia</p>
+        <p class="pesq-foto-aviso">Substituir: imagens/amelia.jpg</p>
+      </div>
+      <div class="pesq-panel-main">
+        <div class="pesq-subtabs">
+          <button class="pesq-subtab-btn active" onclick="abrirSubtab(event,'amelia','info')">Perfil</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'amelia','pub')">Publicações</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'amelia','arte')">Atividades</button>
+        </div>
+        <div id="sub-amelia-info" class="pesq-subcontent active">
+          <p>Professora Titular da Universidade Federal do Amazonas (UFAM). Graduada em Geografia (1987) e Serviço Social (1990) pela UFAM; Mestre (1994) e Doutora (2001) em Geografia pela Universidade de São Paulo (USP). Pós-doutorado em Geografia e Ensino pela Universidade do Estado do Amazonas (UEA, 2025–2026).</p>
+          <p>Coordenadora do Laboratório de Ensino de Geografia (DEGEO-UFAM) e Supervisora do PIBID. Atua nas áreas de Geografia Humanista Cultural e Ensino de Geografia, com ênfase em mapas mentais como representação dos mundos vividos e abordagens fenomenológicas. Integrante da Linha 2 do grupo (Fenomenologias da Vida Entre-Lugares).</p>
+        </div>
+        <div id="sub-amelia-pub" class="pesq-subcontent">
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Artigos selecionados</p>
+          <div class="pesq-pub-item">Correa, W. S.; Nogueira, A. R. B. <em>Vieses da violência na Geografia Cultural: percepção e prática em conteúdos de Geografia para o Ensino Fundamental em Manaus-AM</em>. <strong>RASENG</strong>, v. 5, 2026.</div>
+          <div class="pesq-pub-item">Martins, R. L.; Nogueira, A. R. B. <em>Os mapas mentais como representação das territorialidades Apurinãs em Manaus</em>. <strong>Revista Geonorte</strong>, v. 16, p. 322–343, 2026.</div>
+          <div class="pesq-pub-item">Nogueira, A. R. B.; Silva, E. C. <em>A geograficidade dos alunos da Educação de Jovens e Adultos representada pela música</em>. <strong>Signos Geográficos</strong>, v. 3, 2021.</div>
+          <div class="pesq-pub-item">Nogueira, A. R. B. <em>Geograficidades e cartograficidades: os mapas mentais e o ato de representar</em>. <strong>Ciência Geográfica</strong>, v. XXV, p. 1964–1973, 2021.</div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Capítulos de livros selecionados</p>
+          <div class="pesq-pub-item">Nogueira, A. R. B.; Fortes, M. R. <em>A contribuição do estágio curricular supervisionado em Geografia no âmbito do PARFOR (Uarini/AM): limitações e alternativas</em>. In: Oliveira Neto; Cruz (Org.). <strong>A Geografia e a formação de professores no estado do Amazonas</strong>. Manaus: EDUA-UFAM, 2025, v. 1, p. 94–99.</div>
+          <div class="pesq-pub-item">Fortes, M. R.; Albuquerque, A. R. C.; Nogueira, A. R. B. <em>Entre museus e o moderno: desterritorialização e deslugarização na percepção de sujeitos do Mercado Municipal Adolfo Lisboa em Manaus</em>. In: <strong>A Geografia Amazônica em Múltiplas Escalas</strong>. Embu das Artes: Alexa Cultural/EDUA, 2025, v. 6, p. 21–39.</div>
+          <div class="pesq-pub-item">Nogueira, A. R. B. <em>Uma abordagem da Geografia Humanista no ensino de uma geocartografia: buscando outras linguagens</em>. In: Vallerius; Mota; Santos (Org.). <strong>Ensino de Geografia, cidadania e redes colaborativas</strong>. Goiânia: Ce A Alfa Comunicações, 2022, v. 1, p. 287–318.</div>
+          <div class="pesq-pub-item">Silva, E. T. V.; Nogueira, A. R. B. <em>Geografia e Literatura: as paisagens nas crônicas da cidade</em>. In: Silva; Carvalho; Ferreti (Org.). <strong>Paisagens em Movimento</strong>. Florianópolis: Edições do Bosque–CFH/UFSC, 2022, v. 1, p. 156–176.</div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Livros organizados</p>
+          <div class="pesq-pub-item">Fortes, M. R. (Org.); Albuquerque, A. R. C. (Org.); Nogueira, A. R. B. (Org.). <strong>A Geografia Amazônica em Múltiplas Escalas</strong>. Embu das Artes: Alexa Cultural/EDUA, 2025, v. 6, 302 p.</div>
+          <div class="pesq-pub-item">Nogueira, A. R. B.; Fortes, M. R. (Org.); Rabelo, A. (Org.). <strong>Espaços de Diálogos em Geografia: para entender lugares e paisagens</strong>. Embu das Artes: Alexa Cultural/EDUA, 2022, v. 1, 250 p.</div>
+        </div>
+        <div id="sub-amelia-arte" class="pesq-subcontent">
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🗺️</div>
+            <div class="pesq-arte-texto"><strong>Laboratório de Ensino de Geografia · UFAM</strong>Coordenação do laboratório dedicado à pesquisa e inovação no ensino de Geografia, com projetos envolvendo mapas mentais, geograficidades e abordagens fenomenológicas na educação amazônica.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎓</div>
+            <div class="pesq-arte-texto"><strong>Minicurso · XII SEGHUM (2023)</strong>Ministrou "Contribuições humanistas para entender a Amazônia: mapas mentais como representação do lugar", articulando fenomenologia e educação geográfica.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">📚</div>
+            <div class="pesq-arte-texto"><strong>Supervisão PIBID · UFAM</strong>Supervisora do Programa Institucional de Bolsas de Iniciação à Docência em Geografia, formando professores comprometidos com a realidade amazônica.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTHUR DE BRITO -->
+    <div id="panel-arthur" class="pesq-panel" role="tabpanel">
+      <div class="pesq-panel-sidebar">
+        <div class="pesq-panel-foto-grande">
+          <img src="imagens/arthur.jpg" alt="Arthur de Brito" onerror="this.style.display='none'">
+        </div>
+        <div class="pesq-panel-foto-placeholder">A</div>
+        <p class="pesq-panel-nome">Arthur Erik Monteiro Costa de Brito</p>
+        <p class="pesq-panel-role">Pós-doutorando · Doutor</p>
+        <p class="pesq-panel-inst">INEAF-UFPA · SEDUC-PA<br>Prof. Bacharelado Desenv. Rural–UFPA</p>
+        <p class="pesq-foto-aviso">Substituir: imagens/arthur.jpg</p>
+      </div>
+      <div class="pesq-panel-main">
+        <div class="pesq-subtabs">
+          <button class="pesq-subtab-btn active" onclick="abrirSubtab(event,'arthur','info')">Perfil</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'arthur','pub')">Publicações</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'arthur','arte')">Atividades</button>
+        </div>
+        <div id="sub-arthur-info" class="pesq-subcontent active">
+          <p>Pós-doutorando junto ao Instituto Amazônico de Agriculturas Familiares (INEAF/UFPA) e professor efetivo de Geografia pela SEDUC-PA. Mestre e Doutor em Agriculturas Familiares e Desenvolvimento Sustentável pelo PPGAA/UFPA. Graduado em Geografia pela UEPA. Desde 2024, professor do curso de Bacharelado em Desenvolvimento Rural da UFPA (campus Belém).</p>
+          <p>Pesquisa geografia cultural e agrária, com ênfase em conflitos fundiários na Amazônia, campesinato, assentamentos rurais, povos e comunidades tradicionais e a relação entre Geografia e Música. Na área cultural, é compositor, guitarrista e vocalista da banda Acorde de Novo.</p>
+        </div>
+        <div id="sub-arthur-pub" class="pesq-subcontent">
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Artigos</p>
+          <div class="pesq-pub-item">Brito, A. E. M. C.; Neves, E. C.; Albuquerque, J. <em>Chegada e partida: comercialização irregular de lotes e a fuga do PDS Virola Jatobá (Anapu/Pará)</em>. <strong>Geografia (Rio Claro. Online)</strong>, v. 51, p. 1–25, 2026.</div>
+          <div class="pesq-pub-item">Brito, A.; Oliveira, D. L.; Torres, M. G. <em>Educar em meio aos conflitos: precarização e invisibilização do ensino em assentamentos de reforma agrária no Pará</em>. <strong>RASENG</strong>, v. 4, p. 65–80, 2025. <a href="https://raseng.com/index.php/raseng/article/view/215/69" target="_blank">↗ PDF</a></div>
+          <div class="pesq-pub-item">Brito, A. E. M. C. <em>A "estratégia do jacu": reflexões sobre trabalhos de campo em áreas de conflitos agrários na Amazônia</em>. <strong>Metodologias e Aprendizado</strong>, v. 8, p. 243–257, 2025.</div>
+          <div class="pesq-pub-item">Brito, A.; Torres, M. <em>Crivadas de balas: o simbolismo nas placas dos assentamentos rurais de Anapu (Pará)</em>. <strong>Foco (Faculdade Novo Milênio)</strong>, v. 17, e5192, 2024.</div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Capítulos de livros</p>
+          <div class="pesq-pub-item">Guerra, G. A. D.; Silva, L. M. S.; Brito, A. E. M. C. <em>INEAF, minha escala acadêmica</em>. In: <strong>INEAF: 30 Anos</strong>. Belém, 2025, v. 1, p. 70–.</div>
+          <div class="pesq-pub-item">Sousa, M. J. A. et al. <em>O massacre de Corumbiara: grilagem, violência e a criminalização das vítimas</em>. In: Sousa et al. (Org.). <strong>Massacres no Campo</strong>. Goiânia: CPT; IPDMS, 2024, v. 1, p. 1–292.</div>
+          <div class="pesq-pub-item">Brito, A. E. M. C.; Gomes, D. L. <em>A festa da Chiquita: espaço sagrado e profano na fé-sta do Círio de Nazaré</em>. In: Bringel et al. (Org.). <strong>Memórias e Experiências de Lutas Populares em Belém-PA</strong>. Ananindeua: Itacaiúnas, 2021, v. 1, p. 141–162.</div>
+        </div>
+        <div id="sub-arthur-arte" class="pesq-subcontent">
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎸</div>
+            <div class="pesq-arte-texto"><strong>Banda Acorde de Novo (desde 2013)</strong>Compositor, guitarrista e vocalista. Produção musical que articula pesquisa sobre geografias da música e cultura popular amazônica, com álbum, EPs, singles e videoclipes lançados desde 2013.</div>
+          </div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1rem;">Discografia e audiovisual · Acorde de Novo</p>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎵</div>
+            <div class="pesq-arte-texto"><strong>O Escolhido (2025)</strong>Registro fonográfico e audiovisual (videoclipe). Com Pinheiro, G.; Ledo, G.; Ferreira, L.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎵</div>
+            <div class="pesq-arte-texto"><strong>Racismo Reverso (2025)</strong>Registro fonográfico e videoclipe oficial. Com Pinheiro, G.; Ledo, G.; Ferreira, L.; Ressoa, H.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎵</div>
+            <div class="pesq-arte-texto"><strong>Viajante (2022)</strong>Registro fonográfico e audiovisual. Com Zadoque, S.; Pinheiro, G.</div>
+          </div>
+
+          <div class="pesq-arte-item" style="margin-top:0.8rem;">
+            <div class="pesq-arte-icon">🌱</div>
+            <div class="pesq-arte-texto"><strong>Pesquisa de campo · PDS Virola Jatobá (Anapu/PA)</strong>Trabalho etnográfico e documental sobre conflitos fundiários, grilagem e precarização docente no sudoeste paraense, com publicações em revistas nacionais de Geografia e Metodologias.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DÉBORA -->
+    <div id="panel-debora" class="pesq-panel" role="tabpanel">
+      <div class="pesq-panel-sidebar">
+        <div class="pesq-panel-foto-grande">
+          <img src="imagens/debora.jpg" alt="Débora Nunes" onerror="this.style.display='none'">
+        </div>
+        <div class="pesq-panel-foto-placeholder">D</div>
+        <p class="pesq-panel-nome">Débora Aquino Nunes</p>
+        <p class="pesq-panel-role">Mestra · Professora</p>
+        <p class="pesq-panel-inst">IFPA Campus Abaetetuba</p>
+        <p class="pesq-foto-aviso">Substituir: imagens/debora.jpg</p>
+      </div>
+      <div class="pesq-panel-main">
+        <div class="pesq-subtabs">
+          <button class="pesq-subtab-btn active" onclick="abrirSubtab(event,'debora','info')">Perfil</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'debora','pub')">Publicações</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'debora','arte')">Atividades</button>
+        </div>
+        <div id="sub-debora-info" class="pesq-subcontent active">
+          <p>Licenciada e Bacharel em Geografia pela UFPA. Bolsista de iniciação científica PIBIC/CNPq (2010–2013), orientada pelo Prof. Dr. Saint-Clair Cordeiro da Trindade Junior. Mestra em Planejamento do Desenvolvimento pelo Núcleo de Altos Estudos da Amazônia (NAEA-UFPA). Professora do Instituto Federal de Educação, Ciência e Tecnologia do Pará (IFPA), Campus Abaetetuba.</p>
+          <p>Atua em Geografia Humana com ênfase em Geografia Urbana, Estudos de Gênero, Geografia Encarnada, Educação para os Direitos Humanos e Planejamento Urbano e Regional. Temas principais: espaço urbano; corpo, gênero e espaço; cidades ribeirinhas; grandes projetos de desenvolvimento regional; territórios e saberes das águas e das florestas; educação feminista.</p>
+        </div>
+        <div id="sub-debora-pub" class="pesq-subcontent">
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Artigos</p>
+          <div class="pesq-pub-item">Nunes, D. A. <em>A produção do espaço urbano do núcleo Rio Verde-PA na década de 1980: entre o espaço hegemônico e as práticas socioespaciais generificadas de resistência</em>. <strong>Revista Latino-americana de Geografia e Gênero</strong>, v. 14, p. 73–93, 2023.</div>
+          <div class="pesq-pub-item">Silva, M. B.; Santos, I. K. C.; Mendes, M. C. D.; Nunes, D. A. <em>Es Ley: a interrupção voluntária de gravidez na Argentina em 2020</em>. <strong>Revista Feminismos</strong>, v. 11, p. 1–31, 2023.</div>
+          <div class="pesq-pub-item">Bento, M.; Colares, E.; Nunes, D. A. <em>Neoextrativismo e regulamentação do garimpo em terras indígenas: uma análise de conjuntura a partir do caso da Terra Indígena Yanomami</em>. <strong>Revista Brasileira de Gestão Ambiental e Sustentabilidade</strong>, v. 9, p. 751–775, 2022.</div>
+          <div class="pesq-pub-item">Nunes, D. A. et al. <em>Inter-scalar analysis of planning and management in the context of SARS-CoV-19 Pandemic in Parauapebas-PA</em>. <strong>International Journal of Development Research</strong>, v. 12, p. 1–6, 2022.</div>
+          <div class="pesq-pub-item">Nunes, D. A.; Trindade, G. O.; Vieira, D. D. J. <em>Os grandes projetos e os espaços de resistência na Amazônia: as comunidades em áreas de influência direta das estações portuárias em Rurópolis-PA</em>. <strong>Interespaço: Revista de Geografia e Interdisciplinaridade</strong>, v. 7, 2021.</div>
+          <div class="pesq-pub-item">João, S.; Nunes, D. A. <em>Como a fronteira econômica direciona o mercado de trabalho e de que forma o IFPA-Parauapebas pode direcionar os cursos para a demanda local?</em>. <strong>Multitemas (UCDB)</strong>, p. 29–51, 2022.</div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Capítulos de livros</p>
+          <div class="pesq-pub-item">Rodrigues, E. S.; Nunes, D. A. <em>Capitalismo e os saberes ancestrais da Amazônia: educação e ludicidade utilizando o RPG</em>. In: Silva; Silva (Org.). <strong>Conectando Saberes na Amazônia Paraense</strong>. Belém: É D'Amazônia, 2025, v. 1, p. 89–99.</div>
+          <div class="pesq-pub-item">Dias, M. J. S.; Marinho, D. C.; Nunes, D. A. <em>Cartografando o racismo cotidiano: do corpo-território à politização da vida</em>. In: Silva; Silva (Org.). <strong>Conectando Saberes na Amazônia Paraense</strong>. Belém: É D'Amazônia, 2025, v. 1, p. 135–143.</div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Livros</p>
+          <div class="pesq-pub-item">Cunha, B. et al. <strong>Ameaça e Pressão Antrópica em Unidades de Conservação</strong>. Belém: RFB Editora, 2021, v. 1, 61 p.</div>
+        </div>
+        <div id="sub-debora-arte" class="pesq-subcontent">
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🏙️</div>
+            <div class="pesq-arte-texto"><strong>Pesquisa sobre cidades ribeirinhas e gênero</strong>Investigação sobre espacialidades generificadas de resistência em cidades amazônicas, articulando planejamento urbano, feminismo e territórios das águas no Baixo Tocantins.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🌿</div>
+            <div class="pesq-arte-texto"><strong>Educação feminista e saberes ancestrais</strong>Projetos pedagógicos que articulam saberes das florestas e das águas com educação para os direitos humanos e ludicidade na Amazônia paraense.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MÁRCIA KAMBEBA -->
+    <div id="panel-marcia" class="pesq-panel" role="tabpanel">
+      <div class="pesq-panel-sidebar">
+        <div class="pesq-panel-foto-grande">
+          <img src="imagens/marcia.jpg" alt="Márcia Kambeba" onerror="this.style.display='none'">
+        </div>
+        <div class="pesq-panel-foto-placeholder">M</div>
+        <p class="pesq-panel-nome">Márcia Wayna Kambeba</p>
+        <p class="pesq-panel-role">Pós-doutoranda · Doutora · Artivista</p>
+        <p class="pesq-panel-inst">UnB · UFPA · UEA<br>Povo Kambeba (Omágua/Kambeba)</p>
+        <p class="pesq-foto-aviso">Substituir: imagens/marcia.jpg</p>
+      </div>
+      <div class="pesq-panel-main">
+        <div class="pesq-subtabs">
+          <button class="pesq-subtab-btn active" onclick="abrirSubtab(event,'marcia','info')">Perfil</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'marcia','pub')">Publicações</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'marcia','arte')">Atividades Artísticas</button>
+        </div>
+        <div id="sub-marcia-info" class="pesq-subcontent active">
+          <p>Escritora, fotógrafa, cantora e ativista indígena do povo Kambeba (Omágua/Kambeba), do Alto Solimões. Realiza Pós-Doutorado em Linguística pela UnB. Doutora em Linguística pela UFPA, Mestre em Geografia pela UFAM, Graduada em Licenciatura Plena em Geografia pela UEA e Especialista em Educação Ambiental para o Desenvolvimento Sustentável.</p>
+          <p>Atua na formação intercultural de professores indígenas e não indígenas, com experiência em EJA, PAFOR e como professora colaboradora da UEPA em contextos de aldeia. Escritora com 17 livros publicados. Desenvolve a exposição etnográfica <em>Memória Viva dos Povos da Amazônia</em>, com mais de 20 povos da Amazônia brasileira e peruana. Foi a primeira indígena a ocupar o cargo de Ouvidora Geral no município de Belém (2021–2023). Membro da AILB (EUA) e da AFL Formiga (MG). Premiada com a Comenda Seu Duca por mérito cultural e duas comendas de luta por direitos humanos.</p>
+        </div>
+        <div id="sub-marcia-pub" class="pesq-subcontent">
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Livros publicados (seleção de 17)</p>
+          <div class="pesq-pub-item">Kambeba, M. W.; Silva, M. V. <strong>Samaumeira Árvore da Vida</strong>. São Paulo: Perabook, 2025, 26 p.</div>
+          <div class="pesq-pub-item">Silva, M. V.; Kambeba, M. W. <strong>A Aldeia dos Encantados</strong>. São Paulo: IBEP, 2025, 11 p.</div>
+          <div class="pesq-pub-item">Kambeba, M. W.; Silva, M. V. <strong>De Almas e Águas Kunhãs</strong>. São Paulo: Jandaíra, 2023.</div>
+          <div class="pesq-pub-item">Kambeba, M. W.; Silva, M. V. <strong>Infância na Aldeia</strong>. Jandira/SP: Ciranda na Escola, 2023, 32 p.</div>
+          <div class="pesq-pub-item">Kambeba, M. W.; Silva, M. V. <strong>O Curumim Wirá e os Encantados</strong>. Campinas/SP: Casa Cultural, 2023, 32 p.</div>
+          <div class="pesq-pub-item">Kambeba, M. W.; Silva, M. V. <strong>O Povo Kambeba e a Gota D'água</strong>. Brasília: Edebê Brasil, 2022, 32 p.</div>
+          <div class="pesq-pub-item">Silva, M. V.; Kambeba, M. W. <strong>O Lugar do Saber Ancestral</strong>. 2. ed. São Paulo: Uka, 2021, 144 p.</div>
+          <div class="pesq-pub-item">Kambeba, M. W.; Silva, M. V. <strong>Kumiça Jenó: Narrativas Poéticas dos Seres da Floresta</strong>. Flórida: Underline Publishing, 2021, 158 p.</div>
+          <div class="pesq-pub-item">Silva, M. V.; Kambeba, M. W. <strong>Saberes da Floresta</strong>. São Paulo: Jandaíra, 2020, 168 p.</div>
+        </div>
+        <div id="sub-marcia-arte" class="pesq-subcontent">
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎵</div>
+            <div class="pesq-arte-texto"><strong>Música Indígena em Tupi e Português</strong>Compositora e cantora de música indígena ritual e autoral. Atua em projetos musicais que utilizam a arte como ferramenta de ativismo indígena no Brasil e no exterior.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">📷</div>
+            <div class="pesq-arte-texto"><strong>Fotografia Etnográfica</strong>Produção fotográfica sobre a vida cotidiana, rituais e territórios dos povos originários amazônicos. Integra a exposição <em>Memória Viva dos Povos da Amazônia</em>, com mais de 20 povos da Amazônia brasileira e peruana.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🖼️</div>
+            <div class="pesq-arte-texto"><strong>Artes Visuais e Performance (seleção)</strong>Povo Kambeba (fotografia, 2018); Sarau Caxiri na Cuia (intervenção urbana, 2018); Felizs — Poesia (intervenção urbana, 2018); Sarau Poético e Musical Autoral (performance, 2018); Encontro Internacional de Arte Indígena (intervenção urbana, 2018).</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎤</div>
+            <div class="pesq-arte-texto"><strong>Contação de Histórias e Palestras</strong>Contadora de histórias e palestrante com atuação no Brasil e no exterior, com ações culturais em presídios, aldeias e instituições de longa permanência.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATEUS MOURA -->
+    <div id="panel-mateus" class="pesq-panel" role="tabpanel">
+      <div class="pesq-panel-sidebar">
+        <div class="pesq-panel-foto-grande">
+          <img src="imagens/mateus.jpg" alt="Mateus Moura" onerror="this.style.display='none'">
+        </div>
+        <div class="pesq-panel-foto-placeholder">M</div>
+        <p class="pesq-panel-nome">Mateus Nogueira de Farias Moura</p>
+        <p class="pesq-panel-role">Doutorando · Mestre em Artes</p>
+        <p class="pesq-panel-inst">PPGARTES–UFPA · Linha 3<br>Semec–Belém · Produtora Maria Preta</p>
+        <p class="pesq-foto-aviso">Substituir: imagens/mateus.jpg</p>
+      </div>
+      <div class="pesq-panel-main">
+        <div class="pesq-subtabs">
+          <button class="pesq-subtab-btn active" onclick="abrirSubtab(event,'mateus','info')">Perfil</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'mateus','pub')">Publicações</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'mateus','arte')">Atividades Artísticas</button>
+        </div>
+        <div id="sub-mateus-info" class="pesq-subcontent active">
+          <p>Educador, artista, pesquisador e produtor cultural. Graduado em Letras pela UEPA e Mestre em Artes pelo PPGARTES–UFPA, com dissertação sobre o território amazônico no cinema. Doutorando no PPGARTES–UFPA (Linha 3: Memórias, Histórias e Educação em Artes), com orientação do Prof. Dr. Orlando Maneschy, pesquisando abordagens pedagógicas de formação do olhar crítico para as representações do território amazônico no cinema.</p>
+          <p>Desde 2008 trabalha com cinema no campo da arte e da educação — mais de 50 oficinas realizadas. Diretor da produtora independente <em>Maria Preta</em> (1 longa e 4 curtas). Criador da série <em>Matou o Cinema e Foi a Família</em>, premiada pela Fundação Cultural do Pará (2015), com mais de 60 vídeos produzidos.</p>
+          <p>Coordenador do <em>Cine Curau</em> — programa de cineclubismo amazônida premiado pela Lei Paulo Gustavo (2024). Músico-compositor desde 2009, integra as bandas Les Rita Pavone e Manto, com trabalhos solo e em duo (<em>Milagre Comum</em>, <em>Na Ilharga do Samba</em>, <em>Popopo da Bicharada</em>) — 3 álbuns, dezenas de turnês e participação nos principais festivais da região Norte. Integrante da Trupe Perifeéricos. Desde 2011 publica pelo selo <em>Incêndio</em>. Brincante e membro da diretoria do Ponto de Cultura Boi Vagalume da Marambaia.</p>
+        </div>
+        <div id="sub-mateus-pub" class="pesq-subcontent">
+          <div class="pesq-pub-item">Moura, M. N. F.; Selva, I. <em>Milagre Comum: sua ética e sua poética, suas vozes e seus silêncios</em>. <strong>Voz e Cena</strong>, v. 6, p. 217–228, 2025.</div>
+          <div class="pesq-pub-item">Moura, M. N. F. <em>Matou o Cinema e Foi a Família: genealogia pessoal acerca de um projeto de cinema experimental na Amazônia Paraense</em>. <strong>Arteriais</strong>, v. 10, p. 308, 2024.</div>
+          <div class="pesq-pub-item">Moura, M. N. F. <em>Atos de Escritura</em>. Belém: PPGARTES/ICA/UFPA, 2018. 340 p.</div>
+        </div>
+        <div id="sub-mateus-arte" class="pesq-subcontent">
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Artes Cênicas</p>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎭</div>
+            <div class="pesq-arte-texto"><strong>Travessias (2021) — com Silva, K.</strong>Espetáculo teatral da Trupe Perifeéricos.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎭</div>
+            <div class="pesq-arte-texto"><strong>Árvore de Mim (2018) — com Miranda, M. C.</strong>Montagem teatral de dramaturgia autoral.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎭</div>
+            <div class="pesq-arte-texto"><strong>Morte e Vida Severina (2018) — com Bezerra, D.</strong>Adaptação cênica da obra de João Cabral de Melo Neto com linguagem periférica amazônica.</div>
+          </div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Música</p>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎵</div>
+            <div class="pesq-arte-texto"><strong>Álbum: A Imitação do Vento (2025)</strong>Faixas autorais: O Sopro, Orelha de Pau, Celeste, Mateus, Solo, entre outras.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎵</div>
+            <div class="pesq-arte-texto"><strong>EP: Na Ilharga do Samba (2025) — com Pavone, R.</strong>Faixas: Meu Coração Minha Vida, Cinzas de Belém, O Coração Tem Que Valer a Pena.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎵</div>
+            <div class="pesq-arte-texto"><strong>EP: Amazônia Vale Brinde (2025)</strong>Faixas: Ramo no Mei, Ycamiamba Caba, entre outras.</div>
+          </div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Audiovisual</p>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎬</div>
+            <div class="pesq-arte-texto"><strong>Série Ô Mundica! (2021) — caps. 11 a 16</strong>Com Maurity, G.; Rocha, A.; Franco, M.; Perlin, S. Série de vídeos sobre vida e território amazônico.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎬</div>
+            <div class="pesq-arte-texto"><strong>#Feitiço (2021) — com Cordeiro, R. e equipe</strong>Filme de ficção situado na Amazônia paraense, cruzando magia, corpo e cinema experimental.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎬</div>
+            <div class="pesq-arte-texto"><strong>Sabiá — Canto de um Povo Fundo (2021) — com Xavier, L.</strong>Documentário sobre identidade, memória e música amazônica.</div>
+          </div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Literatura</p>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">📖</div>
+            <div class="pesq-arte-texto"><strong>Selo Incêndio (desde 2011)</strong>Livros de poesia autorais: <em>Incêndio</em>, <em>Palavra de Denotan</em>, <em>Temporada Fora Si</em>, <em>Fui Ou</em>, <em>Releituras da Casa</em>, <em>Distâncias</em>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAMELA ARTEAGA -->
+    <div id="panel-pamela" class="pesq-panel" role="tabpanel">
+      <div class="pesq-panel-sidebar">
+        <div class="pesq-panel-foto-grande">
+          <img src="imagens/pamela.jpg" alt="Pamela Arteaga" onerror="this.style.display='none'">
+        </div>
+        <div class="pesq-panel-foto-placeholder">P</div>
+        <p class="pesq-panel-nome">Pamela Elizabeth Morales Arteaga</p>
+        <p class="pesq-panel-role">Doutora</p>
+        <p class="pesq-panel-inst">Núcleo de Artes do Centro Oeste<br>CEAM-UnB · Brasília</p>
+        <p class="pesq-foto-aviso">Substituir: imagens/pamela.jpg</p>
+      </div>
+      <div class="pesq-panel-main">
+        <div class="pesq-subtabs">
+          <button class="pesq-subtab-btn active" onclick="abrirSubtab(event,'pamela','info')">Perfil</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'pamela','pub')">Publicações</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'pamela','arte')">Atividades Artísticas</button>
+        </div>
+        <div id="sub-pamela-info" class="pesq-subcontent active">
+          <p>Doutora, pesquisadora vinculada ao Núcleo de Artes do Centro Oeste e ao Centro de Estudos Avançados Multidisciplinares (CEAM) da Universidade de Brasília (UnB). Pesquisa as intersecções entre arte, território, memória e identidade, com foco em mulheres negras, lugar e arquivo histórico.</p>
+          <p>Integra a Linha 1 e a Linha 3 do grupo, articulando arte, geocartografia e geografia de gênero. Sua pesquisa sobre mulheres negras na construção de Brasília é referência na articulação entre arquivo público, território e memória espacializada.</p>
+        </div>
+        <div id="sub-pamela-pub" class="pesq-subcontent">
+          <div class="pesq-pub-item">ARTEAGA, P. E. M.; PANTOJA, W. W. R. <em>Lugar das mulheres pretas nos anos 70, 80 e 90 na construção de Brasília: uma jornada histórica através do arquivo público do DF</em>. Brasília: io5, 2026.</div>
+          <div class="pesq-pub-item">PANTOJA, W. W. R. et al. <em>Religião e conexões geopolíticas no terceiro milênio</em> (org. Arteaga; Peluso; Pantoja). io5, 2022.</div>
+        </div>
+        <div id="sub-pamela-arte" class="pesq-subcontent">
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎨</div>
+            <div class="pesq-arte-texto"><strong>Arte e Território: Arquivo das Mulheres Negras em Brasília</strong>Pesquisa artístico-documental que recupera a presença e os lugares de mulheres negras na construção de Brasília, cruzando arquivo histórico, arte visual e memória territorial.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🖼️</div>
+            <div class="pesq-arte-texto"><strong>Produção Artística · Núcleo de Artes do Centro Oeste</strong>Atuação em projetos artísticos interdisciplinares que articulam arte contemporânea, pesquisa geográfica e intervenção cultural no Centro-Oeste brasileiro.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PEDRO ISRAEL (NOVO) -->
+    <div id="panel-pedro" class="pesq-panel" role="tabpanel">
+      <div class="pesq-panel-sidebar">
+        <div class="pesq-panel-foto-grande">
+          <img src="imagens/pedro.jpg" alt="Pedro Israel Mota Pinto" onerror="this.style.display='none'">
+        </div>
+        <div class="pesq-panel-foto-placeholder">P</div>
+        <p class="pesq-panel-nome">Pedro Israel Mota Pinto</p>
+        <p class="pesq-panel-role">Doutorando em Geografia</p>
+        <p class="pesq-panel-inst">UFPR — Universidade Federal do Paraná<br>Cria da Terra Firme · Belém/PA</p>
+        <div class="pesq-panel-links">
+          <a class="pesq-panel-link" href="https://instagram.com/botodebelem" target="_blank">↗ @botodebelem</a>
+        </div>
+        <p class="pesq-foto-aviso">Substituir: imagens/pedro.jpg</p>
+      </div>
+      <div class="pesq-panel-main">
+        <div class="pesq-subtabs">
+          <button class="pesq-subtab-btn active" onclick="abrirSubtab(event,'pedro','info')">Perfil</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'pedro','pub')">Publicações</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'pedro','arte')">Atividades</button>
+        </div>
+        <div id="sub-pedro-info" class="pesq-subcontent active">
+          <p>Doutorando em Geografia pela Universidade Federal do Paraná (UFPR). Graduado e Mestre em Geografia pela Universidade do Estado do Pará (UEPA, 2022/2024). Especialista em Ensino de Geografia pelo IFPA (2023) e em Promoção de Políticas Públicas em Gênero e Sexualidade na Amazônia pela UFPA (2024).</p>
+          <p>Integrante do Laboratório de Geografia da Violência e do Crime (LabGeoVCrim–UEPA), do Grupo de Estudos Territoriais (GeTE–UEPG) e do Geograficidades Amazônicas (IFPA). Diretor de Pesquisa no Instituto Cojovem. Liderança LGBT+ amazônida na ONG Olívia.</p>
+          <p>Suas pesquisas atuais articulam a arte drag queen como produtora de espaços de resistência, juventudes amazônidas e crise climática, e políticas públicas de gênero e sexualidade. Produtor de conteúdo digital. Idealizador do TalkShow <em>Fala Aí, Juventudes Amazônidas</em>. Cria da Terra Firme, em Belém do Pará.</p>
+        </div>
+        <div id="sub-pedro-pub" class="pesq-subcontent">
+          <div class="pesq-pub-item">Israel Mota Pinto, Pedro; Anderson Nunes Chagas, Clay. <em>[Título a confirmar]</em>. <strong>Revista Brasileira de Segurança Pública</strong>, v. 20, p. 12–31, 2026.</div>
+          <div class="pesq-pub-item">Pinto, P. I. M.; Nascimento, R. C. M.; Chagas, C. A. N. <em>Segurança pública, sexualidade e planejamento urbano na Amazônia Paraense</em>. <strong>Revista Geoamazônia</strong>, v. 13, p. 125–150, 2025.</div>
+          <div class="pesq-pub-item">Pinto, Pedro Israel Mota. <em>Importa a espacialidade do corpo jovem dissidente para a Geografia?</em>. <strong>Revista Latino-americana de Geografia e Gênero</strong>, v. 15, p. 113–131, 2024.</div>
+          <div class="pesq-pub-item">Pinto, P. I. M.; Silva, C. C. L.; Wagner, W. R. P. <em>Importa o corpo para a Geografia? Uma análise do debate corporificado na formação docente em Geografia no Pará</em>. <strong>Geoamazônia</strong>, v. 12, p. 149–173, 2024.</div>
+          <div class="pesq-pub-item">Pinto, P. I. M.; Ribeiro, W. O.; Chagas, C. A. N. <em>Homossociabilidade, masculinidade nociva e mortes violentas de jovens homens em Belém-PA</em>. <strong>Revista Latino-americana de Geografia e Gênero</strong>, v. 15, p. 227–243, 2024.</div>
+          <div class="pesq-pub-item">Pinto, P. I. M.; Braga, K. G. G. S.; Freitas, R. J.; Souza, L. P. <em>Políticas públicas e meio ambiente: uma análise da relação entre crise climática e juventudes amazônidas no Estado do Pará</em>. <strong>Geoconexões</strong>, v. 1, p. 104–128, 2024.</div>
+          <div class="pesq-pub-item">Silva, R. L. B. R.; Valença, M. R.; Israel Mota Pinto, P. <em>Fazendo gênero no chão da escola</em>. <strong>Revista Terra Livre</strong>, v. 1, p. 611–633, 2024.</div>
+          <div class="pesq-pub-item">Pinto, P. I. M.; Ribeiro, W. O.; Nascimento, R. P. B. <em>Gênero, (in)justiça espacial e violência urbana na periferia: uma análise dos homicídios no bairro da Terra Firme, Belém/PA entre 2014 e 2018</em>. 2022.</div>
+        </div>
+        <div id="sub-pedro-arte" class="pesq-subcontent">
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">👑</div>
+            <div class="pesq-arte-texto"><strong>Arte Drag Queen como Espaço de Resistência</strong>Pesquisa em desenvolvimento que investiga a performance drag como prática produtora de espacialidades dissidentes e resistência LGBTQIA+ na Amazônia, articulando geografia do corpo, lugar e identidade.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎙️</div>
+            <div class="pesq-arte-texto"><strong>TalkShow Fala Aí, Juventudes Amazônidas</strong>Programa idealizado e conduzido por Pedro Israel, voltado a dar voz a juventudes amazônidas em suas diversidades — gênero, sexualidade, periferia e crise climática.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">📱</div>
+            <div class="pesq-arte-texto"><strong>Produção de Conteúdo Digital · @botodebelem</strong>Criação de conteúdo sobre território, identidade amazônica, diversidade e políticas públicas, com atuação como liderança LGBT+ na ONG Olívia e no Instituto Cojovem.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RAFAEL BASTOS -->
+    <div id="panel-rafael" class="pesq-panel" role="tabpanel">
+      <div class="pesq-panel-sidebar">
+        <div class="pesq-panel-foto-grande">
+          <img src="imagens/rafael.jpg" alt="Rafael Bastos Ferreira" onerror="this.style.display='none'">
+        </div>
+        <div class="pesq-panel-foto-placeholder">R</div>
+        <p class="pesq-panel-nome">Rafael Bastos Ferreira</p>
+        <p class="pesq-panel-role">Pós-doutorando · Doutor · Vice-líder ✦</p>
+        <p class="pesq-panel-inst">NAEA/UFPA · PIPD/Capes<br>Círculo de Estudos Husserlianos–UFMA</p>
+        <p class="pesq-foto-aviso">Substituir: imagens/rafael.jpg</p>
+      </div>
+      <div class="pesq-panel-main">
+        <div class="pesq-subtabs">
+          <button class="pesq-subtab-btn active" onclick="abrirSubtab(event,'rafael','info')">Perfil</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'rafael','pub')">Publicações</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'rafael','arte')">Atividades</button>
+        </div>
+        <div id="sub-rafael-info" class="pesq-subcontent active">
+          <p>Graduado em Geografia (Licenciatura e Bacharelado) pela UNIFAP (2011). Especialista em Extensão Rural, Sistemas Agrários e Ações de Desenvolvimento pelo NCADR-UFPA (2013). Mestre em Ciências Humanas e Sociais Aplicadas pela FCA-UNICAMP (2016). Doutor em Desenvolvimento Socioambiental pelo PPGDSTU-NAEA/UFPA. Realiza Estágio Pós-Doutoral no NAEA/UFPA (PIPD/Capes). Membro do Grupo de Pesquisa Geografia Humanista Cultural (UFF) e Vice-líder do Círculo de Estudos Husserlianos (UFMA).</p>
+          <p>Foi membro da equipe do Planejamento Estratégico de Longo Prazo do Estado do Pará (Pará 2050), como Técnico de Apoio em Pesquisa e Desenvolvimento (2022–2024). Pesquisa: epistemologia da Geografia humanista-fenomenológica; fenomenologia política e da experiência política; interculturalidade, intersubjetividade e pluralidade; política pública, desenvolvimento territorial e crise climática.</p>
+        </div>
+        <div id="sub-rafael-pub" class="pesq-subcontent">
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Artigos</p>
+          <div class="pesq-pub-item">Pontes, H. F. N.; Ferreira, R. B. <em>Proposta de um circuito inferior integrado na teoria dos circuitos da economia urbana: os batedores de açaí no bairro do Guamá/Belém</em>. <strong>Foco (Faculdade Novo Milênio)</strong>, v. 19, e11199, 2026.</div>
+          <div class="pesq-pub-item">Ferreira, R. B. <em>Resenha — Fenomenologia, ciência e epistemologia</em>. <strong>Geograficidade</strong>, v. 11, p. 106–109, 2021.</div>
+          <div class="pesq-pub-item">Ferreira, R. B. <em>Fenomenologia do corpo adoentado</em>. <strong>Revista Geografares</strong>, v. 1, p. 165–177, 2021.</div>
+          <div class="pesq-pub-item">Ferreira, R. B. <em>Investigações iniciais sobre geografia fenomenológica</em>. <strong>Revista GEOgrafias</strong>, v. 27, p. 93–109, 2020.</div>
+          <div class="pesq-pub-item">Ferreira, R. B. <em>Crítica da finalidade à racionalidade científica</em>. <strong>Revista de Filosofia Moderna e Contemporânea</strong>, v. 8, p. 313–331, 2020.</div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Capítulo de livro</p>
+          <div class="pesq-pub-item">Ferreira, R. B. <em>Fenomenologia da corporeidade geográfica: constituição e primordialidade</em>. In: Marandola Jr.; Holzer; Batista (Org.). <strong>Portais da Terra: Contribuições dos Estudos Humanistas para a Geografia Contemporânea</strong>. Teresina: EDUFPI, 2023, v. 1, p. 417–442.</div>
+        </div>
+        <div id="sub-rafael-arte" class="pesq-subcontent">
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">📐</div>
+            <div class="pesq-arte-texto"><strong>Epistemologia e Fenomenologia Geográfica</strong>Produção teórica centrada na fundamentação fenomenológica da Geografia — corporalidade, primordialidade e intersubjetividade — articulando Husserl, Merleau-Ponty e Heidegger com as geografias amazônicas.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🗺️</div>
+            <div class="pesq-arte-texto"><strong>Planejamento Estratégico Pará 2050</strong>Atuação como Técnico de Apoio em Pesquisa e Desenvolvimento na construção do Planejamento Estratégico de Longo Prazo do Estado do Pará (2022–2024), conectando fenomenologia política e políticas públicas territoriais.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🔬</div>
+            <div class="pesq-arte-texto"><strong>Vice-liderança · Geograficidades Amazônicas</strong>Coordena com Wallace Pantoja as diretrizes científicas do grupo, com responsabilidade pela Linha 2 (Fenomenologias da Vida Entre-Lugares) e pelo diálogo com grupos parceiros como o Círculo de Estudos Husserlianos–UFMA.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROSILENE CORDEIRO -->
+    <div id="panel-rosilene" class="pesq-panel" role="tabpanel">
+      <div class="pesq-panel-sidebar">
+        <div class="pesq-panel-foto-grande">
+          <img src="imagens/rosilene.jpg" alt="Rosilene Cordeiro" onerror="this.style.display='none'">
+        </div>
+        <div class="pesq-panel-foto-placeholder">R</div>
+        <p class="pesq-panel-nome">Rosilene da Conceição Cordeiro</p>
+        <p class="pesq-panel-role">Doutoranda · Mestra · Per_form@triz</p>
+        <p class="pesq-panel-inst">PPGARTES-UFPA<br>SEDUC-PA · Semec-Belém</p>
+        <div class="pesq-panel-links">
+          <a class="pesq-panel-link" href="https://instagram.com/cordeirod_ogum" target="_blank">↗ @cordeirod_ogum</a>
+        </div>
+        <p class="pesq-foto-aviso">Substituir: imagens/rosilene.jpg</p>
+      </div>
+      <div class="pesq-panel-main">
+        <div class="pesq-subtabs">
+          <button class="pesq-subtab-btn active" onclick="abrirSubtab(event,'rosilene','info')">Perfil</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'rosilene','pub')">Publicações</button>
+          <button class="pesq-subtab-btn" onclick="abrirSubtab(event,'rosilene','arte')">Atividades Artísticas</button>
+        </div>
+
+        <div id="sub-rosilene-info" class="pesq-subcontent active">
+          <p>Mulher cis, indígena-afro amazônica, PCD, autonominada per_form@triz antirracista e anticapacitista da, na e com as periferias da Amazônia paraense. Doutoranda no PPGARTES-UFPA, é Mestra em Comunicação, Linguagens e Cultura pela UNAMA-Belém (2018) e Especialista em Teatro do Oprimido: Práticas Político-pedagógicas pela UFBA (2025). Especialista em Artes Cênicas e Estudos Contemporâneos do Corpo pelo ICA/UFPA (2012). Graduada em Pedagogia pela UFPA (2003) e atriz formada pela Escola de Teatro e Dança da UFPA (2010).</p>
+          <p>Mestra de Cultura do Estado pela Secult-PA (2025). Coordenadora do Ponto de Cultura Poronga da Cabocla Dona Herondina e do Caboclo Seu Rompe Mato, credenciado pela Secult-PA (2024) e pelo Programa Cultura Viva–MinC/Secult-PA (2025). Vice-líder do Grupo de Pesquisa Perau — Memória, História e Artes Cênicas na Amazônia (CNPq/UFPA) desde 2017.</p>
+          <p>Professora efetiva da Semec-Belém (desde 2012) e especialista educacional da SEDUC-PA (desde 2012), atuando como coordenadora pedagógica no Ensino Inclusivo no CAEE/SEDUC-PA em Icoaraci. Afro-religiosa de Pena e Maracá. Técnica de Enfermagem com 18 anos de atuação em saúde pública coletiva (1995–2012).</p>
+          <p>Sua pesquisa atual desenvolve reflexões metodológicas sobre re-existências e re-vivências memoriais per_form@tivas cotidianas, com paragens de pesquisa em Irituia/PA, Rio de Janeiro/RJ e Salvador/BA.</p>
+        </div>
+
+        <div id="sub-rosilene-pub" class="pesq-subcontent">
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Artigos e capítulos</p>
+          <div class="pesq-pub-item">Cordeiro, R. C. <em>Cine_Mato_Grafias: memorial antirracista de uma atriz-professora-realizadora de audiovisual na Amazônia Paraense</em>. <strong>Arteriais — PPGARTES/UFPA</strong>, p. 203–219, 2024.</div>
+          <div class="pesq-pub-item">Cordeiro, R. C. <em>Corpografia memorial: a narrativa poética do corpo em "Performance a São Marçal — Proibido para o banho"</em>. <strong>Revista Sentidos da Cultura</strong>, v. 7, p. 115–135, 2020.</div>
+          <div class="pesq-pub-item">Bezerra, J. D. O.; Cordeiro, R. C. <em>Maura cansada: corpo, performance e memorialidades</em>. <strong>Boitatá</strong>, v. 14, p. 69–82, 2019.</div>
+          <div class="pesq-pub-item">Cordeiro, R.; Weyl, F.; Bezerra, J. D. O. <em>#Feitiço (in progress): fazer-pensar magia no cinema amazônida</em>. <strong>Nova Revista Amazônica</strong>, v. 7, p. 279–286, 2019.</div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Capítulos de livro</p>
+          <div class="pesq-pub-item">Bezerra, J. D. O.; Andrade, S. S.; Cordeiro, R. C. <em>'Cabocla Mariana mora nas ondas do mar, faixa encarnada ela ganhou pra guerrear!': um estudo sobre performance cotidiana e memória cultural paraense</em>. In: Bezerra, J. D. O.; Andrade, S. S. (Org.). <strong>Peraus da Memória: Pesquisa em Artes Cênicas na Amazônia</strong>. Belém: Paka-Tatu, 2023, v. 1, p. 9–283.</div>
+          <div class="pesq-pub-item">Bezerra, J. D. O.; Cordeiro, R. C. <em>Peraus da memória: experiências em processos de ensino e aprendizagens de teatro em uma comunidade na Amazônia paraense</em>. In: Carneiro, L. M.; Araújo, H. (Org.). <strong>Experiências de Formação em Arte na Amazônia</strong>. Rio Branco: Stricto Sensu, 2020, p. 57–74.</div>
+        </div>
+
+        <div id="sub-rosilene-arte" class="pesq-subcontent">
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Artes Cênicas</p>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎭</div>
+            <div class="pesq-arte-texto"><strong>Ouça, meu filho! (2022)</strong>Espetáculo teatral de dramaturgia autoral. Audição performativa homônima realizada em 2019.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🥁</div>
+            <div class="pesq-arte-texto"><strong>Bruno de Menezes: Batuques transoceânicos (2021)</strong>Performance em colaboração com Wallace Pantoja, evocando os trânsitos afro-amazônicos na poética do escritor paraense Bruno de Menezes.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">✊</div>
+            <div class="pesq-arte-texto"><strong>Sem Mortes (2020)</strong>Performance coletiva com Sousa, S.; Ferreira, N.; Magno, W.; Barbosa, R. Intervenção político-artística sobre violência e resistência.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🌊</div>
+            <div class="pesq-arte-texto"><strong>Louvação Mariana (2019)</strong>Performance em colaboração com Bezerra, D. J. Evocação ritual da memória mariana e das devoções populares amazônicas.</div>
+          </div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Audiovisual</p>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎬</div>
+            <div class="pesq-arte-texto"><strong>Arara Encantadeira, Parteira Encantada, Mariana das Feiras (2022)</strong>Filme autoral sobre memória, corpo e encantamento feminino amazônico.</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎬</div>
+            <div class="pesq-arte-texto"><strong>#Feitiço (2021–2022)</strong>Filme em colaboração com Moura, M. N. F.; Bezerra, D. J.; Brigida, R. S.; Weyl, F. Inclui teaser (2020) e versão final (2022).</div>
+          </div>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎬</div>
+            <div class="pesq-arte-texto"><strong>Erezada (2020)</strong>Filme de curta-metragem de realização própria.</div>
+          </div>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem; margin-top:1.5rem;">Música</p>
+          <div class="pesq-arte-item">
+            <div class="pesq-arte-icon">🎵</div>
+            <div class="pesq-arte-texto"><strong>Prêmio Exu de Música Afrebrasileira e Africana (2018)</strong>Participação com Kinamboji, T.; Leandro, A.; Catende, E.; Omyoriam, E. Reconhecimento na cena da música afro-religiosa.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pesq-tabs-wrapper -->
+
+  <p class="grupo-label">Estudantes ativos</p>
+  <div class="estudantes-lista">
+    <div class="estudante-tag">
+      <span class="estudante-nivel">Graduação</span>
+      Arthur Alexandre de Aguiar Dias Cruz
+    </div>
+    <div class="estudante-tag">
+      <span class="estudante-nivel">Graduação</span>
+      Arthur de Castro Morais
+    </div>
+    <div class="estudante-tag">
+      <span class="estudante-nivel">Especialização</span>
+      Diana Regina Carmo de Carvalho
+    </div>
+    <div class="estudante-tag">
+      <span class="estudante-nivel">Graduação</span>
+      Lívia Maria Vieira da Silva Brito
+    </div>
+    <div class="estudante-tag">
+      <span class="estudante-nivel">Especialização</span>
+      Raynara Patricia Gonçalves Façanha
+    </div>
+  </div>
+
+  <p class="grupo-label">Técnico</p>
+  <div class="estudantes-lista">
+    <div class="estudante-tag">
+      <span class="estudante-nivel">Especialização</span>
+      Carlos André Souza Mendes
+    </div>
+  </div>
+
+  <p class="grupo-label">Estudantes egressos / inativos</p>
+  <div class="estudantes-lista">
+    <div class="estudante-tag" style="opacity:0.65;">
+      <span class="estudante-nivel">Graduação · Egresso</span>
+      Ana Beatriz Rodrigues Lima
+    </div>
+    <div class="estudante-tag" style="opacity:0.65;">
+      <span class="estudante-nivel">Graduação · Egresso</span>
+      Bruno Rafael Farias dos Santos
+    </div>
+    <div class="estudante-tag" style="opacity:0.65;">
+      <span class="estudante-nivel">Graduação · Egresso</span>
+      Clarice Souza da Silva
+    </div>
+    <div class="estudante-tag" style="opacity:0.65;">
+      <span class="estudante-nivel">Especialização · Egresso</span>
+      Jaqueline Pinto Ferreira
+    </div>
+    <div class="estudante-tag" style="opacity:0.65;">
+      <span class="estudante-nivel">Graduação · Egresso</span>
+      Kelyton Hugo Coelho da Costa
+    </div>
+  </div>
+</section>
+
+<!-- ── IMPACTO ── -->
+<div id="impacto">
+  <div class="inner fade-in">
+    <p class="section-label">Produção e alcance</p>
+    <h2 class="section-title">Impacto <em>científico</em></h2>
+    <div class="rule"></div>
+
+    <div class="impacto-grid">
+      <div class="impacto-card">
+        <div class="impacto-num">9</div>
+        <div class="impacto-label">pesquisadores<br>ativos</div>
+      </div>
+      <div class="impacto-card">
+        <div class="impacto-num">4</div>
+        <div class="impacto-label">linhas de<br>pesquisa</div>
+      </div>
+      <div class="impacto-card">
+        <div class="impacto-num">758</div>
+        <div class="impacto-label">citações (grupo)<br>Google Scholar</div>
+      </div>
+      <div class="impacto-card">
+        <div class="impacto-num">2022</div>
+        <div class="impacto-label">ano de<br>formação</div>
+      </div>
+    </div>
+
+    <div class="lider-impacto">
+      <div>
+        <div class="lider-scholar-num">758</div>
+        <div class="lider-scholar-label">citações · Google Scholar<br>soma dos pesquisadores do grupo</div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:#d4c8b0;">
+        <div style="background:var(--creme); padding:2rem 1.5rem; text-align:center;">
+          <div class="impacto-num">20</div>
+          <div class="impacto-label">trabalhos de<br>conclusão de curso</div>
+        </div>
+        <div style="background:var(--creme); padding:2rem 1.5rem; text-align:center;">
+          <div class="impacto-num">8</div>
+          <div class="impacto-label">dissertações<br>de mestrado</div>
+        </div>
+        <div style="background:var(--creme); padding:2rem 1.5rem; text-align:center;">
+          <div class="impacto-num">4</div>
+          <div class="impacto-label">teses de<br>doutorado</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produções 2022–2026 -->
+    <div style="margin-top:3rem; border-top:1px solid #d4c8b0; padding-top:2.5rem;">
+      <p class="section-label" style="margin-bottom:1.5rem;">Seleção de produções · 2022–2026</p>
+
+      <div class="producoes-grid">
+
+        <div>
+          <p style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Artigos e capítulos · 2022–2026</p>
+          <ul style="list-style:none; padding:0; font-size:0.92rem; line-height:1.9; color:var(--texto-leve);">
+            <li>· PANTOJA, W. W. R. <em>Educação do Campo à beira da "Faixa": a (in)existência do lugar como espacialização do fenômeno</em>. 2022.</li>
+            <li>· PANTOJA, W. W. R. et al. <em>Religião e conexões geopolíticas no terceiro milênio</em> (org. Arteaga; Peluso; Pantoja). io5, 2022.</li>
+            <li>· DE BRITO, A. E. M. C.; DE OLIVEIRA, D. C. L.; TORRES, M. G. <em>Educar em meio aos conflitos: precarização e invisibilização do ensino em assentamentos de reforma agrária no Pará</em>. <strong>RASENG</strong>, v. 4, n. 2, p. 65–80, 2022.</li>
+            <li>· NOGUEIRA, A. R. B. et al. <em>Entre rios e afluentes: ensino presencial com mediação tecnológica no Amazonas</em>. PPGEOG-UFAM, 2023.</li>
+            <li>· BASTOS, R. F. <em>Fenomenologia da corporeidade geográfica: constituição e primordialidade</em>. In: Marandola Jr.; Holzer; Batista (Orgs.) <strong>Portais da Terra: contribuições dos estudos humanistas para a Geografia Contemporânea</strong>. 2023.</li>
+            <li>· NOGUEIRA, A. R. B.; SILVA, D. N. C. H. <em>Geografia Humanista e o conceito de lugar: a subjetividade da migração em Manaus/AM</em>. In: <strong>Anais do Amazonas</strong> (UFAM), 2024.</li>
+            <li>· CORDEIRO, R. C. <em>CINE_MATO_GRAFIAS: memorial antirracista de uma atriz-professora-realizadora de audiovisual na Amazônia Paraense</em>. <strong>Arteriais — PPGARTES/UFPA</strong>, p. 203–219, nov. 2024.</li>
+            <li>· DE FARIAS MOURA, M. N.; DA SILVA FREITAS, P. I. <em>Milagre Comum: sua ética e sua poética, suas vozes e seus silêncios</em>. <strong>Voz e Cena</strong>, v. 6, n. 02, p. 217–228, 2025.</li>
+            <li>· ARTEAGA, P. E. M.; PANTOJA, W. W. R. <em>Lugar das mulheres pretas nos anos 70, 80 e 90 na construção de Brasília: uma jornada histórica através do arquivo público do DF</em>. Brasília: io5, 2026.</li>
+            <li>· DE BRITO, A. E. M. C.; NEVES, E. C. C.; ALBUQUERQUE, J. <em>Chegada e partida: comercialização irregular de lotes e a fuga do PDS Virola Jatobá (Anapu/Pará)</em>. <strong>Geografia</strong>, v. 51, n. 1, 2026.</li>
+          </ul>
+        </div>
+
+        <div>
+          <p style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Projetos em andamento</p>
+          <ul style="list-style:none; padding:0; font-size:0.92rem; line-height:1.9; color:var(--texto-leve);">
+            <li>· <strong>Bainhas: costurando reXistências no Marajó</strong> — propriedade intelectual coletiva em parceria com artistas LGBTQIAPN+ de Oeiras do Pará e costureiras ribeirinhas. Coord. Wallace Pantoja / PROFNIT-IFPA. Em andamento.</li>
+            <li>· <strong>Pós-doutorado UFPA</strong> — estágio pós-doutoral de Wallace Pantoja no PPGEO-UFPA, aprofundando o conceito de <em>espaço fraturado</em> e geografias dissidentes na Amazônia.</li>
+            <li>· <strong>Dossiê Ajuricaba / RASENG 2025</strong> — publicação dos trabalhos selecionados do III Encontro de Geografia Cultural e Humanista da Amazônia (Manaus, out.–nov. 2024), em parceria com a revista <em>Presença Geográfica</em> (UNIR).</li>
+            <li>· <strong>Chamada especial RASENG 2026</strong> — dossiê dedicado a Estudos Amazônicos, submissões abertas até outubro de 2026.</li>
+          </ul>
+
+          <p style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--verde-agua); margin-top:1.5rem; margin-bottom:1rem;">Eventos científicos organizados</p>
+          <ul style="list-style:none; padding:0; font-size:0.92rem; line-height:1.9; color:var(--texto-leve);">
+            <li>· <strong>Ajuricaba — III Encontro de Geografia Cultural e Humanista da Amazônia</strong>. UFAM/IFCHS, Manaus, 30 out.–2 nov. 2024. Co-organização do grupo.</li>
+            <li>· <strong>XII SEGHUM</strong> — minicurso "Contribuições humanistas para entender a Amazônia: mapas mentais como representação do lugar" (Nogueira, UFAM). 2023.</li>
+            <li>· <strong>XV ENAPEGE 2023</strong> — apresentações de membros do grupo sobre literatura, migração e lugar.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── RASENG ── -->
+<section id="raseng" class="fade-in">
+  <p class="section-label">Publicação vinculada</p>
+  <h2 class="section-title">RASENG</h2>
+  <div class="rule"></div>
+  <div class="raseng-box">
+    <div class="raseng-lado">
+      <div class="raseng-sigla">RASENG</div>
+      <div class="raseng-nome-completo">Revista Amazônica<br>sobre Ensino de Geografia</div>
+    </div>
+    <div class="raseng-conteudo">
+      <p>Revista editada por membros do grupo de pesquisa com foco em divulgação científica da produção amazônica e educação profissional.</p>
+      <div class="raseng-pills">
+        <span class="raseng-pill">Educação Geográfica</span>
+        <span class="raseng-pill">Ensino de Geografia</span>
+        <span class="raseng-pill">Aprendizagem Territorial</span>
+        <span class="raseng-pill">Amazônia</span>
+        <span class="raseng-pill">Fluxo contínuo</span>
+      </div>
+      <p class="raseng-qualis">ISSN 2675-3987 &nbsp;·&nbsp; Qualis B1 (2021–2024) &nbsp;·&nbsp; Acesso aberto</p>
+      <p style="font-size:0.9rem; color:var(--texto-leve); margin-top:1rem;">A edição mais recente traz o Dossiê <em>Ajuricaba</em>, com trabalhos selecionados do III Encontro de Geografia Cultural e Humanista da Amazônia. Em 2026, a RASENG lança chamada especial dedicada a Estudos Amazônicos (submissões até outubro).</p>
+      <a class="raseng-link" href="https://www.raseng.com" target="_blank">↗ Acessar raseng.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARCEIROS ── -->
+<div id="parceiros">
+  <div class="inner fade-in">
+    <p class="section-label">Rede institucional</p>
+    <h2 class="section-title">Instituições <em>parceiras</em></h2>
+    <div class="parceiros-grid">
+      <div class="parceiro">
+        <p class="parceiro-sigla">IFPA</p>
+        <p class="parceiro-nome">Instituto Federal do Pará<br>(Belém, Ananindeua, Itaituba, Tucuruí, Conceição do Araguaia)</p>
+      </div>
+      <div class="parceiro">
+        <p class="parceiro-sigla">UFAM</p>
+        <p class="parceiro-nome">Universidade Federal do Amazonas<br>Depto. de Geografia e PPGG</p>
+      </div>
+      <div class="parceiro">
+        <p class="parceiro-sigla">UEPA</p>
+        <p class="parceiro-nome">Universidade Estadual<br>do Pará</p>
+      </div>
+      <div class="parceiro">
+        <p class="parceiro-sigla">UnB</p>
+        <p class="parceiro-nome">Universidade de Brasília<br>CIGA · OPCULT</p>
+      </div>
+      <div class="parceiro">
+        <p class="parceiro-sigla">UFPA</p>
+        <p class="parceiro-nome">Universidade Federal do Pará<br>Pós-doc em Geografia</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTATO ── -->
+<section id="contato" style="margin:0 auto; text-align:center;" class="fade-in">
+  <p class="section-label" style="text-align:center;">Fale conosco</p>
+  <p class="contato-lider">Wallace Wagner Rodrigues Pantoja</p>
+  <p class="contato-cargo">Líder do Grupo · IFPA Campus Belém</p>
+  <a class="contato-email" href="mailto:wallace.pantoja@ifpa.edu.br">wallace.pantoja@ifpa.edu.br</a>
+  <br><br>
+  <a class="cnpq-link" href="https://dgp.cnpq.br/dgp/espelhogrupo/1318639226808539" target="_blank" style="font-size:0.65rem;">↗ Diretório CNPq · dgp.cnpq.br</a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  GEOGRAFICIDADES AMAZÔNICAS · GRUPO DE PESQUISA CNPq · IFPA CAMPUS BELÉM · BELÉM, PA · BRASIL
+</footer>
+
+<script>
+  // ── ABAS DE PESQUISADORES ──
+  function abrirAba(event, id) {
+    // Desativa todos os botões de aba
+    document.querySelectorAll('.pesq-tab-btn').forEach(btn => {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-selected', 'false');
+    });
+    // Oculta todos os painéis
+    document.querySelectorAll('.pesq-panel').forEach(panel => {
+      panel.classList.remove('active');
+    });
+    // Ativa o botão clicado e o painel correspondente
+    event.currentTarget.classList.add('active');
+    event.currentTarget.setAttribute('aria-selected', 'true');
+    document.getElementById('panel-' + id).classList.add('active');
+  }
+
+  function abrirSubtab(event, pesq, sub) {
+    // Desativa subtabs do mesmo painel
+    const painel = document.getElementById('panel-' + pesq);
+    painel.querySelectorAll('.pesq-subtab-btn').forEach(btn => btn.classList.remove('active'));
+    painel.querySelectorAll('.pesq-subcontent').forEach(content => content.classList.remove('active'));
+    // Ativa o clicado
+    event.currentTarget.classList.add('active');
+    document.getElementById('sub-' + pesq + '-' + sub).classList.add('active');
+  }
+
+  // Fade-in ao rolar
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Nav ativa
+  const navLinks = document.querySelectorAll('.inner-nav a');
+  const sections = document.querySelectorAll('[id]');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current
+        ? 'var(--ouro-claro)' : '';
+      link.style.borderBottomColor = link.getAttribute('href') === '#' + current
+        ? 'var(--ouro)' : '';
+    });
+  });
+</script>
+</body>
+</html>    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .rio {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: desenha-rio 6s ease forwards;
+  }
+  .rio:nth-child(1) { animation-delay: 0.2s; }
+  .rio:nth-child(2) { animation-delay: 0.8s; }
+  .rio:nth-child(3) { animation-delay: 1.2s; }
+  .rio:nth-child(4) { animation-delay: 1.6s; }
+  .rio:nth-child(5) { animation-delay: 1.9s; }
+  .rio:nth-child(6) { animation-delay: 2.2s; }
+
+  @keyframes desenha-rio {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .ponto-pulsa {
+    animation: pulsa 2.5s ease-in-out infinite;
+  }
+  @keyframes pulsa {
+    0%, 100% { r: 4; opacity: 0.55; }
+    50% { r: 6; opacity: 0.9; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--verde-escuro);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 4rem 2rem;
+  }
+
+  /* padrão vegetal de fundo */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 80%, rgba(74,140,110,0.25) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 20%, rgba(200,168,75,0.12) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 50%, rgba(45,90,61,0.4) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* linhas diagonais ornamentais */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 60px,
+      rgba(200,168,75,0.04) 60px,
+      rgba(200,168,75,0.04) 61px
+    );
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    opacity: 0.85;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--creme);
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--ouro-claro);
+  }
+
+  .hero-divider {
+    width: 80px;
+    height: 1px;
+    background: var(--ouro);
+    margin: 2.5rem auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-divider::before, .hero-divider::after {
+    content: '◆';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.5rem;
+    color: var(--ouro);
+  }
+  .hero-divider::before { left: -1.2rem; }
+  .hero-divider::after { right: -1.2rem; }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.75);
+    max-width: 560px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.45rem 1.1rem;
+    border: 1px solid rgba(200,168,75,0.5);
+    color: var(--ouro-claro);
+    border-radius: 2px;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(245,240,232,0.4);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .scroll-hint span { font-size: 1.2rem; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── NAV INTERNA ── */
+  .inner-nav {
+    background: var(--verde-medio);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .inner-nav a {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .inner-nav a:hover {
+    color: var(--ouro-claro);
+    border-bottom-color: var(--ouro);
+  }
+
+  /* ── SEÇÕES ── */
+  section {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--verde-agua);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--verde-escuro);
+    line-height: 1.2;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--verde-agua); }
+
+  .rule {
+    width: 40px;
+    height: 2px;
+    background: var(--ouro);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── APRESENTAÇÃO ── */
+  #apresentacao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    #apresentacao { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  .apresentacao-texto p {
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--texto-leve);
+    margin-bottom: 1.2rem;
+  }
+
+  .apresentacao-texto p:first-of-type {
+    font-size: 1.3rem;
+    color: var(--texto);
+    font-weight: 300;
+  }
+
+  .apresentacao-meta {
+    border-left: 2px solid var(--ouro);
+    padding-left: 2rem;
+  }
+
+  .meta-item {
+    margin-bottom: 2rem;
+  }
+
+  .meta-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--verde-agua);
+    margin-bottom: 0.4rem;
+  }
+
+  .meta-value {
+    font-size: 1rem;
+    color: var(--texto);
+    line-height: 1.5;
+  }
+
+  .cnpq-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--verde-agua);
+    text-decoration: none;
+    border-bottom: 1px solid var(--verde-agua);
+    padding-bottom: 1px;
+    margin-top: 0.3rem;
+    transition: color 0.2s;
+  }
+
+  .cnpq-link:hover { color: var(--ouro); border-bottom-color: var(--ouro); }
+
+  /* ── LINHAS DE PESQUISA ── */
+  #linhas { background: var(--verde-escuro); max-width: 100%; padding: 5rem 2rem; }
+
+  #linhas > .inner { max-width: 1100px; margin: 0 auto; }
+
+  #linhas .section-label { color: var(--ouro); }
+  #linhas .section-title { color: var(--creme); }
+  #linhas .section-title em { color: var(--ouro-claro); }
+  #linhas .rule { background: var(--ouro); }
+
+  .linhas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+    background: rgba(200,168,75,0.15);
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) { .linhas-grid { grid-template-columns: 1fr; } }
+
+  .linha-card {
+    background: var(--verde-escuro);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .linha-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 300;
+    color: rgba(200,168,75,0.1);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+
+  .linha-card:hover { background: rgba(74,140,110,0.12); }
+  .linha-card:hover::before { color: rgba(200,168,75,0.2); }
+
+  .linha-nome {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ouro-claro);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    max-width: 80%;
+  }
+
+  .linha-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.65);
+  }
+
+  .linha-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .linha-stat {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: rgba(200,168,75,0.6);
+  }
+
+  .linha-stat strong {
+    display: block;
+    font-size: 1.4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    color: var(--ouro);
+    margin-bottom: 0.1rem;
+  }
+
+  /* ── PESQUISADORES ── */
+  #pesquisadores { padding-top: 5rem; padding-bottom: 5rem; }
+
+  .pesquisadores-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--texto-leve);
+    max-width: 650px;
+    margin-bottom: 3rem;
+  }
+
+  .grupo-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    background: var(--verde-escuro);
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .pesquisadores-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px;
+    background: #e8e0d0;
+    margin-bottom: 3rem;
+  }
+
+  .pesquisador-card {
+    background: var(--branco);
+    padding: 1.8rem;
+    transition: background 0.2s;
+  }
+
+  .pesquisador-card:hover { background: #f0ece4; }
+
+  .pesquisador-nome {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--verde-escuro);
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+  }
+
+  .pesquisador-lider .pesquisador-nome::after {
+    content: ' ✦';
+    color: var(--ouro);
+    font-size: 0.7rem;
+  }
+
+  .pesquisador-titulo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--verde-agua);
+    margin-bottom: 0.3rem;
+  }
+
+  .pesquisador-inst {
+    font-size: 0.85rem;
+    color: var(--texto-leve);
+    font-style: italic;
+  }
+
   /* estudantes */
   .estudantes-lista {
     display: flex;
