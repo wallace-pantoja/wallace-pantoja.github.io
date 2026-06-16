@@ -529,7 +529,6 @@
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    object-fit: cover;
     border: 2px solid rgba(200,168,75,0.3);
     background: #2d5a3d;
     display: flex;
@@ -537,12 +536,15 @@
     justify-content: center;
     overflow: hidden;
     flex-shrink: 0;
+    position: relative;
   }
 
   .pesq-tab-foto img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
+    inset: 0;
   }
 
   .pesq-tab-foto-placeholder {
@@ -559,6 +561,24 @@
     font-weight: 300;
     color: var(--ouro-claro);
     flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .pesq-tab-foto-placeholder .tab-inicial {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--ouro-claro);
+    z-index: 0;
+  }
+
+  .pesq-tab-foto-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
   }
 
   .pesq-tab-label {
@@ -599,7 +619,6 @@
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    object-fit: cover;
     border: 3px solid rgba(200,168,75,0.4);
     background: var(--verde-medio);
     display: flex;
@@ -607,28 +626,29 @@
     justify-content: center;
     overflow: hidden;
     margin-bottom: 0.5rem;
+    flex-shrink: 0;
+    position: relative;
   }
 
   .pesq-panel-foto-grande img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
+    inset: 0;
   }
 
-  .pesq-panel-foto-placeholder {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    border: 3px solid rgba(200,168,75,0.4);
-    background: var(--verde-medio);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* inicial exibida quando não há foto — escondida quando img carrega */
+  .pesq-panel-foto-grande .foto-inicial {
     font-family: 'Cormorant Garamond', serif;
     font-size: 3rem;
     font-weight: 300;
     color: var(--ouro-claro);
-    margin-bottom: 0.5rem;
+    z-index: 0;
+  }
+
+  .pesq-panel-foto-placeholder {
+    display: none; /* não usado mais — mantido por compatibilidade */
   }
 
   .pesq-panel-nome {
@@ -1411,52 +1431,52 @@
     <div class="pesq-tabs-scroll" role="tablist" aria-label="Pesquisadores do grupo">
 
       <button class="pesq-tab-btn active" onclick="abrirAba(event,'wallace')" role="tab" aria-selected="true">
-        <div class="pesq-tab-foto-placeholder">W</div>
+        <div class="pesq-tab-foto-placeholder"><span class="tab-inicial">W</span><img src="imagens/wallace.jpg" alt="" onload="this.style.zIndex='1'" onerror="this.style.display='none'"></div>
         <span class="pesq-tab-label">Wallace<br>Pantoja</span>
       </button>
 
       <button class="pesq-tab-btn" onclick="abrirAba(event,'amelia')" role="tab" aria-selected="false">
-        <div class="pesq-tab-foto-placeholder">A</div>
+        <div class="pesq-tab-foto-placeholder"><span class="tab-inicial">A</span><img src="imagens/amelia.jpg" alt="" onload="this.style.zIndex='1'" onerror="this.style.display='none'"></div>
         <span class="pesq-tab-label">Amélia<br>Nogueira</span>
       </button>
 
       <button class="pesq-tab-btn" onclick="abrirAba(event,'arthur')" role="tab" aria-selected="false">
-        <div class="pesq-tab-foto-placeholder">A</div>
+        <div class="pesq-tab-foto-placeholder"><span class="tab-inicial">A</span><img src="imagens/arthur.jpg" alt="" onload="this.style.zIndex='1'" onerror="this.style.display='none'"></div>
         <span class="pesq-tab-label">Arthur<br>de Brito</span>
       </button>
 
       <button class="pesq-tab-btn" onclick="abrirAba(event,'debora')" role="tab" aria-selected="false">
-        <div class="pesq-tab-foto-placeholder">D</div>
+        <div class="pesq-tab-foto-placeholder"><span class="tab-inicial">D</span><img src="imagens/debora.jpg" alt="" onload="this.style.zIndex='1'" onerror="this.style.display='none'"></div>
         <span class="pesq-tab-label">Débora<br>Nunes</span>
       </button>
 
       <button class="pesq-tab-btn" onclick="abrirAba(event,'marcia')" role="tab" aria-selected="false">
-        <div class="pesq-tab-foto-placeholder">M</div>
+        <div class="pesq-tab-foto-placeholder"><span class="tab-inicial">M</span><img src="imagens/marcia.jpg" alt="" onload="this.style.zIndex='1'" onerror="this.style.display='none'"></div>
         <span class="pesq-tab-label">Márcia<br>Kambeba</span>
       </button>
 
       <button class="pesq-tab-btn" onclick="abrirAba(event,'mateus')" role="tab" aria-selected="false">
-        <div class="pesq-tab-foto-placeholder">M</div>
+        <div class="pesq-tab-foto-placeholder"><span class="tab-inicial">M</span><img src="imagens/mateus.jpg" alt="" onload="this.style.zIndex='1'" onerror="this.style.display='none'"></div>
         <span class="pesq-tab-label">Mateus<br>Moura</span>
       </button>
 
       <button class="pesq-tab-btn" onclick="abrirAba(event,'pamela')" role="tab" aria-selected="false">
-        <div class="pesq-tab-foto-placeholder">P</div>
+        <div class="pesq-tab-foto-placeholder"><span class="tab-inicial">P</span><img src="imagens/pamela.jpg" alt="" onload="this.style.zIndex='1'" onerror="this.style.display='none'"></div>
         <span class="pesq-tab-label">Pamela<br>Arteaga</span>
       </button>
 
       <button class="pesq-tab-btn" onclick="abrirAba(event,'pedro')" role="tab" aria-selected="false">
-        <div class="pesq-tab-foto-placeholder">P</div>
+        <div class="pesq-tab-foto-placeholder"><span class="tab-inicial">P</span><img src="imagens/pedro.jpg" alt="" onload="this.style.zIndex='1'" onerror="this.style.display='none'"></div>
         <span class="pesq-tab-label">Pedro<br>Israel</span>
       </button>
 
       <button class="pesq-tab-btn" onclick="abrirAba(event,'rafael')" role="tab" aria-selected="false">
-        <div class="pesq-tab-foto-placeholder">R</div>
+        <div class="pesq-tab-foto-placeholder"><span class="tab-inicial">R</span><img src="imagens/rafael.jpg" alt="" onload="this.style.zIndex='1'" onerror="this.style.display='none'"></div>
         <span class="pesq-tab-label">Rafael<br>Bastos</span>
       </button>
 
       <button class="pesq-tab-btn" onclick="abrirAba(event,'rosilene')" role="tab" aria-selected="false">
-        <div class="pesq-tab-foto-placeholder">R</div>
+        <div class="pesq-tab-foto-placeholder"><span class="tab-inicial">R</span><img src="imagens/rosilene.jpg" alt="" onload="this.style.zIndex='1'" onerror="this.style.display='none'"></div>
         <span class="pesq-tab-label">Rosilene<br>Cordeiro</span>
       </button>
 
@@ -1468,9 +1488,9 @@
     <div id="panel-wallace" class="pesq-panel active" role="tabpanel">
       <div class="pesq-panel-sidebar">
         <div class="pesq-panel-foto-grande">
-          <img src="imagens/wallace.jpg" alt="Wallace Pantoja" onerror="this.style.display='none'">
+          <span class="foto-inicial">W</span>
+          <img src="imagens/wallace.jpg" alt="Wallace Pantoja" onload="this.style.zIndex='1'" onerror="this.style.display='none'">
         </div>
-        <div class="pesq-panel-foto-placeholder" id="ph-wallace" style="display:none;">W</div>
         <p class="pesq-panel-nome">Wallace Wagner Rodrigues Pantoja</p>
         <p class="pesq-panel-role">Doutor em Geografia · Líder ✦</p>
         <p class="pesq-panel-inst">IFPA Campus Belém<br>PROFNIT · NEGED</p>
@@ -1541,9 +1561,9 @@
     <div id="panel-amelia" class="pesq-panel" role="tabpanel">
       <div class="pesq-panel-sidebar">
         <div class="pesq-panel-foto-grande">
-          <img src="imagens/amelia.jpg" alt="Amélia Nogueira" onerror="this.style.display='none'">
+          <span class="foto-inicial">A</span>
+          <img src="imagens/amelia.jpg" alt="Amélia Nogueira" onload="this.style.zIndex='1'" onerror="this.style.display='none'">
         </div>
-        <div class="pesq-panel-foto-placeholder">A</div>
         <p class="pesq-panel-nome">Amélia Regina Batista Nogueira</p>
         <p class="pesq-panel-role">Professora Titular · Doutora</p>
         <p class="pesq-panel-inst">UFAM — Universidade Federal do Amazonas<br>PPGG · Lab. Ensino de Geografia</p>
@@ -1597,9 +1617,9 @@
     <div id="panel-arthur" class="pesq-panel" role="tabpanel">
       <div class="pesq-panel-sidebar">
         <div class="pesq-panel-foto-grande">
-          <img src="imagens/arthur.jpg" alt="Arthur de Brito" onerror="this.style.display='none'">
+          <span class="foto-inicial">A</span>
+          <img src="imagens/arthur.jpg" alt="Arthur de Brito" onload="this.style.zIndex='1'" onerror="this.style.display='none'">
         </div>
-        <div class="pesq-panel-foto-placeholder">A</div>
         <p class="pesq-panel-nome">Arthur Erik Monteiro Costa de Brito</p>
         <p class="pesq-panel-role">Pós-doutorando · Doutor</p>
         <p class="pesq-panel-inst">INEAF-UFPA · SEDUC-PA<br>Prof. Bacharelado Desenv. Rural–UFPA</p>
@@ -1659,9 +1679,9 @@
     <div id="panel-debora" class="pesq-panel" role="tabpanel">
       <div class="pesq-panel-sidebar">
         <div class="pesq-panel-foto-grande">
-          <img src="imagens/debora.jpg" alt="Débora Nunes" onerror="this.style.display='none'">
+          <span class="foto-inicial">D</span>
+          <img src="imagens/debora.jpg" alt="Débora Nunes" onload="this.style.zIndex='1'" onerror="this.style.display='none'">
         </div>
-        <div class="pesq-panel-foto-placeholder">D</div>
         <p class="pesq-panel-nome">Débora Aquino Nunes</p>
         <p class="pesq-panel-role">Mestra · Professora</p>
         <p class="pesq-panel-inst">IFPA Campus Abaetetuba</p>
@@ -1710,9 +1730,9 @@
     <div id="panel-marcia" class="pesq-panel" role="tabpanel">
       <div class="pesq-panel-sidebar">
         <div class="pesq-panel-foto-grande">
-          <img src="imagens/marcia.jpg" alt="Márcia Kambeba" onerror="this.style.display='none'">
+          <span class="foto-inicial">M</span>
+          <img src="imagens/marcia.jpg" alt="Márcia Kambeba" onload="this.style.zIndex='1'" onerror="this.style.display='none'">
         </div>
-        <div class="pesq-panel-foto-placeholder">M</div>
         <p class="pesq-panel-nome">Márcia Wayna Kambeba</p>
         <p class="pesq-panel-role">Pós-doutoranda · Doutora · Artivista</p>
         <p class="pesq-panel-inst">UnB · UFPA · UEA<br>Povo Kambeba (Omágua/Kambeba)</p>
@@ -1765,9 +1785,9 @@
     <div id="panel-mateus" class="pesq-panel" role="tabpanel">
       <div class="pesq-panel-sidebar">
         <div class="pesq-panel-foto-grande">
-          <img src="imagens/mateus.jpg" alt="Mateus Moura" onerror="this.style.display='none'">
+          <span class="foto-inicial">M</span>
+          <img src="imagens/mateus.jpg" alt="Mateus Moura" onload="this.style.zIndex='1'" onerror="this.style.display='none'">
         </div>
-        <div class="pesq-panel-foto-placeholder">M</div>
         <p class="pesq-panel-nome">Mateus Nogueira de Farias Moura</p>
         <p class="pesq-panel-role">Doutorando · Mestre em Artes</p>
         <p class="pesq-panel-inst">PPGARTES–UFPA · Linha 3<br>Semec–Belém · Produtora Maria Preta</p>
@@ -1845,9 +1865,9 @@
     <div id="panel-pamela" class="pesq-panel" role="tabpanel">
       <div class="pesq-panel-sidebar">
         <div class="pesq-panel-foto-grande">
-          <img src="imagens/pamela.jpg" alt="Pamela Arteaga" onerror="this.style.display='none'">
+          <span class="foto-inicial">P</span>
+          <img src="imagens/pamela.jpg" alt="Pamela Arteaga" onload="this.style.zIndex='1'" onerror="this.style.display='none'">
         </div>
-        <div class="pesq-panel-foto-placeholder">P</div>
         <p class="pesq-panel-nome">Pamela Elizabeth Morales Arteaga</p>
         <p class="pesq-panel-role">Doutora</p>
         <p class="pesq-panel-inst">Núcleo de Artes do Centro Oeste<br>CEAM-UnB · Brasília</p>
@@ -1884,9 +1904,9 @@
     <div id="panel-pedro" class="pesq-panel" role="tabpanel">
       <div class="pesq-panel-sidebar">
         <div class="pesq-panel-foto-grande">
-          <img src="imagens/pedro.jpg" alt="Pedro Israel Mota Pinto" onerror="this.style.display='none'">
+          <span class="foto-inicial">P</span>
+          <img src="imagens/pedro.jpg" alt="Pedro Israel Mota Pinto" onload="this.style.zIndex='1'" onerror="this.style.display='none'">
         </div>
-        <div class="pesq-panel-foto-placeholder">P</div>
         <p class="pesq-panel-nome">Pedro Israel Mota Pinto</p>
         <p class="pesq-panel-role">Doutorando em Geografia</p>
         <p class="pesq-panel-inst">UFPR — Universidade Federal do Paraná<br>Cria da Terra Firme · Belém/PA</p>
@@ -1937,9 +1957,9 @@
     <div id="panel-rafael" class="pesq-panel" role="tabpanel">
       <div class="pesq-panel-sidebar">
         <div class="pesq-panel-foto-grande">
-          <img src="imagens/rafael.jpg" alt="Rafael Bastos Ferreira" onerror="this.style.display='none'">
+          <span class="foto-inicial">R</span>
+          <img src="imagens/rafael.jpg" alt="Rafael Bastos Ferreira" onload="this.style.zIndex='1'" onerror="this.style.display='none'">
         </div>
-        <div class="pesq-panel-foto-placeholder">R</div>
         <p class="pesq-panel-nome">Rafael Bastos Ferreira</p>
         <p class="pesq-panel-role">Pós-doutorando · Doutor · Vice-líder ✦</p>
         <p class="pesq-panel-inst">NAEA/UFPA · PIPD/Capes<br>Círculo de Estudos Husserlianos–UFMA</p>
@@ -1987,9 +2007,9 @@
     <div id="panel-rosilene" class="pesq-panel" role="tabpanel">
       <div class="pesq-panel-sidebar">
         <div class="pesq-panel-foto-grande">
-          <img src="imagens/rosilene.jpg" alt="Rosilene Cordeiro" onerror="this.style.display='none'">
+          <span class="foto-inicial">R</span>
+          <img src="imagens/rosilene.jpg" alt="Rosilene Cordeiro" onload="this.style.zIndex='1'" onerror="this.style.display='none'">
         </div>
-        <div class="pesq-panel-foto-placeholder">R</div>
         <p class="pesq-panel-nome">Rosilene da Conceição Cordeiro</p>
         <p class="pesq-panel-role">Doutoranda · Mestra · Per_form@triz</p>
         <p class="pesq-panel-inst">PPGARTES-UFPA<br>SEDUC-PA · Semec-Belém</p>
@@ -2315,1369 +2335,6 @@
     document.getElementById('sub-' + pesq + '-' + sub).classList.add('active');
   }
 
-  // Fade-in ao rolar
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  // Nav ativa
-  const navLinks = document.querySelectorAll('.inner-nav a');
-  const sections = document.querySelectorAll('[id]');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      if (pageYOffset >= sectionTop) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-      link.style.color = link.getAttribute('href') === '#' + current
-        ? 'var(--ouro-claro)' : '';
-      link.style.borderBottomColor = link.getAttribute('href') === '#' + current
-        ? 'var(--ouro)' : '';
-    });
-  });
-</script>
-</body>
-</html>    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .rio {
-    stroke-dasharray: 1200;
-    stroke-dashoffset: 1200;
-    animation: desenha-rio 6s ease forwards;
-  }
-  .rio:nth-child(1) { animation-delay: 0.2s; }
-  .rio:nth-child(2) { animation-delay: 0.8s; }
-  .rio:nth-child(3) { animation-delay: 1.2s; }
-  .rio:nth-child(4) { animation-delay: 1.6s; }
-  .rio:nth-child(5) { animation-delay: 1.9s; }
-  .rio:nth-child(6) { animation-delay: 2.2s; }
-
-  @keyframes desenha-rio {
-    to { stroke-dashoffset: 0; }
-  }
-
-  .ponto-pulsa {
-    animation: pulsa 2.5s ease-in-out infinite;
-  }
-  @keyframes pulsa {
-    0%, 100% { r: 4; opacity: 0.55; }
-    50% { r: 6; opacity: 0.9; }
-  }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: var(--verde-escuro);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    padding: 4rem 2rem;
-  }
-
-  /* padrão vegetal de fundo */
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(ellipse at 20% 80%, rgba(74,140,110,0.25) 0%, transparent 55%),
-      radial-gradient(ellipse at 80% 20%, rgba(200,168,75,0.12) 0%, transparent 45%),
-      radial-gradient(ellipse at 50% 50%, rgba(45,90,61,0.4) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  /* linhas diagonais ornamentais */
-  .hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 60px,
-      rgba(200,168,75,0.04) 60px,
-      rgba(200,168,75,0.04) 61px
-    );
-    pointer-events: none;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--ouro);
-    opacity: 0.85;
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-title {
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 300;
-    line-height: 1.0;
-    color: var(--creme);
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--ouro-claro);
-  }
-
-  .hero-divider {
-    width: 80px;
-    height: 1px;
-    background: var(--ouro);
-    margin: 2.5rem auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-divider::before, .hero-divider::after {
-    content: '◆';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.5rem;
-    color: var(--ouro);
-  }
-  .hero-divider::before { left: -1.2rem; }
-  .hero-divider::after { right: -1.2rem; }
-
-  .hero-sub {
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: rgba(245,240,232,0.75);
-    max-width: 560px;
-    line-height: 1.7;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-badges {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 2.5rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .badge {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.45rem 1.1rem;
-    border: 1px solid rgba(200,168,75,0.5);
-    color: var(--ouro-claro);
-    border-radius: 2px;
-  }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(245,240,232,0.4);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    animation: bounce 2s ease-in-out infinite;
-  }
-
-  .scroll-hint span { font-size: 1.2rem; }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(6px); }
-  }
-
-  /* ── NAV INTERNA ── */
-  .inner-nav {
-    background: var(--verde-medio);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    overflow-x: auto;
-  }
-
-  .inner-nav a {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.7);
-    text-decoration: none;
-    padding: 1rem 1.5rem;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    transition: all 0.2s;
-  }
-
-  .inner-nav a:hover {
-    color: var(--ouro-claro);
-    border-bottom-color: var(--ouro);
-  }
-
-  /* ── SEÇÕES ── */
-  section {
-    padding: 5rem 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--verde-agua);
-    margin-bottom: 1rem;
-  }
-
-  .section-title {
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 300;
-    color: var(--verde-escuro);
-    line-height: 1.2;
-    margin-bottom: 2.5rem;
-  }
-
-  .section-title em { font-style: italic; color: var(--verde-agua); }
-
-  .rule {
-    width: 40px;
-    height: 2px;
-    background: var(--ouro);
-    margin-bottom: 2.5rem;
-  }
-
-  /* ── APRESENTAÇÃO ── */
-  #apresentacao {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
-  @media (max-width: 768px) {
-    #apresentacao { grid-template-columns: 1fr; gap: 2.5rem; }
-  }
-
-  .apresentacao-texto p {
-    font-size: 1.15rem;
-    line-height: 1.85;
-    color: var(--texto-leve);
-    margin-bottom: 1.2rem;
-  }
-
-  .apresentacao-texto p:first-of-type {
-    font-size: 1.3rem;
-    color: var(--texto);
-    font-weight: 300;
-  }
-
-  .apresentacao-meta {
-    border-left: 2px solid var(--ouro);
-    padding-left: 2rem;
-  }
-
-  .meta-item {
-    margin-bottom: 2rem;
-  }
-
-  .meta-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--verde-agua);
-    margin-bottom: 0.4rem;
-  }
-
-  .meta-value {
-    font-size: 1rem;
-    color: var(--texto);
-    line-height: 1.5;
-  }
-
-  .cnpq-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    color: var(--verde-agua);
-    text-decoration: none;
-    border-bottom: 1px solid var(--verde-agua);
-    padding-bottom: 1px;
-    margin-top: 0.3rem;
-    transition: color 0.2s;
-  }
-
-  .cnpq-link:hover { color: var(--ouro); border-bottom-color: var(--ouro); }
-
-  /* ── LINHAS DE PESQUISA ── */
-  #linhas { background: var(--verde-escuro); max-width: 100%; padding: 5rem 2rem; }
-
-  #linhas > .inner { max-width: 1100px; margin: 0 auto; }
-
-  #linhas .section-label { color: var(--ouro); }
-  #linhas .section-title { color: var(--creme); }
-  #linhas .section-title em { color: var(--ouro-claro); }
-  #linhas .rule { background: var(--ouro); }
-
-  .linhas-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5px;
-    background: rgba(200,168,75,0.15);
-    margin-top: 1rem;
-  }
-
-  @media (max-width: 768px) { .linhas-grid { grid-template-columns: 1fr; } }
-
-  .linha-card {
-    background: var(--verde-escuro);
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-  }
-
-  .linha-card::before {
-    content: attr(data-num);
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem;
-    font-weight: 300;
-    color: rgba(200,168,75,0.1);
-    line-height: 1;
-    transition: color 0.3s;
-  }
-
-  .linha-card:hover { background: rgba(74,140,110,0.12); }
-  .linha-card:hover::before { color: rgba(200,168,75,0.2); }
-
-  .linha-nome {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--ouro-claro);
-    line-height: 1.3;
-    margin-bottom: 1rem;
-    max-width: 80%;
-  }
-
-  .linha-desc {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: rgba(245,240,232,0.65);
-  }
-
-  .linha-stats {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .linha-stat {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    color: rgba(200,168,75,0.6);
-  }
-
-  .linha-stat strong {
-    display: block;
-    font-size: 1.4rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    color: var(--ouro);
-    margin-bottom: 0.1rem;
-  }
-
-  /* ── PESQUISADORES ── */
-  #pesquisadores { padding-top: 5rem; padding-bottom: 5rem; }
-
-  .pesquisadores-intro {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--texto-leve);
-    max-width: 650px;
-    margin-bottom: 3rem;
-  }
-
-  .grupo-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ouro);
-    background: var(--verde-escuro);
-    display: inline-block;
-    padding: 0.3rem 0.8rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .pesquisadores-lista {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1px;
-    background: #e8e0d0;
-    margin-bottom: 3rem;
-  }
-
-  .pesquisador-card {
-    background: var(--branco);
-    padding: 1.8rem;
-    transition: background 0.2s;
-  }
-
-  .pesquisador-card:hover { background: #f0ece4; }
-
-  .pesquisador-nome {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--verde-escuro);
-    line-height: 1.3;
-    margin-bottom: 0.4rem;
-  }
-
-  .pesquisador-lider .pesquisador-nome::after {
-    content: ' ✦';
-    color: var(--ouro);
-    font-size: 0.7rem;
-  }
-
-  .pesquisador-titulo {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--verde-agua);
-    margin-bottom: 0.3rem;
-  }
-
-  .pesquisador-inst {
-    font-size: 0.85rem;
-    color: var(--texto-leve);
-    font-style: italic;
-  }
-
-  /* estudantes */
-  .estudantes-lista {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-bottom: 2rem;
-  }
-
-  .estudante-tag {
-    border: 1px solid #d4c8b0;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    color: var(--texto-leve);
-    position: relative;
-  }
-
-  .estudante-nivel {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.5rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--verde-agua);
-    display: block;
-    margin-bottom: 0.2rem;
-  }
-
-  /* ── IMPACTO ── */
-  #impacto { background: var(--creme); max-width: 100%; padding: 5rem 2rem; }
-
-  #impacto > .inner { max-width: 1100px; margin: 0 auto; }
-
-  .impacto-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-    background: #d4c8b0;
-    margin-bottom: 3rem;
-  }
-
-  @media (max-width: 768px) { .impacto-grid { grid-template-columns: repeat(2, 1fr); } }
-
-  .impacto-card {
-    background: var(--creme);
-    padding: 2.5rem 2rem;
-    text-align: center;
-  }
-
-  .impacto-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: var(--verde-escuro);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .impacto-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--verde-agua);
-    line-height: 1.4;
-  }
-
-  .lider-impacto {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 3rem;
-    align-items: center;
-    border-top: 1px solid #d4c8b0;
-    padding-top: 2.5rem;
-  }
-
-  @media (max-width: 600px) { .lider-impacto { grid-template-columns: 1fr; } }
-
-  .producoes-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-  @media (max-width: 768px) { .producoes-grid { grid-template-columns: 1fr; } }
-
-  /* galeria responsiva */
-  @media (max-width: 768px) {
-    #galeria > div {
-      grid-template-columns: 1fr 1fr !important;
-      grid-template-rows: 200px 200px 200px !important;
-    }
-    #galeria > div > div:first-child {
-      grid-row: 1 / 2 !important;
-      grid-column: 1 / 3;
-    }
-  }
-  @media (max-width: 480px) {
-    #galeria > div {
-      grid-template-columns: 1fr !important;
-      grid-template-rows: repeat(5, 200px) !important;
-    }
-    #galeria > div > div:first-child {
-      grid-column: 1 !important;
-    }
-  }
-
-  .lider-scholar-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem;
-    font-weight: 300;
-    color: var(--verde-escuro);
-    line-height: 1;
-  }
-
-  .lider-scholar-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--verde-agua);
-    margin-top: 0.3rem;
-  }
-
-  .lider-scholar-desc {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--texto-leve);
-  }
-
-  /* ── RASENG ── */
-  #raseng { padding-top: 5rem; padding-bottom: 5rem; }
-
-  .raseng-box {
-    border: 1px solid var(--verde-agua);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    overflow: hidden;
-  }
-
-  @media (max-width: 600px) { .raseng-box { grid-template-columns: 1fr; } }
-
-  .raseng-lado {
-    background: var(--verde-medio);
-    padding: 3rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .raseng-sigla {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4.5rem;
-    font-weight: 300;
-    color: var(--ouro-claro);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .raseng-nome-completo {
-    font-size: 0.9rem;
-    color: rgba(245,240,232,0.7);
-    line-height: 1.4;
-    font-style: italic;
-  }
-
-  .raseng-conteudo {
-    padding: 3rem;
-    background: var(--branco);
-  }
-
-  .raseng-conteudo p {
-    font-size: 1.05rem;
-    line-height: 1.85;
-    color: var(--texto-leve);
-    margin-bottom: 1rem;
-  }
-
-  .raseng-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1.5rem 0;
-  }
-
-  .raseng-pill {
-    background: rgba(74,140,110,0.1);
-    border: 1px solid rgba(74,140,110,0.3);
-    color: var(--verde-medio);
-    padding: 0.3rem 0.8rem;
-    font-size: 0.8rem;
-    border-radius: 2px;
-  }
-
-  .raseng-qualis {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: var(--verde-agua);
-    margin-top: 0.5rem;
-  }
-
-  .raseng-link {
-    display: inline-block;
-    margin-top: 1.5rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--verde-escuro);
-    text-decoration: none;
-    border-bottom: 1px solid var(--verde-escuro);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .raseng-link:hover { color: var(--verde-agua); border-color: var(--verde-agua); }
-
-  /* ── PARCEIROS ── */
-  #parceiros { background: var(--verde-escuro); max-width: 100%; padding: 4rem 2rem; }
-
-  #parceiros > .inner { max-width: 1100px; margin: 0 auto; }
-
-  #parceiros .section-label { color: var(--ouro); }
-  #parceiros .section-title { color: var(--creme); font-size: 1.5rem; }
-
-  .parceiros-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1px;
-    background: rgba(200,168,75,0.15);
-    margin-top: 1.5rem;
-  }
-
-  .parceiro {
-    background: var(--verde-escuro);
-    padding: 1.5rem 2rem;
-    flex: 1;
-    min-width: 160px;
-  }
-
-  .parceiro-sigla {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    color: var(--ouro);
-    margin-bottom: 0.3rem;
-  }
-
-  .parceiro-nome {
-    font-size: 0.85rem;
-    color: rgba(245,240,232,0.6);
-    line-height: 1.3;
-    font-style: italic;
-  }
-
-  /* ── CONTATO ── */
-  #contato { padding: 5rem 2rem; text-align: center; max-width: 700px; }
-
-  .contato-lider {
-    font-size: 1.3rem;
-    font-weight: 300;
-    color: var(--verde-escuro);
-    margin-bottom: 0.3rem;
-  }
-
-  .contato-cargo {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--verde-agua);
-    margin-bottom: 1.5rem;
-  }
-
-  .contato-email {
-    font-size: 1.1rem;
-    color: var(--texto-leve);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--verde-agua);
-    padding-bottom: 2px;
-    transition: color 0.2s;
-  }
-
-  .contato-email:hover { color: var(--verde-escuro); }
-
-  /* ── FOOTER ── */
-  footer {
-    background: #111;
-    padding: 2rem;
-    text-align: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.25);
-  }
-
-  /* ── ANIMAÇÕES DE ENTRADA ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
-</head>
-<body>
-
-<!-- ── BARRA DE RETORNO ── -->
-<div style="background:var(--verde-escuro); border-bottom:1px solid rgba(200,168,75,0.2); padding:0.55rem 2rem; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:999;">
-  <a href="../" style="font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(200,168,75,0.7); text-decoration:none; display:flex; align-items:center; gap:0.6rem; transition:color 0.2s;"
-     onmouseover="this.style.color='var(--ouro)'" onmouseout="this.style.color='rgba(200,168,75,0.7)'">
-    ← Wallace Wagner Rodrigues Pantoja
-  </a>
-  <span style="font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(200,168,75,0.35);">Grupo de Pesquisa · CNPq</span>
-</div>
-
-<!-- ── HERO ── -->
-<div class="hero">
-  <!-- Mapa SVG da Amazônia como fundo animado -->
-  <svg class="hero-mapa" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <!-- Contorno simplificado da bacia amazônica / região Norte do Brasil -->
-    <g opacity="0.18" fill="none" stroke="var(--ouro)" stroke-width="0.8">
-      <!-- rios principais estilizados -->
-      <path class="rio" d="M50,250 Q150,220 250,240 Q350,255 450,235 Q550,215 650,230 Q750,245 850,220" stroke-width="2.5"/>
-      <path class="rio" d="M120,180 Q180,210 240,200 Q300,190 360,210 Q420,225 480,210" stroke-width="1.5"/>
-      <path class="rio" d="M200,320 Q270,300 340,315 Q410,330 480,310 Q550,290 620,305" stroke-width="1.5"/>
-      <path class="rio" d="M300,150 Q340,190 370,230 Q390,265 400,310 Q408,345 415,380" stroke-width="1.2"/>
-      <path class="rio" d="M500,120 Q520,160 525,200 Q528,240 520,280" stroke-width="1.2"/>
-      <path class="rio" d="M650,170 Q660,210 655,250 Q648,285 640,320" stroke-width="1.2"/>
-      <!-- grade de meridianos/paralelos -->
-      <line x1="0" y1="125" x2="900" y2="125" stroke-dasharray="4 8" opacity="0.4"/>
-      <line x1="0" y1="250" x2="900" y2="250" stroke-dasharray="4 8" opacity="0.4"/>
-      <line x1="0" y1="375" x2="900" y2="375" stroke-dasharray="4 8" opacity="0.4"/>
-      <line x1="225" y1="0" x2="225" y2="500" stroke-dasharray="4 8" opacity="0.4"/>
-      <line x1="450" y1="0" x2="450" y2="500" stroke-dasharray="4 8" opacity="0.4"/>
-      <line x1="675" y1="0" x2="675" y2="500" stroke-dasharray="4 8" opacity="0.4"/>
-    </g>
-    <!-- Pontos de cidades / lugares -->
-    <g fill="var(--ouro)" opacity="0.55">
-      <circle class="ponto-pulsa" cx="480" cy="270" r="4"/><!-- Belém (aprox) -->
-      <circle cx="480" cy="270" r="10" fill="none" stroke="var(--ouro)" stroke-width="0.8" opacity="0.4"/>
-      <circle cx="280" cy="210" r="2.5"/><!-- Manaus -->
-      <circle cx="350" cy="310" r="2"/>
-      <circle cx="600" cy="240" r="2"/>
-      <circle cx="180" cy="290" r="2"/>
-      <circle cx="700" cy="180" r="2"/>
-    </g>
-    <!-- Label Belém -->
-    <text x="492" y="268" font-family="'Space Mono',monospace" font-size="7" fill="var(--ouro)" opacity="0.7" letter-spacing="0.1em">BELÉM</text>
-    <text x="284" y="207" font-family="'Space Mono',monospace" font-size="6" fill="var(--ouro)" opacity="0.5" letter-spacing="0.08em">MANAUS</text>
-  </svg>
-
-  <p class="hero-eyebrow">Grupo de Pesquisa · CNPq · IFPA · Campus Belém</p>
-  <h1 class="hero-title"><em>Geograficidades</em><br>Amazônicas</h1>
-  <div class="hero-divider"></div>
-  <p class="hero-sub">Uma ciência geográfica desde a Amazônia — partindo das experiências vividas, subjetividades e ecologias de saberes dos corpos e lugares amazônicos.</p>
-  <div class="hero-badges">
-    <span class="badge">Certificado CNPq</span>
-    <span class="badge">Fundado em 2022</span>
-    <span class="badge">Ciências Humanas · Geografia</span>
-    <span class="badge">4 Linhas de Pesquisa</span>
-  </div>
-  <div class="scroll-hint"><span>↓</span>explorar</div>
-</div>
-
-<!-- ── NAV INTERNA ── -->
-<nav class="inner-nav">
-  <a href="#apresentacao">Apresentação</a>
-  <a href="#linhas">Linhas de Pesquisa</a>
-  <a href="#pesquisadores">Pessoas</a>
-  <a href="#impacto">Impacto</a>
-  <a href="#raseng">RASENG</a>
-  <a href="#parceiros">Parceiros</a>
-  <a href="#contato">Contato</a>
-</nav>
-
-<!-- ── APRESENTAÇÃO ── -->
-<section id="apresentacao" class="fade-in">
-  <div class="apresentacao-texto">
-    <p class="section-label">Sobre o grupo</p>
-    <h2 class="section-title">Geograficidades como<br><em>condição de existência</em></h2>
-    <div class="rule"></div>
-    <p>A proposta do Grupo de Pesquisa é partir de experiências híbridas amazônicas — não essencialistas, mas essenciais — para vivenciar além de Geografias, as Geograficidades: condições de existência concretas que não separam o simbólico do emocional, o pessoal do político, o corpo da mente, o toque da palavra.</p>
-    <p>Buscamos abrir varadouros, conexões insuspeitas e mesmo não pensáveis, entre saberes ancestrais, valores originários e redes lançadas ao futuro sem receio de enfrentar as situações-limite em que nos colocamos como sujeitos amazônicos.</p>
-    <p>O caráter indisciplinar e transdisciplinar do Grupo implica não só a pesquisa como princípio de afirmação político-educativa, mas a acolhida da diferencialidade do Outro como parte fundante do sentido de compreender e atuar nas transformações da educação e da ciência geográfica desde a Amazônia.</p>
-  </div>
-  <div class="apresentacao-meta">
-    <div class="meta-item">
-      <p class="meta-label">Líder</p>
-      <p class="meta-value">Wallace Wagner Rodrigues Pantoja</p>
-    </div>
-    <div class="meta-item">
-      <p class="meta-label">Instituição</p>
-      <p class="meta-value">Instituto Federal de Educação, Ciência e Tecnologia do Pará — IFPA Campus Belém</p>
-    </div>
-    <div class="meta-item">
-      <p class="meta-label">Área predominante</p>
-      <p class="meta-value">Ciências Humanas · Geografia</p>
-    </div>
-    <div class="meta-item">
-      <p class="meta-label">Certificação</p>
-      <p class="meta-value">Certificado pela instituição<br>Fundado em 2022</p>
-    </div>
-    <div class="meta-item">
-      <p class="meta-label">Diretório CNPq</p>
-      <a class="cnpq-link" href="https://dgp.cnpq.br/dgp/espelhogrupo/1318639226808539" target="_blank">↗ Ver espelho do grupo</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── GALERIA VISUAL ── -->
-<div id="galeria" style="background:var(--verde-escuro); max-width:100%; padding:0; overflow:hidden;">
-  <div style="display:grid; grid-template-columns:2fr 1fr 1fr; grid-template-rows:280px 280px; gap:2px;">
-
-    <!-- Imagem 1 — grande, substituir por: imagens/amazonia.jpg no GitHub -->
-    <div style="grid-row:1/3; position:relative; overflow:hidden; background:#0d1f15;">
-      <img src="imagens/amazonia.jpg"
-           alt="Amazônia"
-           onerror="this.style.display='none'"
-           style="width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.7) brightness(0.75); transition:transform 0.6s ease;"
-           onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-      <!-- Placeholder SVG se imagem não carregar -->
-      <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 600 560" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <rect width="600" height="560" fill="#0d1f15"/>
-        <g opacity="0.25" fill="none" stroke="#c8a84b" stroke-width="0.8">
-          <path d="M0,280 Q100,250 200,270 Q300,285 400,265 Q500,245 600,260" stroke-width="3"/>
-          <path d="M0,200 Q80,220 160,210 Q240,200 320,215"/>
-          <path d="M100,350 Q200,330 300,345 Q400,360 500,340"/>
-          <line x1="0" y1="140" x2="600" y2="140" stroke-dasharray="4 8" opacity="0.4"/>
-          <line x1="0" y1="280" x2="600" y2="280" stroke-dasharray="4 8" opacity="0.4"/>
-          <line x1="0" y1="420" x2="600" y2="420" stroke-dasharray="4 8" opacity="0.4"/>
-          <line x1="200" y1="0" x2="200" y2="560" stroke-dasharray="4 8" opacity="0.4"/>
-          <line x1="400" y1="0" x2="400" y2="560" stroke-dasharray="4 8" opacity="0.4"/>
-        </g>
-        <circle cx="420" cy="300" r="6" fill="#c8a84b" opacity="0.7"/>
-        <circle cx="420" cy="300" r="14" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.3"/>
-        <text x="435" y="298" font-family="monospace" font-size="9" fill="#c8a84b" opacity="0.6" letter-spacing="1">BELÉM</text>
-        <text x="20" y="520" font-family="monospace" font-size="8" fill="rgba(200,168,75,0.4)" letter-spacing="2">AMAZÔNIA · BACIA HIDROGRÁFICA</text>
-      </svg>
-      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,58,42,0.85) 0%, transparent 50%); pointer-events:none;"></div>
-      <p style="position:absolute; bottom:1.5rem; left:1.5rem; font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.15em; color:rgba(232,208,138,0.85); text-transform:uppercase; z-index:2;">Amazônia · Bacia Hidrográfica</p>
-    </div>
-
-    <!-- Imagem 2 — floresta · imagens/floresta.jpg -->
-    <div style="position:relative; overflow:hidden; background:#0a1a0f;">
-      <img src="imagens/floresta.jpg"
-           alt="Floresta Amazônica"
-           onerror="this.style.display='none'"
-           style="width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.65) brightness(0.7); transition:transform 0.6s ease;"
-           onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
-      <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <rect width="300" height="280" fill="#0a1a0f"/>
-        <g fill="rgba(74,140,110,0.3)">
-          <ellipse cx="50" cy="280" rx="40" ry="120"/>
-          <ellipse cx="150" cy="280" rx="50" ry="140"/>
-          <ellipse cx="250" cy="280" rx="35" ry="100"/>
-          <ellipse cx="100" cy="280" rx="30" ry="80"/>
-          <ellipse cx="200" cy="280" rx="45" ry="110"/>
-        </g>
-        <rect x="0" y="220" width="300" height="60" fill="rgba(26,58,42,0.6)"/>
-        <text x="15" y="268" font-family="monospace" font-size="7" fill="rgba(200,168,75,0.5)" letter-spacing="1.5">FLORESTA · PARÁ</text>
-      </svg>
-      <div style="position:absolute; inset:0; background:rgba(26,58,42,0.35); pointer-events:none;"></div>
-      <p style="position:absolute; bottom:0.8rem; left:1rem; font-family:'Space Mono',monospace; font-size:0.5rem; letter-spacing:0.12em; color:rgba(232,208,138,0.8); text-transform:uppercase; z-index:2;">Floresta · Pará</p>
-    </div>
-
-    <!-- Card de citação teórica -->
-    <div style="background:var(--ouro); display:flex; flex-direction:column; justify-content:center; padding:2rem; position:relative; overflow:hidden;">
-      <div style="position:absolute; top:-1rem; right:-1rem; font-family:'Cormorant Garamond',serif; font-size:8rem; font-weight:300; color:rgba(26,58,42,0.15); line-height:1; pointer-events:none;">"</div>
-      <p style="font-family:'Cormorant Garamond',serif; font-size:1.15rem; line-height:1.6; color:var(--verde-escuro); font-style:italic; position:relative; z-index:1;">O lugar é condição de existência — não um fundo, mas uma abertura ao mundo.</p>
-      <p style="font-family:'Space Mono',monospace; font-size:0.5rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--verde-medio); margin-top:1rem; opacity:0.8;">Geograficidades Amazônicas</p>
-    </div>
-
-    <!-- Imagem 3 — Belém · imagens/belem.jpg -->
-    <div style="position:relative; overflow:hidden; background:#111a12;">
-      <img src="imagens/belem.jpg"
-           alt="Belém do Pará"
-           onerror="this.style.display='none'"
-           style="width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.6) brightness(0.72); transition:transform 0.6s ease;"
-           onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
-      <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <rect width="300" height="280" fill="#111a12"/>
-        <g fill="rgba(74,140,110,0.2)" stroke="rgba(200,168,75,0.3)" stroke-width="0.5">
-          <rect x="30" y="120" width="40" height="160"/>
-          <rect x="80" y="80" width="50" height="200"/>
-          <rect x="140" y="100" width="35" height="180"/>
-          <rect x="185" y="140" width="45" height="140"/>
-          <rect x="240" y="110" width="30" height="170"/>
-        </g>
-        <rect x="0" y="230" width="300" height="50" fill="rgba(17,26,18,0.8)"/>
-        <text x="15" y="260" font-family="monospace" font-size="7" fill="rgba(200,168,75,0.5)" letter-spacing="1.5">BELÉM · PARÁ</text>
-      </svg>
-      <div style="position:absolute; inset:0; background:rgba(26,58,42,0.4); pointer-events:none;"></div>
-      <p style="position:absolute; bottom:0.8rem; left:1rem; font-family:'Space Mono',monospace; font-size:0.5rem; letter-spacing:0.12em; color:rgba(232,208,138,0.8); text-transform:uppercase; z-index:2;">Belém · Pará</p>
-    </div>
-
-    <!-- Card mapa mini + coordenadas -->
-    <div style="background:#111d15; display:flex; flex-direction:column; justify-content:space-between; padding:2rem; position:relative; overflow:hidden;">
-      <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" style="width:100%; opacity:0.6;">
-        <rect width="200" height="160" fill="none"/>
-        <path d="M10,80 Q30,40 60,30 Q90,20 120,35 Q150,50 170,45 Q190,40 195,60 Q198,80 185,100 Q170,120 150,130 Q120,140 90,135 Q60,130 40,115 Q20,100 10,80Z"
-              fill="rgba(74,140,110,0.2)" stroke="rgba(200,168,75,0.5)" stroke-width="1"/>
-        <path d="M20,82 Q60,75 100,80 Q140,85 180,78" fill="none" stroke="rgba(200,168,75,0.7)" stroke-width="1.5"/>
-        <circle cx="168" cy="95" r="4" fill="var(--ouro)" opacity="0.9"/>
-        <text x="140" y="110" font-family="'Space Mono',monospace" font-size="7" fill="rgba(232,208,138,0.8)" letter-spacing="0.05em">BELÉM</text>
-        <circle cx="75" cy="72" r="3" fill="var(--ouro)" opacity="0.7"/>
-        <text x="50" y="65" font-family="'Space Mono',monospace" font-size="6" fill="rgba(232,208,138,0.6)" letter-spacing="0.05em">MANAUS</text>
-      </svg>
-      <div>
-        <p style="font-family:'Space Mono',monospace; font-size:0.5rem; letter-spacing:0.2em; color:var(--ouro); text-transform:uppercase; opacity:0.7;">Sede</p>
-        <p style="font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--creme); opacity:0.85; margin-top:0.3rem;">1°27'S · 48°29'O<br>Belém, Pará</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ── VÍDEO ── -->
-<div style="background:#0d1f15; max-width:100%; padding:4rem 2rem; text-align:center;">
-  <p style="font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--ouro); margin-bottom:0.8rem;">Amazônia em movimento</p>
-  <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,3vw,2.5rem); font-weight:300; color:var(--creme); margin-bottom:2.5rem; font-style:italic;">A floresta como <em style="color:var(--ouro-claro);">lugar</em></h2>
-  <div style="max-width:800px; margin:0 auto; border:1px solid rgba(200,168,75,0.25); overflow:hidden;">
-    <div style="position:relative; padding-bottom:56.25%; height:0; background:#0a1a0f;">
-      <iframe
-        style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
-        src="https://www.youtube.com/embed/1OdJsN68OO0?rel=0&color=white&modestbranding=1"
-        title="Amazônia — floresta como lugar"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
-    </div>
-    <!-- Link de fallback caso iframe seja bloqueado -->
-    <div style="padding:0.8rem; background:rgba(200,168,75,0.05); text-align:center;">
-      <a href="https://www.youtube.com/watch?v=1OdJsN68OO0" target="_blank"
-         style="font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.15em; color:rgba(200,168,75,0.5); text-decoration:none; text-transform:uppercase;">
-        ↗ Abrir no YouTube
-      </a>
-    </div>
-  </div>
-</div>
-
-    <!-- Imagem 1 — grande, Amazônia aérea -->
-    <div style="grid-row:1/3; position:relative; overflow:hidden;">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Madeira_River_from_space.jpg/1200px-Madeira_River_from_space.jpg"
-           alt="Rio Madeira visto do espaço — NASA"
-           style="width:100%; height:100%; object-fit:cover; display:block; filter:saturate(0.7) brightness(0.75); transition:transform 0.6s ease;"
-           onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,58,42,0.85) 0%, transparent 50%); pointer-events:none;"></div>
-      <p style="position:absolute; bottom:1.5rem; left:1.5rem; font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.15em; color:rgba(232,208,138,0.85); text-transform:uppercase;">Amazônia · Vista orbital · NASA</p>
-    </div>
-
-<!-- ── LINHAS DE PESQUISA ── -->
-<div id="linhas">
-  <div class="inner fade-in">
-    <p class="section-label">Frentes de atuação</p>
-    <h2 class="section-title">Linhas de <em>pesquisa</em></h2>
-    <div class="rule"></div>
-    <div class="linhas-grid">
-
-      <div class="linha-card" data-num="1">
-        <p class="linha-nome">(Des)orientações Espaciais, (Per)formas (Urbano)amazônicas</p>
-        <p class="linha-desc">Experiências de borda e margem, corpos LGBTQIA+, mulheres, quilombolas e indígenas na cidade — investigando a forma urbana amazônica para além de paisagens tipológicas padronizantes, a partir da desorientação da vida.</p>
-        <div class="linha-stats">
-          <div class="linha-stat"><strong>4</strong>pesquisadores</div>
-          <div class="linha-stat"><strong>3</strong>estudantes</div>
-        </div>
-      </div>
-
-      <div class="linha-card" data-num="2">
-        <p class="linha-nome">Fenomenologias da Vida Entre-Lugares</p>
-        <p class="linha-desc">Radicalização do "Mundo da Vida do Sul" — um exercício de novos marcos teórico-metodológicos que compreendam o trabalho do conhecimento como recomeço desde o "onde amazônico". Intencionalidade, lugar e ser-junto-com.</p>
-        <div class="linha-stats">
-          <div class="linha-stat"><strong>3</strong>pesquisadores</div>
-          <div class="linha-stat"><strong>3</strong>estudantes</div>
-        </div>
-      </div>
-
-      <div class="linha-card" data-num="3">
-        <p class="linha-nome">Em Campo Amazônico: Corpo, Subjetividade, Geocartografias</p>
-        <p class="linha-desc">Repensar modos de projetar, escalonar e simbolizar as diferentes existências. Uma cartografia que restitua o que é o corpo e as subjetividades não domáveis — contra a redutibilidade monossêmica do mapa convencional.</p>
-        <div class="linha-stats">
-          <div class="linha-stat"><strong>5</strong>pesquisadores</div>
-          <div class="linha-stat"><strong>4</strong>estudantes</div>
-        </div>
-      </div>
-
-      <div class="linha-card" data-num="4">
-        <p class="linha-nome">Educação Territorial: Arte, Ancestralidade e Originalidade Regional</p>
-        <p class="linha-desc">A educação que emerge nos conflitos e no aprendizado territorial amazônico. Arte em sua multiplicidade como viabilizadora de aprendizados que respeitam o lugar, os territórios e as matrizes ancestrais dos povos originários.</p>
-        <div class="linha-stats">
-          <div class="linha-stat"><strong>4</strong>pesquisadores</div>
-          <div class="linha-stat"><strong>1</strong>estudante</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ── PESQUISADORES ── -->
-<section id="pesquisadores" class="fade-in">
-  <p class="section-label">Recursos humanos</p>
-  <h2 class="section-title">As <em>pessoas</em> do grupo</h2>
-  <div class="rule"></div>
-  <p class="pesquisadores-intro">O grupo reúne pesquisadores de diferentes instituições, formações e posicionamentos, comprometidos com a produção de saberes geográficos desde a experiência amazônica.</p>
-
-  <p class="grupo-label">Pesquisadores</p>
-  <div class="pesquisadores-lista">
-    <div class="pesquisador-card pesquisador-lider">
-      <p class="pesquisador-titulo">Doutorado · Líder</p>
-      <p class="pesquisador-nome">Wallace Wagner Rodrigues Pantoja</p>
-      <p class="pesquisador-inst">IFPA Campus Belém</p>
-    </div>
-    <div class="pesquisador-card">
-      <p class="pesquisador-titulo">Doutorado</p>
-      <p class="pesquisador-nome">Amélia Regina Batista Nogueira</p>
-      <p class="pesquisador-inst">UFAM</p>
-    </div>
-    <div class="pesquisador-card">
-      <p class="pesquisador-titulo">Doutorado</p>
-      <p class="pesquisador-nome">Arthur Erik Monteiro Costa de Brito</p>
-      <p class="pesquisador-inst">SEDUC-PA / INEAF-UFPA</p>
-    </div>
-    <div class="pesquisador-card">
-      <p class="pesquisador-titulo">Mestrado</p>
-      <p class="pesquisador-nome">Débora Aquino Nunes</p>
-      <p class="pesquisador-inst">IFPA</p>
-    </div>
-    <div class="pesquisador-card">
-      <p class="pesquisador-titulo">Doutorado · Artivista Indígena</p>
-      <p class="pesquisador-nome">Márcia Kambeba</p>
-      <p class="pesquisador-inst">—</p>
-    </div>
-    <div class="pesquisador-card">
-      <p class="pesquisador-titulo">Mestrado</p>
-      <p class="pesquisador-nome">Mateus Nogueira de Farias Moura</p>
-      <p class="pesquisador-inst">Semec-Belém</p>
-    </div>
-    <div class="pesquisador-card">
-      <p class="pesquisador-titulo">Doutorado</p>
-      <p class="pesquisador-nome">Pamela Elizabeth Morales Arteaga</p>
-      <p class="pesquisador-inst">Núcleo de Artes do Centro Oeste / CEAM-UnB</p>
-    </div>
-    <div class="pesquisador-card">
-      <p class="pesquisador-titulo">Doutorado · Vice-líder</p>
-      <p class="pesquisador-nome">Rafael Bastos Ferreira</p>
-      <p class="pesquisador-inst">NAEA / UFPA</p>
-    </div>
-    <div class="pesquisador-card">
-      <p class="pesquisador-titulo">Mestrado</p>
-      <p class="pesquisador-nome">Rosilene da Conceição Cordeiro</p>
-      <p class="pesquisador-inst">SEDUC-PA / Semec-Belém</p>
-    </div>
-  </div>
-
-  <p class="grupo-label">Estudantes ativos</p>
-  <div class="estudantes-lista">
-    <div class="estudante-tag">
-      <span class="estudante-nivel">Graduação</span>
-      Arthur Alexandre de Aguiar Dias Cruz
-    </div>
-    <div class="estudante-tag">
-      <span class="estudante-nivel">Graduação</span>
-      Arthur de Castro Morais
-    </div>
-    <div class="estudante-tag">
-      <span class="estudante-nivel">Especialização</span>
-      Diana Regina Carmo de Carvalho
-    </div>
-    <div class="estudante-tag">
-      <span class="estudante-nivel">Graduação</span>
-      Lívia Maria Vieira da Silva Brito
-    </div>
-    <div class="estudante-tag">
-      <span class="estudante-nivel">Especialização</span>
-      Raynara Patricia Gonçalves Façanha
-    </div>
-  </div>
-
-  <p class="grupo-label">Técnico</p>
-  <div class="estudantes-lista">
-    <div class="estudante-tag">
-      <span class="estudante-nivel">Especialização</span>
-      Carlos André Souza Mendes
-    </div>
-  </div>
-
-  <p class="grupo-label">Estudantes egressos / inativos</p>
-  <div class="estudantes-lista">
-    <div class="estudante-tag" style="opacity:0.65;">
-      <span class="estudante-nivel">Graduação · Egresso</span>
-      Ana Beatriz Rodrigues Lima
-    </div>
-    <div class="estudante-tag" style="opacity:0.65;">
-      <span class="estudante-nivel">Graduação · Egresso</span>
-      Bruno Rafael Farias dos Santos
-    </div>
-    <div class="estudante-tag" style="opacity:0.65;">
-      <span class="estudante-nivel">Graduação · Egresso</span>
-      Clarice Souza da Silva
-    </div>
-    <div class="estudante-tag" style="opacity:0.65;">
-      <span class="estudante-nivel">Especialização · Egresso</span>
-      Jaqueline Pinto Ferreira
-    </div>
-    <div class="estudante-tag" style="opacity:0.65;">
-      <span class="estudante-nivel">Graduação · Egresso</span>
-      Kelyton Hugo Coelho da Costa
-    </div>
-  </div>
-</section>
-
-<!-- ── IMPACTO ── -->
-<div id="impacto">
-  <div class="inner fade-in">
-    <p class="section-label">Produção e alcance</p>
-    <h2 class="section-title">Impacto <em>científico</em></h2>
-    <div class="rule"></div>
-
-    <div class="impacto-grid">
-      <div class="impacto-card">
-        <div class="impacto-num">9</div>
-        <div class="impacto-label">pesquisadores<br>ativos</div>
-      </div>
-      <div class="impacto-card">
-        <div class="impacto-num">4</div>
-        <div class="impacto-label">linhas de<br>pesquisa</div>
-      </div>
-      <div class="impacto-card">
-        <div class="impacto-num">758</div>
-        <div class="impacto-label">citações (grupo)<br>Google Scholar</div>
-      </div>
-      <div class="impacto-card">
-        <div class="impacto-num">2022</div>
-        <div class="impacto-label">ano de<br>formação</div>
-      </div>
-    </div>
-
-    <div class="lider-impacto">
-      <div>
-        <div class="lider-scholar-num">758</div>
-        <div class="lider-scholar-label">citações · Google Scholar<br>soma dos pesquisadores do grupo</div>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:#d4c8b0;">
-        <div style="background:var(--creme); padding:2rem 1.5rem; text-align:center;">
-          <div class="impacto-num">20</div>
-          <div class="impacto-label">trabalhos de<br>conclusão de curso</div>
-        </div>
-        <div style="background:var(--creme); padding:2rem 1.5rem; text-align:center;">
-          <div class="impacto-num">8</div>
-          <div class="impacto-label">dissertações<br>de mestrado</div>
-        </div>
-        <div style="background:var(--creme); padding:2rem 1.5rem; text-align:center;">
-          <div class="impacto-num">4</div>
-          <div class="impacto-label">teses de<br>doutorado</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Produções 2022–2026 -->
-    <div style="margin-top:3rem; border-top:1px solid #d4c8b0; padding-top:2.5rem;">
-      <p class="section-label" style="margin-bottom:1.5rem;">Seleção de produções · 2022–2026</p>
-
-      <div class="producoes-grid">
-
-        <div>
-          <p style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Artigos e capítulos · 2022–2026</p>
-          <ul style="list-style:none; padding:0; font-size:0.92rem; line-height:1.9; color:var(--texto-leve);">
-            <li>· PANTOJA, W. W. R. <em>Educação do Campo à beira da "Faixa": a (in)existência do lugar como espacialização do fenômeno</em>. 2022.</li>
-            <li>· PANTOJA, W. W. R. et al. <em>Religião e conexões geopolíticas no terceiro milênio</em> (org. Arteaga; Peluso; Pantoja). io5, 2022.</li>
-            <li>· DE BRITO, A. E. M. C.; DE OLIVEIRA, D. C. L.; TORRES, M. G. <em>Educar em meio aos conflitos: precarização e invisibilização do ensino em assentamentos de reforma agrária no Pará</em>. <strong>RASENG</strong>, v. 4, n. 2, p. 65–80, 2022.</li>
-            <li>· NOGUEIRA, A. R. B. et al. <em>Entre rios e afluentes: ensino presencial com mediação tecnológica no Amazonas</em>. PPGEOG-UFAM, 2023.</li>
-            <li>· BASTOS, R. F. <em>Fenomenologia da corporeidade geográfica: constituição e primordialidade</em>. In: Marandola Jr.; Holzer; Batista (Orgs.) <strong>Portais da Terra: contribuições dos estudos humanistas para a Geografia Contemporânea</strong>. 2023.</li>
-            <li>· NOGUEIRA, A. R. B.; SILVA, D. N. C. H. <em>Geografia Humanista e o conceito de lugar: a subjetividade da migração em Manaus/AM</em>. In: <strong>Anais do Amazonas</strong> (UFAM), 2024.</li>
-            <li>· CORDEIRO, R. C. <em>CINE_MATO_GRAFIAS: memorial antirracista de uma atriz-professora-realizadora de audiovisual na Amazônia Paraense</em>. <strong>Arteriais — PPGARTES/UFPA</strong>, p. 203–219, nov. 2024.</li>
-            <li>· DE FARIAS MOURA, M. N.; DA SILVA FREITAS, P. I. <em>Milagre Comum: sua ética e sua poética, suas vozes e seus silêncios</em>. <strong>Voz e Cena</strong>, v. 6, n. 02, p. 217–228, 2025.</li>
-            <li>· ARTEAGA, P. E. M.; PANTOJA, W. W. R. <em>Lugar das mulheres pretas nos anos 70, 80 e 90 na construção de Brasília: uma jornada histórica através do arquivo público do DF</em>. Brasília: io5, 2026.</li>
-            <li>· DE BRITO, A. E. M. C.; NEVES, E. C. C.; ALBUQUERQUE, J. <em>Chegada e partida: comercialização irregular de lotes e a fuga do PDS Virola Jatobá (Anapu/Pará)</em>. <strong>Geografia</strong>, v. 51, n. 1, 2026.</li>
-          </ul>
-        </div>
-
-        <div>
-          <p style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--verde-agua); margin-bottom:1rem;">Projetos em andamento</p>
-          <ul style="list-style:none; padding:0; font-size:0.92rem; line-height:1.9; color:var(--texto-leve);">
-            <li>· <strong>Bainhas: costurando reXistências no Marajó</strong> — propriedade intelectual coletiva em parceria com artistas LGBTQIAPN+ de Oeiras do Pará e costureiras ribeirinhas. Coord. Wallace Pantoja / PROFNIT-IFPA. Em andamento.</li>
-            <li>· <strong>Pós-doutorado UFPA</strong> — estágio pós-doutoral de Wallace Pantoja no PPGEO-UFPA, aprofundando o conceito de <em>espaço fraturado</em> e geografias dissidentes na Amazônia.</li>
-            <li>· <strong>Dossiê Ajuricaba / RASENG 2025</strong> — publicação dos trabalhos selecionados do III Encontro de Geografia Cultural e Humanista da Amazônia (Manaus, out.–nov. 2024), em parceria com a revista <em>Presença Geográfica</em> (UNIR).</li>
-            <li>· <strong>Chamada especial RASENG 2026</strong> — dossiê dedicado a Estudos Amazônicos, submissões abertas até outubro de 2026.</li>
-          </ul>
-
-          <p style="font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--verde-agua); margin-top:1.5rem; margin-bottom:1rem;">Eventos científicos organizados</p>
-          <ul style="list-style:none; padding:0; font-size:0.92rem; line-height:1.9; color:var(--texto-leve);">
-            <li>· <strong>Ajuricaba — III Encontro de Geografia Cultural e Humanista da Amazônia</strong>. UFAM/IFCHS, Manaus, 30 out.–2 nov. 2024. Co-organização do grupo.</li>
-            <li>· <strong>XII SEGHUM</strong> — minicurso "Contribuições humanistas para entender a Amazônia: mapas mentais como representação do lugar" (Nogueira, UFAM). 2023.</li>
-            <li>· <strong>XV ENAPEGE 2023</strong> — apresentações de membros do grupo sobre literatura, migração e lugar.</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── RASENG ── -->
-<section id="raseng" class="fade-in">
-  <p class="section-label">Publicação vinculada</p>
-  <h2 class="section-title">RASENG</h2>
-  <div class="rule"></div>
-  <div class="raseng-box">
-    <div class="raseng-lado">
-      <div class="raseng-sigla">RASENG</div>
-      <div class="raseng-nome-completo">Revista Amazônica<br>sobre Ensino de Geografia</div>
-    </div>
-    <div class="raseng-conteudo">
-      <p>Revista editada por membros do grupo de pesquisa com foco em divulgação científica da produção amazônica e educação profissional.</p>
-      <div class="raseng-pills">
-        <span class="raseng-pill">Educação Geográfica</span>
-        <span class="raseng-pill">Ensino de Geografia</span>
-        <span class="raseng-pill">Aprendizagem Territorial</span>
-        <span class="raseng-pill">Amazônia</span>
-        <span class="raseng-pill">Fluxo contínuo</span>
-      </div>
-      <p class="raseng-qualis">ISSN 2675-3987 &nbsp;·&nbsp; Qualis B1 (2021–2024) &nbsp;·&nbsp; Acesso aberto</p>
-      <p style="font-size:0.9rem; color:var(--texto-leve); margin-top:1rem;">A edição mais recente traz o Dossiê <em>Ajuricaba</em>, com trabalhos selecionados do III Encontro de Geografia Cultural e Humanista da Amazônia. Em 2026, a RASENG lança chamada especial dedicada a Estudos Amazônicos (submissões até outubro).</p>
-      <a class="raseng-link" href="https://www.raseng.com" target="_blank">↗ Acessar raseng.com</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── PARCEIROS ── -->
-<div id="parceiros">
-  <div class="inner fade-in">
-    <p class="section-label">Rede institucional</p>
-    <h2 class="section-title">Instituições <em>parceiras</em></h2>
-    <div class="parceiros-grid">
-      <div class="parceiro">
-        <p class="parceiro-sigla">IFPA</p>
-        <p class="parceiro-nome">Instituto Federal do Pará<br>(Belém, Ananindeua, Itaituba, Tucuruí, Conceição do Araguaia)</p>
-      </div>
-      <div class="parceiro">
-        <p class="parceiro-sigla">UFAM</p>
-        <p class="parceiro-nome">Universidade Federal do Amazonas<br>Depto. de Geografia e PPGG</p>
-      </div>
-      <div class="parceiro">
-        <p class="parceiro-sigla">UEPA</p>
-        <p class="parceiro-nome">Universidade Estadual<br>do Pará</p>
-      </div>
-      <div class="parceiro">
-        <p class="parceiro-sigla">UnB</p>
-        <p class="parceiro-nome">Universidade de Brasília<br>CIGA · OPCULT</p>
-      </div>
-      <div class="parceiro">
-        <p class="parceiro-sigla">UFPA</p>
-        <p class="parceiro-nome">Universidade Federal do Pará<br>Pós-doc em Geografia</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── CONTATO ── -->
-<section id="contato" style="margin:0 auto; text-align:center;" class="fade-in">
-  <p class="section-label" style="text-align:center;">Fale conosco</p>
-  <p class="contato-lider">Wallace Wagner Rodrigues Pantoja</p>
-  <p class="contato-cargo">Líder do Grupo · IFPA Campus Belém</p>
-  <a class="contato-email" href="mailto:wallace.pantoja@ifpa.edu.br">wallace.pantoja@ifpa.edu.br</a>
-  <br><br>
-  <a class="cnpq-link" href="https://dgp.cnpq.br/dgp/espelhogrupo/1318639226808539" target="_blank" style="font-size:0.65rem;">↗ Diretório CNPq · dgp.cnpq.br</a>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer>
-  GEOGRAFICIDADES AMAZÔNICAS · GRUPO DE PESQUISA CNPq · IFPA CAMPUS BELÉM · BELÉM, PA · BRASIL
-</footer>
-
-<script>
   // Fade-in ao rolar
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
